@@ -1,0 +1,29 @@
+version: "3.3"
+
+services: ## Define um serviço
+  api: ## nome do serviço
+    build: ./api ## localização do dockerfile
+    command: npm start ## comando a executar
+    environment:
+      - DB_DATABASE=ltask
+      - DB_USER=root
+      - DB_PASSWORD=root
+      - DB_HOST=postgres
+    depends_on:
+      - postgres
+    ports:
+      - "3000:3000" ## redirecionamento de porta quando chegar alguma requisição na porta 3000 chama o container na porta 3000
+    volumes:
+      - ./api:/usr/app ## monitoro a pasta atual . e envio as alterações para /usr/app
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=ltask
+    ports:
+      - 5432:5432
+    volumes:
+      - ltask-db:/var/lib/postgresql/data
+volumes: 
+  ltask-db: {}
