@@ -2,8 +2,17 @@ const app = require('fastify')({
   loger:true
 })
 
-app.get('/', function(request,replay){
-  replay.send({hello:'Word'})
-})
+/*
+* register plugins
+*/
+app.register(require('./plugins/jwt/auth_middleware'))
+
+require('./plugins/conection')(app)
+
+/*
+* register routes
+*/
+app.register(require('./routes/ping'), { prefix: '/ping' })
+app.register(require('./routes/user'), { prefix: '/users' })
 
 module.exports = app
