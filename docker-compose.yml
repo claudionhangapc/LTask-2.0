@@ -22,7 +22,7 @@ services: ## Define um serviço
       - POSTGRES_PASSWORD=root
       - POSTGRES_DB=ltask
     ports:
-      - 5432:5432
+      - 5433:5432
     volumes:
       - ltask-db:/var/lib/postgresql/data
 volumes: 

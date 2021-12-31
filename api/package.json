@@ -5,12 +5,18 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"nodemon -L server.js"
+    "start": "nodemon -L server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "fastify": "^3.25.3",
+    "knex": "^0.95.15",
+    "path": "^0.12.7",
+    "pg": "^8.7.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.5.0",
     "nodemon": "^2.0.15"
   }
 }
