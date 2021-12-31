@@ -39,10 +39,10 @@ class User {
       
       if ((user.length > 0) && (bcrypt.compareSync(password, user[0].password))) {
         
-        const { id, email } = user[0]
+        const { id, email, name, image_url, } = user[0]
         const payload = { id, email }
         const token = this.jwt.sign(payload)
-        
+
         return { id, email, name, image_url, token }
       } else {
         return {

@@ -5,6 +5,8 @@ const userLogin = {
       properties: {
         id: { type: 'integer' },
         email: { type: 'string' },
+        name: { type: 'string' },
+        image_url: { type: 'string' },
         token: { type: 'string' }
       }
     }
@@ -12,10 +14,11 @@ const userLogin = {
   body: {
     type: 'object',
     additionalProperties: false,
-    required: ['email', 'password'],
+    required: ['email', 'password','name'],
     properties: {
       email: { type: 'string' },
-      password: { type: 'string' }
+      password: { type: 'string' },
+      name: { type: 'string' }
     }
   }
 }
@@ -29,10 +32,11 @@ const userSign = {
   body: {
     type: 'object',
     additionalProperties: false,
-    required: ['email', 'password'],
+    required: ['email', 'password','name'],
     properties: {
       email: { type: 'string' },
-      password: { type: 'string' }
+      password: { type: 'string' },
+      name: { type: 'string' }
     }
   }
 }
