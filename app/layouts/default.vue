@@ -8,49 +8,76 @@
         app
       >
         <v-app-bar-nav-icon></v-app-bar-nav-icon>
-  
+
         <v-toolbar-title>L<span style="color:#FF8700">Task</span></v-toolbar-title>
+        <v-spacer></v-spacer>
+
+          <v-text-field
+            :autofocus="false"
+            full-width
+            dense
+            hide-details
+            append-icon="mdi-magnify"
+            filled
+            outlined
+            dark
+          ></v-text-field>
+        
   
         <v-spacer></v-spacer>
-  
+
         <v-btn icon>
-          <v-icon>mdi-heart</v-icon>
+          <v-icon>mdi-bell-outline </v-icon>
         </v-btn>
-  
-        <v-btn icon>
-          <v-icon>mdi-magnify</v-icon>
-        </v-btn>
-  
-          <v-menu offset-y>
-          <template v-slot:activator="{ on, attrs }">
-            <v-btn
-              fab large plain
+
+        <v-menu offset-y>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn 
               v-bind="attrs"
               v-on="on"
-              class="pa-0"
-            >
-              <v-avatar color="#FF8700" size="36" class="mr-1">
-                <v-icon dark>
-                  mdi-account-circle
-                </v-icon>
-              </v-avatar>
-              <!--<v-icon small>mdi-arrow-down-drop-circle-outline</v-icon> -->
-              <span class="dropdown-caret"></span>
+              icon>
+                <v-icon>mdi-plus</v-icon>
+                <span class="dropdown-caret"></span>
             </v-btn>
-          </template>
-          <v-list>
-            <v-list-item
-              v-for="(item, index) in items"
-              :key="index"
-            >
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
-            </v-list-item>
-          </v-list>
+            </template>
+            <v-list light>
+              <v-list-item
+                v-for="(item, index) in items"
+                :key="index"
+              >
+                <v-list-item-title>{{ item.title }}</v-list-item-title>
+              </v-list-item>
+            </v-list>
+        </v-menu>
+  
+        <v-menu offset-y>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                fab large plain
+                v-bind="attrs"
+                v-on="on"
+                class="pa-0"
+              >
+                <v-avatar color="#FF8700" size="36" class="mr-1">
+                  <v-icon dark>
+                    mdi-account-circle
+                  </v-icon>
+                </v-avatar>
+                <!--<v-icon small>mdi-arrow-down-drop-circle-outline</v-icon> -->
+                <span class="dropdown-caret"></span>
+              </v-btn>
+            </template>
+            <v-list light>
+              <v-list-item
+                v-for="(item, index) in items"
+                :key="index"
+              >
+                <v-list-item-title>{{ item.title }}</v-list-item-title>
+              </v-list-item>
+            </v-list>
         </v-menu>
       </v-app-bar>
-    <div>
-    olsa
-  </div>
+      
   </v-app>
   
 </template>
@@ -84,4 +111,6 @@ export default {
     border-bottom-color: transparent;
     border-left-color: transparent;
 }
+
+
 </style>
