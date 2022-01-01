@@ -1,6 +1,13 @@
 version: "3.3"
 
 services: ## Define um serviço
+  app: ## nome do serviço
+    build: ./app ## localização do dockerfile
+    command: npm run dev ## comando a executar
+    volumes:
+      - ./app:/app
+    ports:
+      - "80:3000"
   api: ## nome do serviço
     build: ./api ## localização do dockerfile
     command: npm start ## comando a executar
