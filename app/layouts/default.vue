@@ -6,6 +6,7 @@
         fixed 
         clipped-left
         app
+        elevation="0"
       >
         <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
@@ -82,46 +83,58 @@
       v-model="drawer"
       app
       clipped
+      color="#DEDEDE"
     >
-      <v-sheet
-        color="grey lighten-4"
-        class="pa-4"
-      >
-        <v-avatar
-          class="mb-4"
-          color="grey darken-1"
-          size="64"
-        ></v-avatar>
-
-        <div>john@vuetifyjs.com</div>
-      </v-sheet>
-
-      <v-divider></v-divider>
 
       <v-list>
         <v-list-item
           v-for="[icon, text] in links"
           :key="icon"
           link
+          light
         >
           <v-list-item-icon>
-            <v-icon>{{ icon }}</v-icon>
+            <v-icon color="#222222">{{ icon }}</v-icon>
           </v-list-item-icon>
 
-          <v-list-item-content>
-            <v-list-item-title>{{ text }}</v-list-item-title>
+          <v-list-item-content >
+            <v-list-item-title style="color:#222222">{{ text }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        <v-list-group
+        v-for="item in items2"
+        :key="item.title"
+        no-action
+        color="#222222"
+      >
+         <v-icon slot="prependIcon" color="#222222">{{item.action}}</v-icon>
+         <v-icon slot="appendIcon" color="#222222">mdi-chevron-down</v-icon>
+        <template v-slot:activator style="color:#222222">
+          <v-list-item-content>
+            <v-list-item-title v-text="item.title" style="color:#222222"></v-list-item-title>
+          </v-list-item-content>
+        </template>
+
+        <v-list-item
+          v-for="child in item.items"
+          :key="child.title"
+          link
+        >
+          <v-list-item-content>
+            <v-list-item-title v-text="child.title" style="color:#222222"></v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list-group>
       </v-list>
     </v-navigation-drawer>
 
-    <v-main>
+    <v-main style="background:#fff">
       <v-container
         class="py-8 px-6"
         fluid
       >
         <v-row>
-          <v-col
+          <!--<v-col
             v-for="card in cards"
             :key="card"
             cols="12"
@@ -155,7 +168,7 @@
                 </template>
               </v-list>
             </v-card>
-          </v-col>
+          </v-col> -->
         </v-row>
       </v-container>
     </v-main>
@@ -174,11 +187,37 @@
       cards: ['Today', 'Yesterday'],
       drawer: null,
       links: [
-        ['mdi-inbox-arrow-down', 'Inbox'],
-        ['mdi-send', 'Send'],
-        ['mdi-delete', 'Trash'],
-        ['mdi-alert-octagon', 'Spam'],
+        ['mdi-home-outline', 'Home'],
+        ['mdi-star-outline', 'Importantes'],
+        ['mdi-clipboard-edit-outline', 'Task']
+      ],
+      items2: [
+        {
+          action: 'mdi-folder-outline',
+          items: [
+            { title: 'List Item' },
+            { title: 'Testando' },
+             { title: 'Será que agora vai' }
+            ],
+          title: 'Attractions',
+        },
+          
       ],
     }),
   }
 </script>
+<style scoped>
+.dropdown-caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    vertical-align: middle;
+    content: "";
+    border-style: solid;
+    border-width: 4px 4px 0;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+}
+
+</style>
