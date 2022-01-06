@@ -1,16 +1,16 @@
 <template>
   <v-app id="inspire">
     <LayoutsTheHeader :drawer="drawer" @displayAsideMenu="displayAsideMenu($event)"/>
-    <LayoutsTheAside :drawer="drawer"/>
+    <LayoutsTheAside :drawer="drawer" @displayAsideMenu="displayAsideMenu($event)"/>
     
     <v-main style="background:#fff">
       <v-container
         class="py-8 px-6"
         fluid
       >
-        <v-row>
+        <!--<v-row>
           
-          <!--<v-col
+          <v-col
             v-for="card in cards"
             :key="card"
             cols="12"
@@ -44,8 +44,9 @@
                 </template>
               </v-list>
             </v-card>
-          </v-col> -->
-        </v-row>
+          </v-col> 
+        </v-row> -->
+        <Nuxt />
       </v-container>
     </v-main>
   </v-app>
@@ -56,6 +57,7 @@
   export default {
     data: () => ({
       drawer: true,
+      cards: ['Today', 'Yesterday'],
     }),
     methods:{
       displayAsideMenu(value){
@@ -64,18 +66,3 @@
     }
   }
 </script>
-<style scoped>
-.dropdown-caret {
-    display: inline-block;
-    width: 0;
-    height: 0;
-    vertical-align: middle;
-    content: "";
-    border-style: solid;
-    border-width: 4px 4px 0;
-    border-right-color: transparent;
-    border-bottom-color: transparent;
-    border-left-color: transparent;
-}
-
-</style>

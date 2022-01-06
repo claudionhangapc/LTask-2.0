@@ -5,7 +5,7 @@
       app
       clipped
       color="#DEDEDE"
-      @change="alert('ola')"
+     @input="setMenu($event)"
     >
 
       <v-list>
@@ -77,6 +77,11 @@
           
       ],
     }),
+    methods:{
+      setMenu(value){
+        this.$emit('displayAsideMenu',value)
+      }
+    }
   }
 </script>
 
