@@ -24,13 +24,14 @@
             dark
           ></v-text-field>
         
-  
         <v-spacer></v-spacer>
 
+        <!-- notificação -->
         <v-btn icon>
           <v-icon>mdi-bell-outline </v-icon>
         </v-btn>
 
+        <!-- task -->
         <v-menu offset-y>
             <template v-slot:activator="{ on, attrs }">
               <v-btn 
@@ -43,14 +44,15 @@
             </template>
             <v-list light>
               <v-list-item
-                v-for="(item, index) in items"
+                v-for="(item, index) in itemsTask"
                 :key="index"
               >
                 <v-list-item-title>{{ item.title }}</v-list-item-title>
               </v-list-item>
             </v-list>
         </v-menu>
-  
+
+        <!-- perfil -->
         <v-menu offset-y>
             <template v-slot:activator="{ on, attrs }">
               <v-btn
@@ -70,8 +72,11 @@
             </template>
             <v-list light>
               <v-list-item
-                v-for="(item, index) in items"
+                v-for="(item, index) in itemsPerfil"
                 :key="index"
+                link
+                :light="true"
+                :two-line="true"
               >
                 <v-list-item-title>{{ item.title }}</v-list-item-title>
               </v-list-item>
@@ -88,11 +93,14 @@
       }
     },
     data: () => ({
-      items: [
-        { title: 'Click Me' },
-        { title: 'Click Me' },
-        { title: 'Click Me' },
-        { title: 'Click Me 2' },
+      itemsTask: [
+        { title: 'Nova Tarefa' },
+        { title: 'Novo Projeto' },
+      ],
+      itemsPerfil: [
+        { title: 'Meu Perfil' },
+        { title: 'Meus Projetos' },
+        { title: 'Sair' },
       ],
       cards: ['Today', 'Yesterday'],
       
