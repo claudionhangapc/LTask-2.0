@@ -1,87 +1,106 @@
-
 <template>
-  <v-navigation-drawer
-      :value="drawer"
-      app
-      clipped
-      color="#DEDEDE"
-     @input="setMenu($event)"
-    >
+  <div>
+   <v-dialog :value="dialog"
+    persistent  
+    max-width="700" >
+      <v-card>
+        <v-card-title class="text-h5 grey lighten-2">
+          Adicionar Novo Projeto
+        </v-card-title>
 
-      <v-list>
-        <v-list-item
-          v-for="[icon, text] in links"
-          :key="icon"
-          link
-          light
+        <v-card-text class="pt-2">
+           <v-form
+          ref="form"
+          v-model="valid"
+          lazy-validation
         >
-          <v-list-item-icon>
-            <v-icon color="#222222">{{ icon }}</v-icon>
-          </v-list-item-icon>
+          <v-text-field
+            label="Nome do projeto"
+            required
+          ></v-text-field>
 
-          <v-list-item-content >
-            <v-list-item-title style="color:#222222">{{ text }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-group
-        v-for="item in items2"
-        :key="item.title"
-        no-action
-        color="#222222"
-      >
-         <v-icon slot="prependIcon" color="#222222">{{item.action}}</v-icon>
-         <v-icon slot="appendIcon" color="#222222">mdi-chevron-down</v-icon>
-        <template v-slot:activator style="color:#222222">
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" style="color:#222222"></v-list-item-title>
-          </v-list-item-content>
-        </template>
+          <v-select
+          item-value="value"
+          item-text="name"
+          :items="items"
+           label="Cor do projeto"
+          dense
+          @change="updateColor($event)"
+         >
+          <template v-slot:append>
+              <v-icon :color="defaultColor">mdi-chevron-down</v-icon>
+          </template>
+         
+         </v-select>
+        </v-form>
+        </v-card-text>
 
-        <v-list-item
-          v-for="child in item.items"
-          :key="child.title"
-          link
-        >
-          <v-list-item-content>
-            <v-list-item-title v-text="child.title" style="color:#222222"></v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list-group>
-      </v-list>
-    </v-navigation-drawer>
+        <v-divider></v-divider>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            text
+            @click="dialog = false"
+          >
+           fechar
+          </v-btn>
+          <v-btn
+          color="pink"
+            text
+          >
+            Adicionar
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+       
+   </v-dialog>
+
+  </div>
 </template>
+
 <script>
-  
-  export default {
-    props:{
-      drawer:{
-        type:Boolean
-      }
-    },
-    data: () => ({
-      links: [
-        ['mdi-home-outline', 'Home'],
-        ['mdi-star-outline', 'Importantes'],
-        ['mdi-clipboard-edit-outline', 'Task']
-      ],
-      items2: [
+export default {
+  props:{
+    dialog:{
+      type:Boolean,
+      required:true
+    }
+  },
+  data(){
+    return{
+      defaultColor:'#000',
+      items:[
         {
-          action: 'mdi-folder-outline',
-          items: [
-            { title: 'List Item' },
-            { title: 'Testando' },
-             { title: 'Será que agora vai' }
-            ],
-          title: 'Projetos',
+        name:'Verde escuro',
+        value:'#006400'
         },
-          
-      ],
-    }),
-    methods:{
-      setMenu(value){
-        this.$emit('displayAsideMenu',value)
-      }
+        {
+        name:'Vermelho escuro',
+        value:'#8B0000'
+        },
+        {
+        name:'Dourado',
+        value:'#FFD700'
+        },
+        {
+        name:'HotPink3',
+        value:'#8B3A62'
+        },
+        {
+        name:'Ivory4',
+        value:'#8B8B83'
+        }
+      ]
+    }
+  },
+  methods:{
+    closeModal(value){
+     this.$emit('change', false)
+    },
+    updateColor(value){
+      this.defaultColor = value
     }
   }
+}
 </script>
-

@@ -46,6 +46,8 @@
               <v-list-item
                 v-for="(item, index) in itemsTask"
                 :key="index"
+                 link
+                @click="alertar"
               >
                 <v-list-item-title>{{ item.title }}</v-list-item-title>
               </v-list-item>
@@ -75,13 +77,13 @@
                 v-for="(item, index) in itemsPerfil"
                 :key="index"
                 link
-                :light="true"
-                :two-line="true"
+                @click="alertar"
               >
                 <v-list-item-title>{{ item.title }}</v-list-item-title>
               </v-list-item>
             </v-list>
         </v-menu>
+        <ModalProject :dialog="true" />
       </v-app-bar>
 </template>
 <script>
@@ -108,6 +110,9 @@
     methods:{
       setMenu(){
         this.$emit('displayAsideMenu', !this.drawer)
+      },
+      alertar(){
+        alert("ola")
       }
     }
   }
