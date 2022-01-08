@@ -1,17 +1,17 @@
 <template>
   <div>
    <v-dialog :value="dialog"
+   overlay-opacity="0.8"
     persistent  
     max-width="700" >
       <v-card>
-        <v-card-title class="text-h5 grey lighten-2">
+        <v-card-title class="text-h5 header-background">
           Adicionar Novo Projeto
         </v-card-title>
 
         <v-card-text class="pt-2">
            <v-form
           ref="form"
-          v-model="valid"
           lazy-validation
         >
           <v-text-field
@@ -41,13 +41,13 @@
           <v-spacer></v-spacer>
           <v-btn
             text
-            @click="dialog = false"
+            @click="closeModal"
           >
            fechar
           </v-btn>
           <v-btn
-          color="pink"
-            text
+            color="#FF8700"
+            outlined
           >
             Adicionar
           </v-btn>
@@ -95,8 +95,8 @@ export default {
     }
   },
   methods:{
-    closeModal(value){
-     this.$emit('change', false)
+    closeModal(){
+     this.$emit('closeModalProject', false)
     },
     updateColor(value){
       this.defaultColor = value
@@ -104,3 +104,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+  .header-background{
+    background-color: #DEDEDE;
+  }
+</style>

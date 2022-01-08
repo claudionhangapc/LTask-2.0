@@ -47,7 +47,7 @@
                 v-for="(item, index) in itemsTask"
                 :key="index"
                  link
-                @click="alertar"
+                @click="handle_function_call(item.method)"
               >
                 <v-list-item-title>{{ item.title }}</v-list-item-title>
               </v-list-item>
@@ -68,7 +68,6 @@
                     mdi-account-circle
                   </v-icon>
                 </v-avatar>
-                <!--<v-icon small>mdi-arrow-down-drop-circle-outline</v-icon> -->
                 <span class="dropdown-caret"></span>
               </v-btn>
             </template>
@@ -77,13 +76,13 @@
                 v-for="(item, index) in itemsPerfil"
                 :key="index"
                 link
-                @click="alertar"
+                @click="openModalProject"
               >
                 <v-list-item-title>{{ item.title }}</v-list-item-title>
               </v-list-item>
             </v-list>
         </v-menu>
-        <ModalProject :dialog="true" />
+        <ModalProject :dialog="dialogProject" @closeModalProject="updatedialogProject($event)"/>
       </v-app-bar>
 </template>
 <script>
@@ -96,8 +95,8 @@
     },
     data: () => ({
       itemsTask: [
-        { title: 'Nova Tarefa' },
-        { title: 'Novo Projeto' },
+        { title: 'Nova Tarefa', method:'openModalProject' },
+        { title: 'Novo Projeto', method:'openModalProject'},
       ],
       itemsPerfil: [
         { title: 'Meu Perfil' },
@@ -105,15 +104,21 @@
         { title: 'Sair' },
       ],
       cards: ['Today', 'Yesterday'],
-      
+      dialogProject:false
     }),
     methods:{
       setMenu(){
         this.$emit('displayAsideMenu', !this.drawer)
       },
-      alertar(){
-        alert("ola")
-      }
+      openModalProject(){
+        this.dialogProject = true
+      },
+      updatedialogProject(value){
+        this.dialogProject = value
+      },
+      handle_function_call(function_name) {
+        this[function_name]()
+      },
     }
   }
 </script>
