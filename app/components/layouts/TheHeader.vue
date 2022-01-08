@@ -83,6 +83,7 @@
             </v-list>
         </v-menu>
         <ModalProject :dialog="dialogProject" @closeModalProject="updatedialogProject($event)"/>
+        <ModalTask :dialog="dialogTask" @closeModalTask="updatedialogTask($event)"/>
       </v-app-bar>
 </template>
 <script>
@@ -95,7 +96,7 @@
     },
     data: () => ({
       itemsTask: [
-        { title: 'Nova Tarefa', method:'openModalProject' },
+        { title: 'Nova Tarefa', method:'openModalTask' },
         { title: 'Novo Projeto', method:'openModalProject'},
       ],
       itemsPerfil: [
@@ -104,7 +105,8 @@
         { title: 'Sair' },
       ],
       cards: ['Today', 'Yesterday'],
-      dialogProject:false
+      dialogProject:false,
+      dialogTask:false
     }),
     methods:{
       setMenu(){
@@ -115,6 +117,12 @@
       },
       updatedialogProject(value){
         this.dialogProject = value
+      },
+      openModalTask(){
+        this.dialogTask = true
+      },
+      updatedialogTask(value){
+        this.dialogTask = value
       },
       handle_function_call(function_name) {
         this[function_name]()

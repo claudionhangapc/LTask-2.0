@@ -1,7 +1,7 @@
 <template>
   <div>
    <v-dialog :value="dialog"
-   overlay-opacity="0.8"
+    overlay-opacity="0.8"
     persistent  
     max-width="700" >
       <v-card>
@@ -15,6 +15,7 @@
           lazy-validation
         >
           <v-text-field
+            verclass="mb-2"
             label="Nome do projeto"
             required
           ></v-text-field>
