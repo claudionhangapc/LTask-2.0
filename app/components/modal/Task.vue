@@ -15,16 +15,18 @@
           lazy-validation
         >
           <v-text-field
-            class="mb-2"
+            hide-details
             label="Nome da tarefa"
             required
+            class="mb-2" 
           ></v-text-field>
            <v-menu
+              class="my-0 py-0"
               content-class="elevation-0"
               v-model="menuDate"
               :close-on-content-click="false"
             >
-              <template v-slot:activator="{ on, attrs }">
+              <template v-slot:activator="{ on, attrs }" class="my-0 py-0">
                   <v-text-field 
                     append-icon="mdi-calendar"
                     class="mb-2" 
@@ -61,7 +63,23 @@
             label="Projeto"
             dense
           ></v-combobox>
-       
+          
+          <v-row>
+            <v-col cols="12" md="3" class="ma-0 py-0" >
+              <v-checkbox
+                label="Importante"
+                :on-icon="'mdi-star'"
+                :off-icon="'mdi-star-outline'"
+              ></v-checkbox>
+            </v-col>
+            <v-col cols="12" md="4" class="ma-0 py-0">
+              <v-checkbox
+                label="Receber notificação"
+                :on-icon="'mdi-bell'"
+                :off-icon="'mdi-bell-outline'"
+              ></v-checkbox>
+            </v-col>
+          </v-row>
         </v-form>
         </v-card-text>
 
