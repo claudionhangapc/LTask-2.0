@@ -14,11 +14,10 @@ const userLogin = {
   body: {
     type: 'object',
     additionalProperties: false,
-    required: ['email', 'password','name'],
+    required: ['email', 'password'],
     properties: {
       email: { type: 'string' },
-      password: { type: 'string' },
-      name: { type: 'string' }
+      password: { type: 'string' }
     }
   }
 }

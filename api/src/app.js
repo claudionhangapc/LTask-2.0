@@ -14,5 +14,6 @@ require('./plugins/conection')(app)
 */
 app.register(require('./routes/ping'), { prefix: '/ping' })
 app.register(require('./routes/user'), { prefix: '/users' })
+app.register(require('./routes/project'), { prefix: '/projects' })
 
 module.exports = app
