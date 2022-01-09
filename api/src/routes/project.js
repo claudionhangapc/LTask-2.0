@@ -42,5 +42,26 @@ module.exports = function (fastify, option, done) {
   })
 
 
+  /*
+   * delete single project
+   */
+
+  fastify.delete('/:project_id', {
+    preValidation: [fastify.authenticate]
+  },
+  async (request, reply) => {
+    try {
+      const { id } = request.whoiam
+      const { project_id } = request.params
+
+      const single_project = await projectInstance.delete(id, project_id)
+
+      reply.send(single_project)
+    } catch (error) {
+      reply.send(error)
+    }
+  })
+
+
   done()
 }

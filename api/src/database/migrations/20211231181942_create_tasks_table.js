@@ -26,11 +26,19 @@ exports.up = function(knex) {
         .references('user.id');
 
     table
+        .integer('category_id')
+        .unsigned()
+    table
+        .foreign('category_id')
+        .references('category.id');
+
+    table
         .integer('project_id')
         .unsigned()
     table
         .foreign('project_id')
-        .references('project.id');
+        .references('project.id')
+        .onDelete('CASCADE');
 
   })
 };

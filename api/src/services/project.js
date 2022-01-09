@@ -35,6 +35,19 @@ class Project {
     
   }
 
+
+  /*
+   * delete single projects
+   */
+  async delete (user_id, project_id) {
+    let singleProject = await this.model
+      .where({
+        'user_id': project_id,
+        'id': user_id
+      }).del() 
+      return singleProject
+  }
+
 }
 
 module.exports = Project
