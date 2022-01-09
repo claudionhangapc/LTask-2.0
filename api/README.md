@@ -1,0 +1,3 @@
+# LTask-2.0
+
+API de um sistema web para gerenciamento de tarefas. A documentação completa da api desenvolvida pode ser acessada clicando <a href="https://documenter.getpostman.com/view/14806594/UVJkBtfB">aqui</a>

@@ -12,7 +12,7 @@
          >
          <v-card elevation="0">
             <v-list >
-               <template v-for="n in 6">
+               <template v-for="n in 12">
                   <v-list-item
                      :key="n"
                      link
@@ -26,7 +26,7 @@
                           <v-list-item-content>
                             <v-list-item-title>Message {{ n }}</v-list-item-title>
                             <div class="d-flex justify-start ">
-                              <div class="mr-1">
+                              <div class="mr-2">
                                  <v-list-item-subtitle>
                                   <v-icon
                                     small
@@ -36,7 +36,7 @@
                                   <span>nome de projeto</span>
                                   </v-list-item-subtitle>
                               </div>
-                              <div class="mr-1">
+                              <div class="mr-2">
                                   <v-list-item-subtitle>
                                   <v-icon
                                     small
@@ -47,7 +47,7 @@
                                   <span>nome da categoria</span>
                                   </v-list-item-subtitle>
                               </div>
-                              <div class="mr-1">
+                              <div class="mr-2">
                                  <v-list-item-subtitle>
                                   <v-icon
                                     small
@@ -57,7 +57,7 @@
                                   <span>seg, 10 de jan</span>
                                   </v-list-item-subtitle>
                               </div>
-                              <div class="mr-1">
+                              <div class="mr-2">
                                  <v-list-item-subtitle>
                                   <v-icon
                                     small
