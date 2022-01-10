@@ -54,10 +54,32 @@ module.exports = function (fastify, option, done) {
       const { id } = request.whoiam
       const { project_id } = request.params
 
-      const single_project = await projectInstance.delete(id, project_id)
+      const singleProject = await projectInstance.delete(id, project_id)
 
-      reply.send(single_project)
+      reply.send(singleProject)
     } catch (error) {
+      reply.send(error)
+    }
+  })
+
+
+  /*
+   * create project
+   */
+
+  fastify.post('/', {
+    preValidation: [fastify.authenticate]
+  },
+  async (request, reply) => {
+    try {
+      const { id } = request.whoiam
+      const {name, color_id, tasks} = request.body
+      const singleProject = await projectInstance.create(id, name, color_id, tasks)
+      reply.send(singleProject)
+    } catch (error) {
+      if(error.message=='tasks não encontrada'){
+        reply.code(404).send(error)
+      }
       reply.send(error)
     }
   })
