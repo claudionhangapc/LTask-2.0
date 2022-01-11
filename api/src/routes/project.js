@@ -84,6 +84,28 @@ module.exports = function (fastify, option, done) {
     }
   })
 
+  /*
+   * update project
+   */
+
+  fastify.put('/:project_id', {
+    preValidation: [fastify.authenticate]
+  },
+  async (request, reply) => {
+    try {
+      const { id } = request.whoiam
+      const { project_id } = request.params
+      const {name, color_id, tasks} = request.body
+      const singleProject = await projectInstance.update(project_id, id, name, color_id, tasks)
+      reply.send(singleProject)
+    } catch (error) {
+      if(error.message=='tasks não encontrada'){
+        reply.code(404).send(error)
+      }
+      reply.send(error)
+    }
+  })
+
 
   done()
 }

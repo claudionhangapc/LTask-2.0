@@ -82,6 +82,60 @@ class Project {
     return project[0]
   }
 
+  /*
+   * update single project
+   */
+  async update ( project_id, user_id, name, color_id = 1, tasks = []) {
+    let project
+    
+    if (tasks.length > 0) {
+        const tasksResults = await this.fastify.knex.select('id')
+        .from('task')
+        .whereIn('id', tasks)
+
+      if ((tasksResults.length === tasks.length)) {
+        project = await this.model.returning('*')
+        .where({ 'user_id': user_id,'id':project_id})
+        .update({
+          name,
+          color_id,
+          'date_updated':new Date()
+        })
+        
+        const tasksProject = utils.reduceProjectTasks(tasks,project[0].id)
+
+        const tasksProjectResults = []
+        for (const itemTask of tasksProject){
+            const singleTasksProjectResult = await this.fastify.knex('task').returning('id').where({
+              'user_id': user_id,
+              id:itemTask.id
+            }).update(itemTask)
+            tasksProjectResults.push(singleTasksProjectResult[0])
+          }
+        project[0].tasks = tasksProjectResults 
+
+      } else {
+
+        throw new Error('tasks não encontrada')
+      }
+    } else {
+      project = await this.model.returning('*')
+      .where({
+        'user_id': user_id,
+        'id':project_id
+      })
+      .update({
+        name,
+        color_id,
+        'date_updated':new Date()
+      })
+
+      project[0].tasks = []
+    }
+
+    return project
+  }
+
 
   /*
    * delete single project
