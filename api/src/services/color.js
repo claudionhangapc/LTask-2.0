@@ -10,9 +10,8 @@ class Color {
    * get all projects
    */
   async fetch () {
-    
-    const result = await this.model
-    return result
+    const colors = await this.fastify.knex.select('*').from('color')
+    return colors
   }
 
   /*
@@ -20,7 +19,7 @@ class Color {
    */
   async show ( color_id) {
   
-    let singleColor = await this.model
+    let singleColor = await this.fastify.knex.select('*').from('color')
       .where({
         'id': color_id
       })

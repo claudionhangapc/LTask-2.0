@@ -8,6 +8,7 @@ const app = require('fastify')({
 app.register(require('./plugins/jwt/auth_middleware'))
 
 require('./plugins/conection')(app)
+require('./plugins/cors')(app)
 
 /*
 * register routes
