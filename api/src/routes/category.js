@@ -1,9 +1,9 @@
-const project = require('../services/project')
+const category = require('../services/category')
 //const schema = require('../schemas/user')
 
 module.exports = function (fastify, option, done) {
-   const projectInstance = new project(fastify)
-
+   const categoryInstance = new category(fastify)
+   
   /*
    * get all projects
    */
@@ -14,7 +14,7 @@ module.exports = function (fastify, option, done) {
   async (request, reply) => {
     try {
       const { id } = request.whoiam
-      const projects = await projectInstance.fetch(id)
+      const projects = await categoryInstance.fetch(id)
       reply.send(projects)
     } catch (error) {
       reply.send(error)
@@ -33,7 +33,7 @@ module.exports = function (fastify, option, done) {
       const { id } = request.whoiam
       const { project_id } = request.params
 
-      const single_project = await projectInstance.show(id, project_id)
+      const single_project = await categoryInstance.show(id, project_id)
 
       reply.send(single_project)
     } catch (error) {
@@ -54,7 +54,7 @@ module.exports = function (fastify, option, done) {
       const { id } = request.whoiam
       const { project_id } = request.params
 
-      const singleProject = await projectInstance.delete(id, project_id)
+      const singleProject = await categoryInstance.delete(id, project_id)
 
       reply.send(singleProject)
     } catch (error) {
@@ -74,7 +74,7 @@ module.exports = function (fastify, option, done) {
     try {
       const { id } = request.whoiam
       const {name, color_id, tasks} = request.body
-      const singleProject = await projectInstance.create(id, name, color_id, tasks)
+      const singleProject = await categoryInstance.create(id, name, color_id, tasks)
       reply.send(singleProject)
     } catch (error) {
       if(error.message=='tasks não encontrada'){
@@ -96,7 +96,7 @@ module.exports = function (fastify, option, done) {
       const { id } = request.whoiam
       const { project_id } = request.params
       const {name, color_id, tasks} = request.body
-      const singleProject = await projectInstance.update(project_id, id, name, color_id, tasks)
+      const singleProject = await categoryInstance.update(project_id, id, name, color_id, tasks)
       reply.send(singleProject)
     } catch (error) {
       if(error.message=='tasks não encontrada'){

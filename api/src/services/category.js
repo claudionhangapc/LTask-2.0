@@ -1,6 +1,6 @@
 const utils = require('../utils/project')
 
-class Project {
+class Category {
   constructor (fastify) {
     this.model = fastify.knex('category')
     this.fastify = fastify
@@ -151,4 +151,4 @@ class Project {
 
 }
 
-module.exports = Project
+module.exports = Category
