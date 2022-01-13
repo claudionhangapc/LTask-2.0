@@ -7,7 +7,7 @@ class Category {
   }
 
   /*
-   * get all projects
+   * get all categories
    */
   async fetch (id) {
     const result = await this.model.where('user_id',id)
@@ -15,24 +15,24 @@ class Category {
   }
 
   /*
-   * get single project
+   * get single category
    */
-  async show (user_id, project_id) {
-    let singleProject = await this.model
+  async show (user_id, category_id) {
+    let singleCategory = await this.model
       .where({
         'user_id': user_id,
-        'id': project_id
+        'id': category_id
       })
     
-    if(singleProject.length > 0 ){
+    if(singleCategory.length > 0 ){
       let tasks = await  this.fastify.knex('task').where({
-        ' project_id': singleProject[0].id,
+        'category_id': singleCategory[0].id,
       })
-      singleProject[0].tasks = tasks
-      return singleProject[0]
+      singleCategory[0].tasks = tasks
+      return singleCategory[0]
     }
 
-    return singleProject
+    return singleCategory
     
   }
 
