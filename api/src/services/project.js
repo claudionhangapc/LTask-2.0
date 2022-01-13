@@ -143,8 +143,8 @@ class Project {
   async delete (user_id, project_id) {
     let singleProject = await this.model
       .where({
-        'user_id': project_id,
-        'id': user_id
+        'user_id': user_id,
+        'id': project_id
       }).del() 
       return singleProject
   }

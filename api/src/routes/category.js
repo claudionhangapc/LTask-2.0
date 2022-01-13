@@ -46,17 +46,17 @@ module.exports = function (fastify, option, done) {
    * delete single project
    */
 
-  fastify.delete('/:project_id', {
+  fastify.delete('/:category_id', {
     preValidation: [fastify.authenticate]
   },
   async (request, reply) => {
     try {
       const { id } = request.whoiam
-      const { project_id } = request.params
+      const { category_id  } = request.params
 
-      const singleProject = await categoryInstance.delete(id, project_id)
+      const singleCategory = await categoryInstance.delete(id, category_id )
 
-      reply.send(singleProject)
+      reply.send(singleCategory)
     } catch (error) {
       reply.send(error)
     }
@@ -85,20 +85,18 @@ module.exports = function (fastify, option, done) {
    * update project
    */
 
-  fastify.put('/:project_id', {
+  fastify.put('/:category_id', {
     preValidation: [fastify.authenticate]
   },
   async (request, reply) => {
     try {
       const { id } = request.whoiam
-      const { project_id } = request.params
-      const {name, color_id, tasks} = request.body
-      const singleProject = await categoryInstance.update(project_id, id, name, color_id, tasks)
-      reply.send(singleProject)
+      const { category_id } = request.params
+      const {name} = request.body
+      const singleCategory = await categoryInstance.update(id, category_id, name)
+      reply.send(singleCategory)
     } catch (error) {
-      if(error.message=='tasks não encontrada'){
-        reply.code(404).send(error)
-      }
+     
       reply.send(error)
     }
   })
