@@ -37,49 +37,18 @@ class Category {
   }
 
    /*
-   * create single project
+   * create single category
    */
-   async create (user_id, name, color_id = 1, tasks = []) {
-    let project
+   async create (user_id, name) {
+    let category
+
+    category = await this.model.returning('*').insert({
+      name,
+      user_id,
+    })
+
+    return category[0]
     
-    if (tasks.length > 0) {
-        const tasksResults = await this.fastify.knex.select('id')
-        .from('task')
-        .whereIn('id', tasks)
-
-      if ((tasksResults.length === tasks.length)) {
-        project = await  this.model.returning('*').insert({
-          name,
-          user_id,
-          color_id,
-        })
-        const tasksProject = utils.reduceProjectTasks(tasks,project[0].id)
-
-        const tasksProjectResults = []
-        for (const itemTask of tasksProject){
-            const singleTasksProjectResult = await this.fastify.knex('task').returning('id').where({
-              'user_id': user_id,
-              id:itemTask.id
-            }).update(itemTask)
-            tasksProjectResults.push(singleTasksProjectResult[0])
-          }
-        project[0].tasks = tasksProjectResults 
-
-      } else {
-
-        throw new Error('tasks não encontrada')
-      }
-    } else {
-      project = await this.model.returning('*').insert({
-        name,
-        user_id,
-        color_id,
-      })
-
-      project[0].tasks = []
-    }
-
-    return project[0]
   }
 
   /*

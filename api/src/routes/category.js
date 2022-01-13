@@ -14,8 +14,8 @@ module.exports = function (fastify, option, done) {
   async (request, reply) => {
     try {
       const { id } = request.whoiam
-      const projects = await categoryInstance.fetch(id)
-      reply.send(projects)
+      const categories = await categoryInstance.fetch(id)
+      reply.send(categories)
     } catch (error) {
       reply.send(error)
     }
@@ -33,9 +33,9 @@ module.exports = function (fastify, option, done) {
       const { id } = request.whoiam
       const { category_id } = request.params
 
-      const single_project = await categoryInstance.show(id,category_id)
+      const singleCategory = await categoryInstance.show(id,category_id)
 
-      reply.send(single_project)
+      reply.send(singleCategory)
     } catch (error) {
       reply.send(error)
     }
@@ -64,7 +64,7 @@ module.exports = function (fastify, option, done) {
 
 
   /*
-   * create project
+   * create category
    */
 
   fastify.post('/', {
@@ -73,13 +73,10 @@ module.exports = function (fastify, option, done) {
   async (request, reply) => {
     try {
       const { id } = request.whoiam
-      const {name, color_id, tasks} = request.body
-      const singleProject = await categoryInstance.create(id, name, color_id, tasks)
-      reply.send(singleProject)
+      const {name} = request.body
+      const singleCategory = await categoryInstance.create(id, name)
+      reply.send(singleCategory)
     } catch (error) {
-      if(error.message=='tasks não encontrada'){
-        reply.code(404).send(error)
-      }
       reply.send(error)
     }
   })

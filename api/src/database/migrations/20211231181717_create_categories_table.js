@@ -13,6 +13,8 @@ exports.up = function(knex) {
         
     table.string('name').notNullable()
 
+    table.unique(['user_id','name'])
+
   })
 };
 
