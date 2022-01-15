@@ -40,6 +40,8 @@ exports.up = function(knex) {
         .references('project.id')
         .onDelete('CASCADE');
 
+    table.unique(['user_id','name'])
+    
   })
 };
 

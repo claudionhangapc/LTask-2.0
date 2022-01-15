@@ -49,32 +49,26 @@ class Task {
     let task
     
     if (project_id) {
-      /*  const tasksResults = await this.fastify.knex.select('id')
-        .from('task')
-        .whereIn('id', tasks)
+       const projectResults = await this.fastify.knex.select('*')
+        .from('project')
+        .where('id', project_id)
 
-      if ((tasksResults.length === tasks.length)) {
-        project = await  this.model.returning('*').insert({
-          name,
+       if ((projectResults.length > 0)) {
+        task = await this.model.returning('*').insert({
           user_id,
-          color_id,
+          name, 
+          date_to_start, 
+          project_id, 
+          category_id, 
+          important,
+          remember_me
         })
-        const tasksProject = utils.reduceProjectTasks(tasks,project[0].id)
-
-        const tasksProjectResults = []
-        for (const itemTask of tasksProject){
-            const singleTasksProjectResult = await this.fastify.knex('task').returning('id').where({
-              'user_id': user_id,
-              id:itemTask.id
-            }).update(itemTask)
-            tasksProjectResults.push(singleTasksProjectResult[0])
-          }
-        project[0].tasks = tasksProjectResults 
-
+  
+        task[0].project = projectResults[0]
       } else {
 
-        throw new Error('tasks não encontrada')
-      }*/
+        throw new Error('projeto não encontrada')
+      }
     } else {
       task = await this.model.returning('*').insert({
         user_id,
@@ -93,70 +87,72 @@ class Task {
   }
 
   /*
-   * update single project
+   * update single task
    */
-  async update ( project_id, user_id, name, color_id = 1, tasks = []) {
-    let project
+
+  async update (user_id, task_id, name, date_to_start = null, project_id = null, category_id = null, important = null,remember_me =null) {
+    let task
     
-    if (tasks.length > 0) {
-        const tasksResults = await this.fastify.knex.select('id')
-        .from('task')
-        .whereIn('id', tasks)
+    if (project_id) {
+      const projectResults = await this.fastify.knex.select('*')
+        .from('project')
+        .where('id', project_id)
 
-      if ((tasksResults.length === tasks.length)) {
-        project = await this.model.returning('*')
-        .where({ 'user_id': user_id,'id':project_id})
-        .update({
-          name,
-          color_id,
-          'date_updated':new Date()
-        })
-        
-        const tasksProject = utils.reduceProjectTasks(tasks,project[0].id)
-
-        const tasksProjectResults = []
-        for (const itemTask of tasksProject){
-            const singleTasksProjectResult = await this.fastify.knex('task').returning('id').where({
-              'user_id': user_id,
-              id:itemTask.id
-            }).update(itemTask)
-            tasksProjectResults.push(singleTasksProjectResult[0])
-          }
-        project[0].tasks = tasksProjectResults 
-
-      } else {
-
-        throw new Error('tasks não encontrada')
-      }
-    } else {
-      project = await this.model.returning('*')
+        if ((projectResults.length > 0)) {
+          task = await this.model.returning('*')
+          .where({
+            'user_id': user_id,
+            'id':task_id
+          })
+          .update({
+            user_id,
+            name, 
+            date_to_start, 
+            project_id, 
+            category_id, 
+            important,
+            remember_me
+          })
+    
+          task[0].project = projectResults[0]
+        } else {
+  
+          throw new Error('projeto não encontrada')
+        }
+      
+    }else{
+    
+    task = await this.model.returning('*')
       .where({
         'user_id': user_id,
-        'id':project_id
+        'id':task_id
       })
       .update({
-        name,
-        color_id,
-        'date_updated':new Date()
+        user_id,
+        name, 
+        date_to_start, 
+        project_id, 
+        category_id, 
+        important,
+        remember_me
       })
 
-      project[0].tasks = []
+      task[0].project = []
     }
 
-    return project
+    return task[0]
   }
-
 
   /*
    * delete single project
    */
-  async delete (user_id, project_id) {
-    let singleProject = await this.model
+  async delete (user_id, task_id) {
+    let singleTask = await this.model
       .where({
-        'user_id': project_id,
-        'id': user_id
+        'user_id': user_id,
+        'id': task_id
       }).del() 
-      return singleProject
+      return singleTask
   }
 
 }
