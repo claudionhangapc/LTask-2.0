@@ -15,7 +15,7 @@ exports.up = function(knex) {
 
     table.boolean('important')
 
-    table.boolean('remeber_me')
+    table.boolean('remember_me')
 
     table
         .integer('user_id')

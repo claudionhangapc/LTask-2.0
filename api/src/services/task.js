@@ -1,49 +1,55 @@
 const utils = require('../utils/project')
 
-class Project {
+class Task {
   constructor (fastify) {
     this.model = fastify.knex('task')
     this.fastify = fastify
   }
 
   /*
-   * get all projects
+   * get all tasks
    */
   async fetch (id) {
-    const result = await this.model.where('user_id',id)
-    return result
+    const tasks = await this.model.where('user_id',id)
+    return tasks
   }
 
   /*
-   * get single project
+   * get single task
    */
-  async show (user_id, project_id) {
-    let singleProject = await this.model
+  async show (user_id, task_id) {
+    let singleTask = await this.model
       .where({
         'user_id': user_id,
-        'id': project_id
+        'id': task_id
       })
     
-    if(singleProject.length > 0 ){
-      let tasks = await  this.fastify.knex('task').where({
-        ' project_id': singleProject[0].id,
-      })
-      singleProject[0].tasks = tasks
-      return singleProject[0]
+    if(singleTask.length > 0 ){
+      if(singleTask[0].project_id){
+        let project = await  this.fastify.knex('project').where({
+          'id': singleTask[0].project_id,
+        })
+        if(project.length > 0 ){
+          singleTask[0].project = project[0]
+        }
+       
+      }
+      
+      return singleTask[0]
     }
 
-    return singleProject
+    return singleTask
     
   }
 
    /*
    * create single project
    */
-   async create (user_id, name, color_id = 1, tasks = []) {
-    let project
+   async create (user_id,name, date_to_start = null, project_id = null, category_id = null, important = null,remember_me =null) {
+    let task
     
-    if (tasks.length > 0) {
-        const tasksResults = await this.fastify.knex.select('id')
+    if (project_id) {
+      /*  const tasksResults = await this.fastify.knex.select('id')
         .from('task')
         .whereIn('id', tasks)
 
@@ -68,18 +74,22 @@ class Project {
       } else {
 
         throw new Error('tasks não encontrada')
-      }
+      }*/
     } else {
-      project = await this.model.returning('*').insert({
-        name,
+      task = await this.model.returning('*').insert({
         user_id,
-        color_id,
+        name, 
+        date_to_start, 
+        project_id, 
+        category_id, 
+        important,
+        remember_me
       })
 
-      project[0].tasks = []
+      task[0].project = []
     }
 
-    return project[0]
+    return task[0]
   }
 
   /*
@@ -151,4 +161,4 @@ class Project {
 
 }
 
-module.exports = Project
+module.exports = Task

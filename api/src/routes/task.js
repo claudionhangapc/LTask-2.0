@@ -1,8 +1,8 @@
-const project = require('../services/project')
+const task = require('../services/task')
 //const schema = require('../schemas/user')
 
 module.exports = function (fastify, option, done) {
-   const projectInstance = new project(fastify)
+   const taskInstance = new task(fastify)
 
   /*
    * get all projects
@@ -14,8 +14,8 @@ module.exports = function (fastify, option, done) {
   async (request, reply) => {
     try {
       const { id } = request.whoiam
-      const projects = await projectInstance.fetch(id)
-      reply.send(projects)
+      const tasks = await taskInstance.fetch(id)
+      reply.send(tasks)
     } catch (error) {
       reply.send(error)
     }
@@ -25,17 +25,17 @@ module.exports = function (fastify, option, done) {
    * show details
    */
 
-  fastify.get('/:project_id', {
+  fastify.get('/:task_id', {
     preValidation: [fastify.authenticate]
   },
   async (request, reply) => {
     try {
       const { id } = request.whoiam
-      const { project_id } = request.params
+      const { task_id } = request.params
 
-      const single_project = await projectInstance.show(id, project_id)
+      const singleTask = await taskInstance.show(id, task_id)
 
-      reply.send(single_project)
+      reply.send(singleTask)
     } catch (error) {
       reply.send(error)
     }
@@ -54,7 +54,7 @@ module.exports = function (fastify, option, done) {
       const { id } = request.whoiam
       const { project_id } = request.params
 
-      const singleProject = await projectInstance.delete(id, project_id)
+      const singleProject = await taskInstance.delete(id, project_id)
 
       reply.send(singleProject)
     } catch (error) {
@@ -64,7 +64,7 @@ module.exports = function (fastify, option, done) {
 
 
   /*
-   * create project
+   * create task
    */
 
   fastify.post('/', {
@@ -73,9 +73,17 @@ module.exports = function (fastify, option, done) {
   async (request, reply) => {
     try {
       const { id } = request.whoiam
-      const {name, color_id, tasks} = request.body
-      const singleProject = await projectInstance.create(id, name, color_id, tasks)
-      reply.send(singleProject)
+      const {name, date_to_start, 
+        project_id, category_id,
+        important,remember_me} = request.body
+
+      const singleTask = await taskInstance.create(id, 
+        name, date_to_start, 
+        project_id, category_id,
+        important,remember_me)
+
+      reply.send(singleTask)
+      
     } catch (error) {
       if(error.message=='tasks não encontrada'){
         reply.code(404).send(error)
@@ -96,7 +104,7 @@ module.exports = function (fastify, option, done) {
       const { id } = request.whoiam
       const { project_id } = request.params
       const {name, color_id, tasks} = request.body
-      const singleProject = await projectInstance.update(project_id, id, name, color_id, tasks)
+      const singleProject = await taskInstance.update(project_id, id, name, color_id, tasks)
       reply.send(singleProject)
     } catch (error) {
       if(error.message=='tasks não encontrada'){
