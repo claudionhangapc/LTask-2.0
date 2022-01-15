@@ -54,9 +54,9 @@ module.exports = function (fastify, option, done) {
       const { id } = request.whoiam
       const { task_id } = request.params
 
-      const singleProject = await taskInstance.delete(id, task_id)
+      const singleTask = await taskInstance.delete(id, task_id)
 
-      reply.send(singleProject)
+      reply.send(singleTask)
     } catch (error) {
       reply.send(error)
     }
