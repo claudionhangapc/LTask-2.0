@@ -15,7 +15,7 @@
           lazy-validation
         >
           <v-text-field
-            verclass="mb-2"
+            class="mb-2"
             label="Nome do projeto"
             required
           ></v-text-field>
