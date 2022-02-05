@@ -2,8 +2,8 @@
   <div>
     <v-form>
       <v-row  >
-          <v-col class="text-center">
-                LTask
+          <v-col class="text-center text-h4 mb-3">
+                L<span style="color:#FF8700">Task</span>
           </v-col>
       </v-row>
       <v-container class="class-container elevation-1 " >
@@ -29,7 +29,7 @@
         <v-row>
           <v-col cols="12">
             <v-text-field
-            label="Nome do projeto"
+            label="Insira Senha"
             required
             hide-details
             dense
@@ -40,6 +40,8 @@
         <v-row>
           <v-col cols="12">
             <v-btn
+            color="#101010"
+            class="white--text"
             block>
               Fazer login
             </v-btn>
@@ -55,7 +57,9 @@
         <v-row>
           <v-col cols="12">
             <v-btn
-            block>
+            block
+            elevation="0"
+            >
               <v-icon
                 right
                 dark
@@ -70,7 +74,7 @@
         </v-row>
         <v-row >
           <v-col cols="12" class="text-center">
-            <NuxtLink to="/" style="text-decoration: none;">Venha saber mais</NuxtLink>
+            <NuxtLink to="/" style="text-decoration: none; color:#101010">Venha saber mais</NuxtLink>
           </v-col>
         </v-row>
 
@@ -83,10 +87,10 @@
           <v-col cols="12" class="text-center">
             <ul class="d-flex justify-center">
               <li>
-                <NuxtLink to="/" style="text-decoration: none;">Não Conseguiu Entrar?</NuxtLink>
+                <NuxtLink to="/" style="text-decoration: none; color:#101010">Não Conseguiu Entrar?</NuxtLink>
               </li>
               <li class="li-content">  
-                <NuxtLink to="/" style="text-decoration: none;">Criar uma conta</NuxtLink>
+                <NuxtLink to="/" style="text-decoration: none; color:#101010">Criar uma conta</NuxtLink>
               </li>
             </ul>
           </v-col>
@@ -115,6 +119,6 @@ export default {
   ul{
     list-style: none;
     padding-left:0;
-  };
+  }
 
 </style>
