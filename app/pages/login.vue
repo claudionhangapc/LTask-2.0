@@ -23,6 +23,7 @@
                 hide-details
                 dense
                 outlined
+                v-model='login.email'
               ></v-text-field>
           </v-col>
         </v-row>
@@ -34,6 +35,7 @@
             hide-details
             dense
             outlined
+            v-model='login.password'
             ></v-text-field>
           </v-col>
         </v-row>
@@ -42,7 +44,8 @@
             <v-btn
             color="#101010"
             class="white--text"
-            block>
+            block
+            @click="userLogin">
               Fazer login
             </v-btn>
           </v-col>
@@ -103,6 +106,26 @@
 <script>
 export default {
   layout: 'public',
+  data(){
+    return{
+      login:{
+        email:'',
+        password:''
+      }
+    }
+  },
+  methods:{
+    async userLogin(){
+      try{
+        const response = await this.$auth.loginWith('local',{
+          data:this.login
+        })
+        this.$router.replace("/app")
+      }catch(err){
+        console.log(err)
+      }
+    }
+  }
  
 }
 </script>

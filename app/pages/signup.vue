@@ -106,6 +106,7 @@
 <script>
 export default {
   layout: 'public',
+  auth: false,
  
 }
 </script>
