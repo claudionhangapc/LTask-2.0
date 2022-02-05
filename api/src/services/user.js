@@ -2,6 +2,7 @@ const PASSWORD_SALT = 10
 
 class User {
   constructor (fastify) {
+    this.fastify = fastify
     this.jwt = fastify.jwt
     this.model = fastify.knex('user')
   }
@@ -54,6 +55,17 @@ class User {
     } catch (error) {
       return error
     }
+  }
+
+  async getUser(id){
+    let singleUser = await this.fastify.knex.select('id','name','email','image_url').from('user')
+      .where({
+        id
+      })
+    if(singleUser.length>0) return singleUser[0]
+    
+    return singleUser 
+   
   }
 
   async fetch () {

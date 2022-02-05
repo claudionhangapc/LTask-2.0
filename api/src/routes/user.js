@@ -28,5 +28,25 @@ module.exports = function (fastify, option, done) {
     reply.send(user)
   })
 
+
+  /*
+   * show details
+   */
+
+  fastify.get('/user', {
+    preValidation: [fastify.authenticate]
+  },
+  async (request, reply) => {
+    try {
+      
+      const { id } = request.whoiam
+      const user = await userInstance.getUser(id)
+      reply.send(user)
+
+    } catch (error) {
+      reply.send(error)
+    }
+  })
+
   done()
 }
