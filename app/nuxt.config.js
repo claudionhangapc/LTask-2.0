@@ -60,13 +60,14 @@ export default {
           // type: 'Bearer'
         },
         user: {
-          property: '',
-          // autoFetch: true
+          property: 'id',
+          autoFetch: true
         },
         endpoints: {
           login: { url: '/users/login', method: 'post' },
-          logout: false,
-          user: false
+          user: {url:'/users/user', method: 'get'},
+          logout: false
+          
         }
       }
     }

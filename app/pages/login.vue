@@ -109,8 +109,8 @@ export default {
   data(){
     return{
       login:{
-        email:'',
-        password:''
+        email:'emaildteste@gmail.com',
+        password:'12#rer'
       }
     }
   },

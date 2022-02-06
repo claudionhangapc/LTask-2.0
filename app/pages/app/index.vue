@@ -3,7 +3,7 @@
       <v-col 
          cols="12"
          >
-         <h1 >Tasks</h1>
+         <h1 >Tasks {{this.$auth.user}}</h1>
       </v-col>
       <v-col
          v-for="card in cards"

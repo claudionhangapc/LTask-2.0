@@ -76,7 +76,7 @@
                 v-for="(item, index) in itemsPerfil"
                 :key="index"
                 link
-                @click="openModalProject"
+                @click="handle_function_call(item.method)"
               >
                 <v-list-item-title>{{ item.title }}</v-list-item-title>
               </v-list-item>
@@ -100,9 +100,9 @@
         { title: 'Novo Projeto', method:'openModalProject'},
       ],
       itemsPerfil: [
-        { title: 'Meu Perfil' },
-        { title: 'Meus Projetos' },
-        { title: 'Sair' },
+        { title: 'Meu Perfil',method:'openModalProject' },
+        { title: 'Meus Projetos',method:'openModalProject' },
+        { title: 'Sair', method:'logout'},
       ],
       cards: ['Today', 'Yesterday'],
       dialogProject:false,
@@ -127,6 +127,10 @@
       handle_function_call(function_name) {
         this[function_name]()
       },
+      async logout(){
+      await this.$auth.logout();
+      this.$router.push("/login")
+      }
     }
   }
 </script>
