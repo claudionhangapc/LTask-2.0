@@ -1,6 +1,10 @@
 <template>
   <div>
-    <v-form>
+    <v-form
+     ref="form"
+     v-model="valid"
+    lazy-validation
+    >
       <v-row  >
           <v-col class="text-center text-h4 mb-3">
                 L<span style="color:#FF8700">Task</span>
@@ -24,6 +28,7 @@
                 dense
                 outlined
                 v-model='login.email'
+                :rules="rules.email"
               ></v-text-field>
           </v-col>
         </v-row>
@@ -36,7 +41,20 @@
             dense
             outlined
             v-model='login.password'
+            :rules="rules.password"
             ></v-text-field>
+          </v-col>
+        </v-row>
+        <v-row v-if="error">
+          <v-col cols="12">
+            <v-alert
+            dense
+            border="1px"
+            type="error"
+            class="mb-0"
+            >
+              E-mail ou senha incorreta
+            </v-alert>
           </v-col>
         </v-row>
         <v-row>
@@ -45,7 +63,7 @@
             color="#101010"
             class="white--text"
             block
-            @click="userLogin">
+            @click="validationForm">
               Fazer login
             </v-btn>
           </v-col>
@@ -108,9 +126,21 @@ export default {
   layout: 'public',
   data(){
     return{
+      valid: true,
+      error:false,
       login:{
         email:'emaildteste@gmail.com',
         password:'12#rer'
+      },
+      rules:{
+          email:[
+            v => !!v || 'email é obrigatório',
+            this.validateEmail
+          ],
+          password:[
+            v => !!v || 'A palavra passe é obrigatorio'
+           
+          ]
       }
     }
   },
@@ -122,8 +152,25 @@ export default {
         })
         this.$router.replace("/app")
       }catch(err){
-        console.log(err)
+        this.error = true
+        //console.log(err)
       }
+    },
+    validationForm(){
+        if(this.$refs.form.validate()){
+          this.userLogin()
+        }
+    },
+    validateEmail(text){
+    let message= null
+    const emailPattern =  /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+    if(text.length===0){
+      message = "email deve ser preenchido"
+    }
+    if(!emailPattern.test(text)){
+        message = "email incorreto";
+    } 
+    return  message;
     }
   }
  
