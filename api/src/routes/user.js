@@ -21,11 +21,19 @@ module.exports = function (fastify, option, done) {
   fastify.post('/login',  {
     schema: schema.userLogin
   }, async (request, reply) => {
-    const { email,password } = request.body
+    try {
+      const { email,password } = request.body
 
-    const user = await userInstance.login(email, password)
+      const user = await userInstance.login(email, password)
 
-    reply.send(user)
+      if (!user) reply.code(404).send('usuário não encontrado')
+      
+      reply.send(user)
+
+    } catch (error) {
+      reply.send(error)
+    }
+    
   })
 
 

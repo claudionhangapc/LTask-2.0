@@ -32,12 +32,12 @@ class User {
    */
 
   async login (email, password) {
-    try {
+    
       const bcrypt = require('bcrypt')
       const user = await this.model.where({
         email
       })
-      
+
       if ((user.length > 0) && (bcrypt.compareSync(password, user[0].password))) {
         
         const { id, email, name, image_url, } = user[0]
@@ -45,16 +45,10 @@ class User {
         const token = this.jwt.sign(payload)
 
         return { id, email, name, image_url, token }
-      } else {
-        return {
-          statusCode: 400,
-          error: 'erro do cliente',
-          message: 'usuário não encontrado'
-        }
       }
-    } catch (error) {
-      return error
-    }
+      
+     return 0
+
   }
 
   async getUser(id){
