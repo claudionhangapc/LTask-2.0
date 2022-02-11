@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "dotenv": "^16.0.0",
     "fastify": "^3.25.3",
     "fastify-cors": "^6.0.2",
     "fastify-jwt": "^4.1.3",
