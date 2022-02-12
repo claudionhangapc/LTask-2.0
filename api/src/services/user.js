@@ -1,4 +1,5 @@
 const utils = require('../utils/user')
+const email = require('./email')
 const PASSWORD_SALT = 10
 
 class User {
@@ -6,6 +7,7 @@ class User {
     this.fastify = fastify
     this.jwt = fastify.jwt
     this.model = fastify.knex('user')
+    this.emailService =  new email(fastify)
   }
 
   /*
@@ -15,14 +17,20 @@ class User {
   async siginup (email, password, name) {
     try {
       const bcrypt = require('bcrypt')
-
+      const verified_key = utils.randString()
+      
       await this.model.insert({
         email,
         password: bcrypt.hashSync(password, PASSWORD_SALT),
-        name
+        name,
+        verified_key
       })
 
-      return true
+      this.emailService.signUp(email, name, verified_key)
+
+      return {
+        message:'Usuário criado com sucesso! Por favor verifica o teu email '
+            }
     } catch (error) {
       return error
     }
