@@ -1,3 +1,4 @@
+const utils = require('../utils/user')
 const PASSWORD_SALT = 10
 
 class User {
