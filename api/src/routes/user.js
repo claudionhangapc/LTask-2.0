@@ -56,5 +56,27 @@ module.exports = function (fastify, option, done) {
     }
   })
 
+
+
+  /*
+  * confirmed user 
+  * from email sended
+  */
+
+  fastify.get('/user/confirm/:verified_key', {
+    //preValidation: [fastify.authenticate]
+  },
+  async (request, reply) => {
+    try {
+      
+      const { verified_key } = request.params
+      //const user = await userInstance.getUser(id)
+      reply.send(verified_key)
+
+    } catch (error) {
+      reply.send(error)
+    }
+  })
+
   done()
 }
