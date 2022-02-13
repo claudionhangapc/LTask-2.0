@@ -76,6 +76,25 @@ class User {
 
     return user
   }
+
+  async confimationEmail(verified_key){
+    let singleUser = await this.fastify.knex.select('id','verified_key').from('user')
+      .where({
+        verified_key,
+        verified:false
+      })
+
+    if(singleUser.length==0) return false
+
+    await this.fastify.knex('user')
+      .where({
+        id:singleUser[0].id
+    }).update({
+      verified:true
+    })
+    
+    return true
+  }
 }
 
 module.exports = User

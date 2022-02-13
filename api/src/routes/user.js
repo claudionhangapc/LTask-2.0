@@ -70,8 +70,15 @@ module.exports = function (fastify, option, done) {
     try {
       
       const { verified_key } = request.params
-      //const user = await userInstance.getUser(id)
-      reply.send(verified_key)
+      const userConfirmation = await userInstance.confimationEmail(verified_key)
+
+      if(!userConfirmation){  
+        reply
+        .code(404)
+        .send({message:'Usuário não encontrado'})
+      }
+
+      reply.send({message:'Usuário ativado com sucesso!'})
 
     } catch (error) {
       reply.send(error)
