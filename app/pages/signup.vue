@@ -107,6 +107,13 @@
 export default {
   layout: 'public',
   auth: false,
+  data(){
+    return{
+      naver:{
+        
+      }
+    } 
+  }, 
  
 }
 </script>
