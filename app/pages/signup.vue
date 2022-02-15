@@ -17,11 +17,24 @@
         </v-row>
         <v-row>
           <v-col cols="12">
+            <v-text-field
+            label="Insira o nome de usuário"
+            required
+            hide-details
+            v-model='user.name'
+            dense
+            outlined
+            ></v-text-field>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="12">
              <v-text-field
                 label="Insira o email"
                 required
                 hide-details
                 dense
+                v-model='user.email'
                 outlined
               ></v-text-field>
           </v-col>
@@ -32,17 +45,7 @@
             label="Insira a Senha"
             required
             hide-details
-            dense
-            outlined
-            ></v-text-field>
-          </v-col>
-        </v-row>
-        <v-row>
-          <v-col cols="12">
-            <v-text-field
-            label="Insira Novamente a Senha"
-            required
-            hide-details
+            v-model='user.password'
             dense
             outlined
             ></v-text-field>
@@ -118,10 +121,14 @@ export default {
     } 
   },
   methods:{
-    createUser(){
-      const user = JSON.parse(JSON.stringify(this.user))
-      this.$store.dispatch('user/create',user)
-      
+    async createUser(){
+      try{
+        const user = JSON.parse(JSON.stringify(this.user))
+        this.$store.dispatch('user/create',user)
+        }catch(err){
+          console.log(err)
+        }
+
     }
   } 
  

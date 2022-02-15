@@ -5,7 +5,7 @@ export const state = ()=>({
 export const actions = {
 
   async create({commit},payload){
-    const response = await this.$axios.post('/navers', payload)
+    const response = await this.$axios.post('/users/signup', payload)
     const user = response.data
     commit('ADD',user)
     return user
