@@ -53,6 +53,7 @@
             <v-btn
             color="#101010"
             class="white--text"
+            @click="createUser"
             block>
               Criar Conta
             </v-btn>
@@ -109,11 +110,20 @@ export default {
   auth: false,
   data(){
     return{
-      naver:{
-        
+      user:{
+        email:"",
+        name:"",
+        password:""
       }
     } 
-  }, 
+  },
+  methods:{
+    createUser(){
+      const user = JSON.parse(JSON.stringify(this.user))
+      this.$store.dispatch('user/create',user)
+      
+    }
+  } 
  
 }
 </script>
