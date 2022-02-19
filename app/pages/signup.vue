@@ -1,6 +1,10 @@
 <template>
   <div>
-    <v-form>
+    <v-form
+    ref="form"
+     v-model="valid"
+    lazy-validation
+    >
       <v-row  >
           <v-col class="text-center text-h4 mb-3">
                 L<span style="color:#FF8700">Task</span>
@@ -22,6 +26,7 @@
             required
             hide-details
             v-model='user.name'
+            :rules="rules.userName"
             dense
             outlined
             ></v-text-field>
@@ -35,6 +40,7 @@
                 hide-details
                 dense
                 v-model='user.email'
+                :rules="rules.email"
                 outlined
               ></v-text-field>
           </v-col>
@@ -46,9 +52,21 @@
             required
             hide-details
             v-model='user.password'
+            :rules="rules.password"
             dense
             outlined
             ></v-text-field>
+          </v-col>
+        </v-row>
+        <v-row v-if="error">
+          <v-col cols="12">
+            <v-alert
+            dense
+            type="error"
+            class="mb-0"
+            >
+              E-mail ou senha incorreta
+            </v-alert>
           </v-col>
         </v-row>
         <v-row>
@@ -56,7 +74,7 @@
             <v-btn
             color="#101010"
             class="white--text"
-            @click="createUser"
+            @click="validationForm()"
             block>
               Criar Conta
             </v-btn>
@@ -113,10 +131,24 @@ export default {
   auth: false,
   data(){
     return{
+      valid: true,
+      error:false,
       user:{
         email:"",
         name:"",
         password:""
+      },
+      rules:{
+          userName:[
+            v => !!v || 'nome do usuário é obrigatório',
+          ],
+          email:[
+            v => !!v || 'email é obrigatório',
+            this.validateEmail
+          ],
+          password:[
+            v => !!v || 'A palavra passe é obrigatorio'  
+          ]
       }
     } 
   },
@@ -124,11 +156,26 @@ export default {
     async createUser(){
       try{
         const user = JSON.parse(JSON.stringify(this.user))
-        this.$store.dispatch('user/create',user)
+        const response = await this.$store.dispatch('user/create',user)
         }catch(err){
-          console.log(err)
+          this.error = true
         }
-
+    },
+    validationForm(){
+        if(this.$refs.form.validate()){
+          this.createUser();
+        }
+    },
+    validateEmail(text){
+    let message= null
+    const emailPattern =  /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+    if(text.length===0){
+      message = "email deve ser preenchido"
+    }
+    if(!emailPattern.test(text)){
+        message = "email incorreto";
+    } 
+    return  message;
     }
   } 
  

@@ -49,7 +49,6 @@
           <v-col cols="12">
             <v-alert
             dense
-            border="1px"
             type="error"
             class="mb-0"
             >
