@@ -43,9 +43,14 @@ class User {
   async login (email, password) {
     
       const bcrypt = require('bcrypt')
-      const user = await this.model.where({
+      const user =  await this.fastify.knex.select('*').from('user')
+      .where({
         email
       })
+      
+      if ((user.length > 0) && (user[0].verified!==true)) {
+        return {message:'Conta pendente. Por favor verifica o teu email' }
+      }
 
       if ((user.length > 0) && (bcrypt.compareSync(password, user[0].password))) {
         

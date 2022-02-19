@@ -27,6 +27,8 @@ module.exports = function (fastify, option, done) {
       const user = await userInstance.login(email, password)
 
       if (!user) reply.code(404).send('usuário não encontrado')
+
+      if (user.hasOwnProperty('message')) reply.code(401).send(user.message)
       
       reply.send(user)
 

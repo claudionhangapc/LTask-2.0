@@ -155,8 +155,7 @@ export default {
   methods:{
     async createUser(){
       try{
-        const user = JSON.parse(JSON.stringify(this.user))
-        const response = await this.$store.dispatch('user/create',user)
+        const response = await this.$store.dispatch('user/create',this.user)
         }catch(err){
           this.error = true
         }
