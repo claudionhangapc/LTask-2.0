@@ -10,7 +10,7 @@
                 L<span style="color:#FF8700">Task</span>
           </v-col>
       </v-row>
-      <v-container class="class-container elevation-1 " >
+      <v-container class="class-container elevation-1 " v-if="false">
         
         <v-row class="">
           <v-col cols="12">
@@ -121,6 +121,30 @@
           </v-col>
         </v-row>
       </v-container>
+
+      <v-container class="class-container-sucess elevation-1 ">
+        <div>
+           <v-alert
+            prominent
+            type="success"
+          > Conta criado com sucesso!</v-alert>
+        </div>
+        <div>
+          <h3 style="margin-bottom:5px" > Por favor verifique o teu email</h3>
+          
+          <p style="margin-bottom:15px">
+            Mandamos para ti um link no teu email para confirmar a tua conta.
+          </p>
+          
+          <p style="">
+            Apenas clica no link para completar o processo de incrição
+          </p>
+          <p style="">
+            <b>Não recebeu o email ?</b> Porfavor verifique na caixa de spam para se certificar de que não recebeu
+          </p>
+
+        </div>
+      </v-container>
     </v-form>
   </div>
 </template>
@@ -190,9 +214,26 @@ export default {
     margin: 0 8px 0px 4px;
 
   }
+  
   ul{
     list-style: none;
     padding-left:0;
   }
+  .sucess-register{
+    background-color: blue;
+    color:green
+  }
 
+  .class-container-sucess{
+    max-width: 410px !important;
+    padding: 0;
+  }
+  .class-container-sucess > div:nth-of-type(1){
+    padding: 40px 40px;
+    background-color: #4caf50 !important;
+  }
+  .class-container-sucess > div:nth-of-type(2){
+    padding: 40px 40px;
+    
+  }
 </style>
