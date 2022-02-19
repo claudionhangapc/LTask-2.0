@@ -111,7 +111,7 @@
                 <NuxtLink to="/" style="text-decoration: none; color:#101010">Não Conseguiu Entrar?</NuxtLink>
               </li>
               <li class="li-content">  
-                <NuxtLink to="/" style="text-decoration: none; color:#101010">Criar uma conta</NuxtLink>
+                <NuxtLink to="/signup" style="text-decoration: none; color:#101010">Criar uma conta</NuxtLink>
               </li>
             </ul>
           </v-col>

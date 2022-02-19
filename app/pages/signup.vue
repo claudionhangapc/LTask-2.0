@@ -96,7 +96,7 @@
           <v-col cols="12" class="text-center">
             <ul class="d-flex justify-center">
               <li>
-                <NuxtLink to="/" style="text-decoration: none; color:#101010">Já tem uma conta ? Entre</NuxtLink>
+                <NuxtLink to="/login" style="text-decoration: none; color:#101010">Já tem uma conta ? Entre</NuxtLink>
               </li>
 
             </ul>
