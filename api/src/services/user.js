@@ -86,10 +86,15 @@ class User {
     let singleUser = await this.fastify.knex.select('id','verified_key').from('user')
       .where({
         verified_key,
-        verified:false
       })
 
     if(singleUser.length==0) return false
+    
+    if(singleUser[0].verified!== true){
+      return{
+        message:'Usuário já ativo!'
+      }
+    }
 
     await this.fastify.knex('user')
       .where({
