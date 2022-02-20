@@ -10,7 +10,8 @@
                 L<span style="color:#FF8700">Task</span>
           </v-col>
       </v-row>
-      <v-container class="class-container elevation-1 " v-if="false">
+      <transition mode="out-in">  
+      <v-container class="class-container elevation-1 " v-if="!sucessCreate">
         
         <v-row class="">
           <v-col cols="12">
@@ -54,6 +55,7 @@
             v-model='user.password'
             :rules="rules.password"
             dense
+            type="password"
             outlined
             ></v-text-field>
           </v-col>
@@ -122,12 +124,13 @@
         </v-row>
       </v-container>
 
-      <v-container class="class-container-sucess elevation-1 ">
+      
+      <v-container class="class-container-sucess elevation-1 " v-else>
         <div>
            <v-alert
             prominent
             type="success"
-          > Conta criado com sucesso!</v-alert>
+          > Conta criada com sucesso!</v-alert>
         </div>
         <div>
           <h3 style="margin-bottom:5px" > Por favor verifique o teu email</h3>
@@ -140,11 +143,12 @@
             Apenas clica no link para completar o processo de incrição
           </p>
           <p style="">
-            <b>Não recebeu o email ?</b> Porfavor verifique na caixa de spam para se certificar de que não recebeu
+            <b>Não recebeu o email ?</b> Por favor verifique na caixa de spam para se certificar de que não recebeu
           </p>
 
         </div>
       </v-container>
+      </transition> 
     </v-form>
   </div>
 </template>
@@ -157,6 +161,7 @@ export default {
     return{
       valid: true,
       error:false,
+      sucessCreate:false,
       user:{
         email:"",
         name:"",
@@ -180,6 +185,7 @@ export default {
     async createUser(){
       try{
         const response = await this.$store.dispatch('user/create',this.user)
+        this.sucessCreate = true;
         }catch(err){
           this.error = true
         }
@@ -236,4 +242,19 @@ export default {
     padding: 40px 40px;
     
   }
+
+  .slide-up-enter-active,
+.slide-up-leave-active {
+  transition: all 0.25s ease-out;
+}
+
+.slide-up-enter-from {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.slide-up-leave-to {
+  opacity: 0;
+  transform: translateY(-30px);
+}
 </style>
