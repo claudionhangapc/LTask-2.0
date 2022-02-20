@@ -25,7 +25,7 @@
           </div>
           <div>
             <p >
-              Parabens! A sua conta foi ativava com sucesso. Por favor faça login para começar a gerenciar suas atividades
+              Parabens! A sua conta foi ativada com sucesso. Por favor faça login para começar a gerenciar suas atividades
             </p>
             <v-row style="margin:10px 0px">
               <v-col cols="12" style="padding-left:0px; padding-right:0px; margin-top:10px;">
@@ -45,11 +45,11 @@
             <v-alert
               prominent
               type="warning"
-            > Conta não encontrada ou usuário ja ativo! </v-alert>
+            > Conta não encontrada ou usuário já ativo! </v-alert>
           </div>
           <div>
             <p >
-             A sua conta foi ativava com sucesso. Por favor faça login para começar a gerenciar suas atividades
+             A conta foi ativada com sucesso. Por favor faça login para começar a gerenciar suas atividades
             </p>
             <v-row style="margin:10px 0px">
               <v-col cols="12" style="padding-left:0px; padding-right:0px; margin-top:10px;">
