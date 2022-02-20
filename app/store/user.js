@@ -11,6 +11,11 @@ export const actions = {
     return user
   },
 
+  async activateUser({commit},id){
+    //alert(id)
+    //const response = await this.$axios.get(`/users/user/confirm/${id}`)
+  }
+
 
 }
 

@@ -77,7 +77,7 @@ module.exports = function (fastify, option, done) {
       if(!userConfirmation){  
         reply
         .code(404)
-        .send({message:'Usuário não encontrado'})
+        .send({message:'Conta Ja ativada ou suário não encontrado'})
       }
 
       reply.send({message:'Usuário ativado com sucesso!'})

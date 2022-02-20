@@ -10,32 +10,61 @@
                 L<span style="color:#FF8700">Task</span>
           </v-col>
       </v-row>
-      <v-container class="class-container-sucess elevation-1 ">
-        <div>
-           <v-alert
-            prominent
-            type="success"
-          > Conta foi ativada com sucesso!</v-alert>
-        </div>
-        <div>
-         
-          <p>{{id}}</p>
-          <p >
-            Parabens! A sua conta foi ativava com sucesso. Pofavor faça login para começar a gerenciar suas atividades
-          </p>
-          <v-row style="margin:10px 0px">
-            <v-col cols="12" style="padding-left:0px; padding-right:0px; margin-top:10px;">
-              <v-btn
-              color="#101010"
-              class="white--text"
-              block
-              to="/login">
-                Fazer login
-              </v-btn>
-            </v-col>
-          </v-row>
-        </div>
-      </v-container>
+      <div v-if="false">
+        <v-container class="class-container-sucess elevation-1 ">
+        processando ..
+        </v-container>
+      </div>
+      <div>
+        <v-container class="class-container-sucess elevation-1 " v-if="false">
+          <div>
+            <v-alert
+              prominent
+              type="success"
+            > Conta foi ativada com sucesso!</v-alert>
+          </div>
+          <div>
+            <p >
+              Parabens! A sua conta foi ativava com sucesso. Por favor faça login para começar a gerenciar suas atividades
+            </p>
+            <v-row style="margin:10px 0px">
+              <v-col cols="12" style="padding-left:0px; padding-right:0px; margin-top:10px;">
+                <v-btn
+                color="#101010"
+                class="white--text"
+                block
+                to="/login">
+                  Fazer login
+                </v-btn>
+              </v-col>
+            </v-row>
+          </div>
+        </v-container>
+        <v-container class="class-container-worning elevation-1 " >
+          <div>
+            <v-alert
+              prominent
+              type="warning"
+            > Conta não encontrada ou usuário ja ativo! </v-alert>
+          </div>
+          <div>
+            <p >
+             A sua conta foi ativava com sucesso. Por favor faça login para começar a gerenciar suas atividades
+            </p>
+            <v-row style="margin:10px 0px">
+              <v-col cols="12" style="padding-left:0px; padding-right:0px; margin-top:10px;">
+                <v-btn
+                color="#101010"
+                class="white--text"
+                block
+                to="/login">
+                  Fazer login
+                </v-btn>
+              </v-col>
+            </v-row>
+          </div>
+        </v-container>
+      </div>
     </v-form>
   </div>
 </template>
@@ -53,18 +82,7 @@ export default {
         name:"",
         password:""
       },
-      rules:{
-          userName:[
-            v => !!v || 'nome do usuário é obrigatório',
-          ],
-          email:[
-            v => !!v || 'email é obrigatório',
-            this.validateEmail
-          ],
-          password:[
-            v => !!v || 'A palavra passe é obrigatorio'  
-          ]
-      }
+     
     } 
   },
   computed:{
@@ -78,9 +96,8 @@ export default {
   methods:{
     async activateUser(){
       try{
-        if(!this.id){
-          this.$router.replace("/")
-        }
+        const response = await this.$store.dispatch('user/activateUser',this.id)
+
         }catch(err){
           this.error = true
         }
@@ -122,4 +139,19 @@ export default {
     padding: 40px 40px;
     
   }
+
+  .class-container-worning{
+    max-width: 410px !important;
+    padding: 0;
+  }
+
+  .class-container-worning > div:nth-of-type(1){
+    padding: 40px 40px;
+    background-color: #fb8c00 !important;
+  }
+  .class-container-worning > div:nth-of-type(2){
+    padding: 40px 40px;
+    
+  }
+
 </style>
