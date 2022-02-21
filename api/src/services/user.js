@@ -26,7 +26,7 @@ class User {
         verified_key
       })
 
-      //this.emailService.signUp(email, name, verified_key)
+      this.emailService.signUp(email, name, verified_key)
 
       return {
         message:'Usuário criado com sucesso! Por favor verifica o teu email '

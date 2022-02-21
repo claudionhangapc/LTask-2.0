@@ -79,6 +79,7 @@
             <v-btn
             block
             elevation="0"
+            @click="UserLoginGoogle()"
             >
               <v-icon
                 right
@@ -154,6 +155,9 @@ export default {
         this.error = true
         //console.log(err)
       }
+    },
+    async UserLoginGoogle(){
+      this.$auth.loginWith('google')
     },
     validationForm(){
         if(this.$refs.form.validate()){
