@@ -10,13 +10,22 @@
                 L<span style="color:#FF8700">Task</span>
           </v-col>
       </v-row>
-      <div v-if="false">
-        <v-container class="class-container-sucess elevation-1 ">
-        processando ..
+      <div v-if="!processed">
+        <v-container class="class-container-progress " >
+           <v-row align="center"
+              justify="center">
+               <v-col  align="center"
+              justify="center">
+                 <v-progress-circular
+                  indeterminate
+                  color="red"
+                ></v-progress-circular>
+               </v-col>
+            </v-row> 
         </v-container>
       </div>
-      <div>
-        <v-container class="class-container-sucess elevation-1 " v-if="false">
+      <div v-else>
+        <v-container class="class-container-sucess elevation-1" v-if="!error">
           <div>
             <v-alert
               prominent
@@ -40,16 +49,16 @@
             </v-row>
           </div>
         </v-container>
-        <v-container class="class-container-worning elevation-1 " >
+        <v-container class="class-container-worning elevation-1 " v-else>
           <div>
             <v-alert
               prominent
               type="warning"
-            > Conta não encontrada ou usuário já ativo! </v-alert>
+            > {{page.header}}</v-alert>
           </div>
           <div>
             <p >
-             A conta foi ativada com sucesso. Por favor faça login para começar a gerenciar suas atividades
+             {{page.body}}
             </p>
             <v-row style="margin:10px 0px">
               <v-col cols="12" style="padding-left:0px; padding-right:0px; margin-top:10px;">
@@ -57,8 +66,8 @@
                 color="#101010"
                 class="white--text"
                 block
-                to="/login">
-                  Fazer login
+                :to="page.route">
+                  {{page.btnText}}
                 </v-btn>
               </v-col>
             </v-row>
@@ -77,11 +86,13 @@ export default {
     return{
       valid: true,
       error:false,
-      user:{
-        email:"",
-        name:"",
-        password:""
-      },
+      processed:false,
+      page:{
+        header:'',
+        body:'',
+        route:'',
+        btnText:''
+      }
      
     } 
   },
@@ -97,11 +108,31 @@ export default {
     async activateUser(){
       try{
         const response = await this.$store.dispatch('user/activateUser',this.id)
-
+        console.log(response)
         }catch(err){
+          console.log(err.response)
+          this.setPage(err.response)
           this.error = true
+        }finally {
+            this.processed = true
         }
     },
+
+    setPage(data){
+      if(data.status==401){
+        this.page.header='Esta conta já se encontra ativo!'
+        this.page.body='Esta conta já esta ativada. Por favor faça login para começar a gerenciar suas atividades'
+        this.page.route = '/login'
+        this.page.btnText='Fazer Login'
+      }
+
+      if(data.status==404){
+        this.page.body='Conta não encontrada. Por favor cria uma nova conta para começar a gerenciar suas atividades'
+        this.page.header='Usuário não encontrado!'
+        this.page.route = '/signup'
+        this.page.btnText='Criar conta'
+      }
+    }
     
   } 
  
@@ -152,6 +183,11 @@ export default {
   .class-container-worning > div:nth-of-type(2){
     padding: 40px 40px;
     
+  }
+
+  .class-container-progress{
+    max-width: 410px !important;
+   
   }
 
 </style>

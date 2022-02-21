@@ -82,7 +82,7 @@ module.exports = function (fastify, option, done) {
 
       if(userConfirmation.hasOwnProperty('message')){
         reply
-        .code(404)
+        .code(401)
         .send({message:userConfirmation.message})
       }
 

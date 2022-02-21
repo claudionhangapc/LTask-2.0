@@ -13,7 +13,9 @@ export const actions = {
 
   async activateUser({commit},id){
     //alert(id)
-    //const response = await this.$axios.get(`/users/user/confirm/${id}`)
+    const response = await this.$axios.get(`/users/user/confirm/${id}`)
+
+    return response
   }
 
 

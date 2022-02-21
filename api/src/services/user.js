@@ -83,14 +83,14 @@ class User {
   }
 
   async confimationEmail(verified_key){
-    let singleUser = await this.fastify.knex.select('id','verified_key').from('user')
+    let singleUser = await this.fastify.knex.select('*').from('user')
       .where({
         verified_key,
       })
 
     if(singleUser.length==0) return false
     
-    if(singleUser[0].verified!== true){
+    if(singleUser[0].verified==true){
       return{
         message:'Usuário já ativo!'
       }
