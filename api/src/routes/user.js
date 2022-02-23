@@ -1,5 +1,6 @@
 const user = require('../services/user')
 const schema = require('../schemas/user')
+const google = require('../services/google.js')
 
 module.exports = function (fastify, option, done) {
   const userInstance = new user(fastify)
@@ -31,6 +32,30 @@ module.exports = function (fastify, option, done) {
       if (user.hasOwnProperty('message')) reply.code(401).send(user.message)
       
       reply.send(user)
+
+    } catch (error) {
+      reply.send(error)
+    }
+    
+  })
+
+  /*
+   * login
+   */
+
+  fastify.post('/login/google',  {
+    //schema: schema.userLogin
+  }, async (request, reply) => {
+    try {
+      /*const { email,password } = request.body
+
+      const user = await userInstance.login(email, password)
+
+      if (!user) reply.code(404).send('usuário não encontrado')
+
+      if (user.hasOwnProperty('message')) reply.code(401).send(user.message)*/
+      
+      reply.send({'user':'daina'})
 
     } catch (error) {
       reply.send(error)

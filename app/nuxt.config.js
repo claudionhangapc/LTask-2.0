@@ -71,12 +71,12 @@ export default {
         }
       },
       google: {
-        clientId:'',
+        clientId:process.env.CLIENT_ID,
         codeChallengeMethod: "",
         responseType: 'code',
        endpoints: {
-          token: 'http://localhost:8000/users/google', // somm backend url to resolve your auth with google and give you the token back
-          userInfo: 'http://localhost:8000/users/auth' // the endpoint to get the user info after you recived the token 
+          token: '/users/login/google', // somm backend url to resolve your auth with google and give you the token back
+          userInfo: '/users/user' // the endpoint to get the user info after you recived the token 
         },
       },
     }
