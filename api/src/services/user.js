@@ -65,6 +65,27 @@ class User {
 
   }
 
+  async loginOnlyByEmail(email){
+
+    const bcrypt = require('bcrypt')
+      const user =  await this.fastify.knex.select('*').from('user')
+      .where({
+        email
+      })
+    
+      if (user.length > 0) {
+        
+        const { id, email, name, image_url, } = user[0]
+        const payload = { id, email }
+        const token = this.jwt.sign(payload)
+
+        return { id, email, name, image_url, token }
+      }
+      
+     return 0
+
+  }
+
   async getUser(id){
     let singleUser = await this.fastify.knex.select('id','name','email','image_url').from('user')
       .where({

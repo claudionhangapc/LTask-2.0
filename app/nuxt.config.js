@@ -75,8 +75,8 @@ export default {
         codeChallengeMethod: "",
         responseType: 'code',
        endpoints: {
-          token: '/users/login/google', // somm backend url to resolve your auth with google and give you the token back
-          userInfo: '/users/user' // the endpoint to get the user info after you recived the token 
+          token: 'http://localhost:3000/users/login/google', // somm backend url to resolve your auth with google and give you the token back
+          userInfo: 'http://localhost:3000/users/user' // the endpoint to get the user info after you recived the token 
         },
       },
     }

@@ -4,7 +4,7 @@ const google = require('../services/google.js')
 
 module.exports = function (fastify, option, done) {
   const userInstance = new user(fastify)
-
+  const googleInstance = new google(fastify)
   /*
    * create user
    */
@@ -49,13 +49,10 @@ module.exports = function (fastify, option, done) {
     try {
       const { code, client_id, redirect_uri } = request.body
 
-      /*const user = await userInstance.login(email, password)
+      const result = await googleInstance.login(code, client_id, redirect_uri)
 
-      if (!user) reply.code(404).send('usuário não encontrado')
 
-      if (user.hasOwnProperty('message')) reply.code(401).send(user.message)*/
-      
-      reply.send({code, client_id, redirect_uri})
+      reply.send(result)
 
     } catch (error) {
       reply.send(error)
