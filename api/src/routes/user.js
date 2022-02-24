@@ -47,15 +47,15 @@ module.exports = function (fastify, option, done) {
     //schema: schema.userLogin
   }, async (request, reply) => {
     try {
-      /*const { email,password } = request.body
+      const { code, client_id, redirect_uri } = request.body
 
-      const user = await userInstance.login(email, password)
+      /*const user = await userInstance.login(email, password)
 
       if (!user) reply.code(404).send('usuário não encontrado')
 
       if (user.hasOwnProperty('message')) reply.code(401).send(user.message)*/
       
-      reply.send({'user':'daina'})
+      reply.send({code, client_id, redirect_uri})
 
     } catch (error) {
       reply.send(error)
