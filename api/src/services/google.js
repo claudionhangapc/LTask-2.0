@@ -16,11 +16,21 @@ class Google {
     '',
     redirect_uri)
 
-  const {tokens} = await oauth2Client.getToken(code);
+  //const {tokens} = await oauth2Client.getToken(code);
   /*const payload = JSON.parse(base64url.decode(tokens.id_token.split('.')[1]))
 
   const email = payload.email*/
-  return tokens
+  const email = "emaildteste90@gmail.com"
+  const user_old = await this.user.fetchUserByEmail(email)
+
+  if(!user_old){
+    const user_new =  await this.user.siginupByGoogleLogin(email, 'password', 'name')
+    return user_new 
+  }
+
+  const login_with_email = await this.user.loginOnlyByEmail(email)
+  return login_with_email
+
  }
 
 }

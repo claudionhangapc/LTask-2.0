@@ -36,6 +36,23 @@ class User {
     }
   }
 
+
+  async siginupByGoogleLogin (email, password, name) {
+    
+      const bcrypt = require('bcrypt')
+      const verified_key = utils.randString()
+      
+      const result = await this.model.insert({
+        email,
+        password: bcrypt.hashSync(password, PASSWORD_SALT),
+        name,
+        verified_key,
+        verified:true
+      })
+
+      return result
+  }
+
   /*
    * login usuário
    */
@@ -96,6 +113,7 @@ class User {
     return singleUser 
    
   }
+
   async fetchUserByEmail(email){
     let singleUser = await this.fastify.knex.select('id','name','email','image_url').from('user')
       .where({
