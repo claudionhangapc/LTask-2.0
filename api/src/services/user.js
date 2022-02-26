@@ -96,7 +96,16 @@ class User {
     return singleUser 
    
   }
-
+  async fetchUserByEmail(email){
+    let singleUser = await this.fastify.knex.select('id','name','email','image_url').from('user')
+      .where({
+        email
+      })
+    if(singleUser.length>0) return singleUser[0]
+    
+    return singleUser 
+  }
+  
   async fetch () {
     const user = await this.model
 
