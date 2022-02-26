@@ -119,9 +119,9 @@ class User {
       .where({
         email
       })
-    if(singleUser.length>0) return singleUser[0]
+    if(singleUser.length>0) return singleUser
     
-    return singleUser 
+    return []
   }
   
   async fetch () {
