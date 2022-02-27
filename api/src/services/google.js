@@ -1,3 +1,4 @@
+require('dotenv').config()
 const {OAuth2Client} = require('google-auth-library')
 const base64url = require('base64url');
 const {google} = require('googleapis');
@@ -13,7 +14,7 @@ class Google {
 
   const oauth2Client  = new google.auth.OAuth2(
     client_id,
-    '',
+    process.env.GOOGLE_CLIENTE_SECRET,
     redirect_uri)
 
   const {tokens} = await oauth2Client.getToken(code);
