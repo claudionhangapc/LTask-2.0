@@ -135,7 +135,6 @@ export default {
       rules:{
           email:[
             v => !!v || 'email é obrigatório',
-            this.validateEmail
           ],
           password:[
             v => !!v || 'A palavra passe é obrigatorio'
