@@ -5,10 +5,16 @@ export const state = ()=>({
 export const actions = {
 
   async create({commit},payload){
-    const response = await this.$axios.post('/tasks/', payload)
+    const response = await this.$axios.post('/tasks', payload)
     const task = response.data
     commit('ADD',task)
     return task
+  },
+
+  async fetch({commit}, payload){
+    const response = await this.$axios.get('/tasks')
+    const tasks = response.data
+    commit('SET', tasks)
   },
 
 }
