@@ -17,6 +17,28 @@ export const actions = {
     commit('SET', tasks)
   },
 
+  async fetchSingle({commit}, id){
+    const response = await this.$axios.get(`/tasks/${id}`)
+    const task = response.data
+    return task
+  },
+
+  async update({commit},{payload,id}){
+    
+    const response = await this.$axios.put(`/tasks/${id}`, payload)
+    const task = response.data
+    commit('UPDATE_SINGLE',task)
+    return task
+  },
+
+  async delete({commit}, id){
+    const response =  await this.$axios.delete(`/tasks/${id}`)
+    const task = response.data
+    commit('DELETE', id)
+    return task
+  }
+
+
 }
 
 export const mutations = {
@@ -30,7 +52,7 @@ export const mutations = {
   },
 
   DELETE(state, id){
-    const index = state.tasks.findIndex(naver => naver.id ===id)
+    const index = state.tasks.findIndex(task => task.id ===id)
     state.tasks.splice(index,1)
   },
 
