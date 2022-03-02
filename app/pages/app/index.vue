@@ -89,10 +89,24 @@
 </template>
 <script>
    export default {
-     data: () => ({
-   
-       cards: ['Today'],
-     }),
+     data() {
+       return{
+       cards: ['Today']
+       }
+     },
+    created(){
+      this.fetch()
+    },
+    computed:{
+    navers(){
+      return this.$store.state.task.tasks
+    }
+    },
+    methods:{
+        fetch(){
+          this.$store.dispatch('task/fetch')
+        }
+      }
     
    }
 </script>
