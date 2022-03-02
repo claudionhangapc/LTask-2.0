@@ -12,9 +12,9 @@
          >
          <v-card elevation="0">
             <v-list >
-               <template v-for="n in 12">
+               <template v-for="task in tasks">
                   <v-list-item
-                     :key="n"
+                     :key="task.id"
                      link
                      >
                       <v-row >
@@ -24,7 +24,7 @@
                         </v-col>
                         <v-col cols="12" md="10" class="ma-0 px-0">
                           <v-list-item-content>
-                            <v-list-item-title>Message {{ n }}</v-list-item-title>
+                            <v-list-item-title>{{task.name}}</v-list-item-title>
                             <div class="d-flex justify-start ">
                               <div class="mr-2">
                                  <v-list-item-subtitle>
@@ -80,7 +80,7 @@
                       </v-row>
                      
                   </v-list-item>
-                  <v-divider  :key="`divider-${n}`"></v-divider>       
+                  <v-divider  :key="`divider-${task.id}`"></v-divider>       
                </template>
             </v-list>
          </v-card>
@@ -98,7 +98,7 @@
       this.fetch()
     },
     computed:{
-    navers(){
+    tasks(){
       return this.$store.state.task.tasks
     }
     },
