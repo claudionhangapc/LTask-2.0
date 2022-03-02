@@ -10,7 +10,10 @@ class Task {
    * get all tasks
    */
   async fetch (id) {
-    const tasks = await this.model.where('user_id',id)
+    const tasks = await this.fastify.knex.select('*').from('task')
+    .where({
+      'user_id':id
+    })
     return tasks
   }
 
