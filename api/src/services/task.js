@@ -10,10 +10,13 @@ class Task {
    * get all tasks
    */
   async fetch (id) {
-    const tasks = await this.fastify.knex.select('*').from('task')
-    .where({
-      'user_id':id
-    })
+    const tasks = await this.fastify.knex.select(['task.id',
+    'task.date_created','task.date_updated','task.date_to_start',
+    'task.important','task.remember_me',
+    'task.name','project.name as project_name'])
+    .table('task')
+   .innerJoin('project','project.id','task.project_id').where('task.user_id',id)
+
     return tasks
   }
 
