@@ -33,7 +33,7 @@
                                   >
                                     mdi-folder-outline
                                   </v-icon> 
-                                  <span>nome de projeto</span>
+                                  <span>{{task.project_name}}</span>
                                   </v-list-item-subtitle>
                               </div>
                               <div class="mr-2">
@@ -44,7 +44,7 @@
                                   >
                                     mdi-circle-outline
                                   </v-icon> 
-                                  <span>nome da categoria</span>
+                                  <span>{{task.category_name}}</span>
                                   </v-list-item-subtitle>
                               </div>
                               <div class="mr-2">
