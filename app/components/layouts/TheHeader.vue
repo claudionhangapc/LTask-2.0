@@ -100,8 +100,8 @@
         { title: 'Novo Projeto', method:'openModalProject'},
       ],
       itemsPerfil: [
-        { title: 'Meu Perfil',method:'openModalProject' },
-        { title: 'Meus Projetos',method:'openModalProject' },
+        { title: 'Meu Perfil',method:'goToPerfil' },
+        { title: 'Meus Projetos',method:'gotoProject' },
         { title: 'Sair', method:'logout'},
       ],
       cards: ['Today', 'Yesterday'],
@@ -129,6 +129,12 @@
       },
       logout(){
       this.$router.replace('/logout');
+      },
+      goToPerfil(){
+        this.$router.replace('/app/perfil');
+      },
+      gotoProject(){
+        this.$router.replace('/app/projetos');
       }
     }
   }

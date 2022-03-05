@@ -71,9 +71,7 @@
           action: 'mdi-folder-outline',
           title: 'Projetos',
           items: [
-            { title: 'List Item' },
-            { title: 'Testando' },
-             { title: 'Será que agora vai' }
+
             ],
         },
           

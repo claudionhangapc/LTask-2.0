@@ -19,7 +19,7 @@
                      >
                       <v-row >
                         <v-col cols="12" md="1" class=" ma-0 px-0">
-                          <v-checkbox
+                          <v-checkbox class="ml-1"
                           ></v-checkbox>
                         </v-col>
                         <v-col cols="12" md="10" class="ma-0 px-0">
