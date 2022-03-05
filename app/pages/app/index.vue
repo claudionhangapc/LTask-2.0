@@ -95,18 +95,18 @@
        }
      },
     created(){
-      this.fetch()
+      this.fetchTasks()
     },
     computed:{
-    tasks(){
-      return this.$store.state.task.tasks
-    }
+      tasks(){
+        return this.$store.state.task.tasks
+      }
     },
     methods:{
-        fetch(){
-          this.$store.dispatch('task/fetch')
-        }
-      }
+      fetchTasks(){
+        this.$store.dispatch('task/fetch')
+      }  
+    }
     
    }
 </script>

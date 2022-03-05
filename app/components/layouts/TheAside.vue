@@ -24,11 +24,11 @@
           </v-list-item-content>
         </v-list-item>
         <v-list-group
-        v-for="item in items2"
-        :key="item.title"
-        no-action
-        color="#222222"
-      >
+          v-for="item in menuProjects"
+          :key="item.title"
+          no-action
+          color="#222222"
+        >
          <v-icon slot="prependIcon" color="#222222">{{item.action}}</v-icon>
          <v-icon slot="appendIcon" color="#222222">mdi-chevron-down</v-icon>
         <template v-slot:activator style="color:#222222">
@@ -64,24 +64,45 @@
         ['mdi-star-outline', 'Importantes'],
         ['mdi-clipboard-edit-outline', 'Task']
       ],
-      items2: [
+      menuProjects: [
         {
           action: 'mdi-folder-outline',
+          title: 'Projetos',
           items: [
             { title: 'List Item' },
             { title: 'Testando' },
              { title: 'Será que agora vai' }
             ],
-          title: 'Projetos',
         },
           
       ],
     }),
+    created(){
+      this.fetchProjects();
+    },
+    computed:{
+      projects(){
+        return this.$store.state.project.projects
+      },   
+    },
+     watch:{
+      projects: function(val){
+        this.menuProjects[0].items=[]
+        val.forEach(element => {
+          this.menuProjects[0].items.push({ title:element.name })
+        });
+       
+      }
+    },
     methods:{
       setMenu(value){
         this.$emit('displayAsideMenu',value)
+      },
+      fetchProjects(){
+          this.$store.dispatch('project/fetch')
       }
     }
+    
   }
 </script>
 
