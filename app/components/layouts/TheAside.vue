@@ -62,7 +62,7 @@
       links: [
         ['mdi-home-outline', 'Home'],
         ['mdi-star-outline', 'Importantes'],
-        ['mdi-clipboard-edit-outline', 'Task']
+        ['mdi-clipboard-edit-outline', 'Tarefas']
       ],
       menuProjects: [
         {
