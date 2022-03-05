@@ -10,10 +10,12 @@
 
       <v-list>
         <v-list-item
-          v-for="[icon, text] in links"
+          v-for="[icon, text, url] in links"
           :key="icon"
           link
+          exact-path
           light
+          :to="url"
         >
           <v-list-item-icon>
             <v-icon color="#222222">{{ icon }}</v-icon>

@@ -129,8 +129,8 @@ export default {
       valid: true,
       error:false,
       login:{
-        email:'',
-        password:''
+        email:'emaildteste@gmail.com',
+        password:'12#rer'
       },
       rules:{
           email:[
