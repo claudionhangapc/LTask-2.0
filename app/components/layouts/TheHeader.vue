@@ -127,9 +127,8 @@
       handle_function_call(function_name) {
         this[function_name]()
       },
-      async logout(){
-      await this.$auth.logout();
-      this.$router.push("/login")
+      logout(){
+      this.$router.replace('/logout');
       }
     }
   }
