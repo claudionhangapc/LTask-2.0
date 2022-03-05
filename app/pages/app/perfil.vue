@@ -36,11 +36,11 @@
          >
          <v-card outlined>
             
-           <v-list >
+           <v-list  >
                <template v-for="(items, index) in userItems">
                   <v-list-item
                      :key="index"
-                     link
+                     
                      >
                       <v-row >
                         <v-col cols="12" md="4" class="ma-0 px-3">
@@ -67,11 +67,10 @@
          >
           <v-card outlined>
             <v-card-title>Projetos</v-card-title>
-           <v-list >
+           <v-list>
                <template v-for="(items, index) in projetosResumo">
                   <v-list-item
                      :key="index"
-                     link
                      >
                       <v-row >
                         <v-col cols="12" md="11" class="ma-0 px-3">
@@ -100,7 +99,6 @@
                <template v-for="(items, index) in tarefasResumo">
                   <v-list-item
                      :key="index"
-                     link
                      >
                       <v-row >
                         <v-col cols="12" md="11" class="ma-0 px-3">
