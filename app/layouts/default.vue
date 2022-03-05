@@ -5,7 +5,7 @@
     
     <v-main style="background:#fff">
       <v-container
-        class="py-8 px-6"
+        class="py-4 px-6"
         fluid
       >
         <Nuxt />
