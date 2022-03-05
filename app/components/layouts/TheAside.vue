@@ -60,9 +60,9 @@
     },
     data: () => ({
       links: [
-        ['mdi-home-outline', 'Home'],
-        ['mdi-star-outline', 'Importantes'],
-        ['mdi-clipboard-edit-outline', 'Tarefas']
+        ['mdi-home-outline', 'Home','/app'],
+        ['mdi-star-outline', 'Importantes','/app/tarefas/importantes'],
+        ['mdi-clipboard-edit-outline', 'Tarefas','/app/tarefas']
       ],
       menuProjects: [
         {

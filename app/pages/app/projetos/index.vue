@@ -1,6 +1,6 @@
 <template>
   <div>
-    ola bom dia
+    estas na paginas de projeto
   </div>
 </template>
 
