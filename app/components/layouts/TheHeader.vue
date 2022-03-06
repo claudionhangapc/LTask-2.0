@@ -97,7 +97,7 @@
     data: () => ({
       itemsTask: [
         { title: 'Nova Tarefa', method:'openModalTask' },
-        { title: 'Novo Projeto', method:'openModalProject'},
+        { title: 'Novo Projeto', method:'gotoAddNewProject'},
       ],
       itemsPerfil: [
         { title: 'Meu Perfil',method:'goToPerfil' },
@@ -143,6 +143,9 @@
       },
       gotoProject(){
         this.$router.replace('/app/projetos');
+      },
+      gotoAddNewProject(){
+        this.$router.push('/app/projetos/adicionar');
       },
       fetchColors(){
         this.$store.dispatch('color/fetch')

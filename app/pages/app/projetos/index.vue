@@ -69,6 +69,7 @@
                </template>
             </v-list>
          </v-card>
+         <NuxtChild/>
   </div>
 </template>
 
