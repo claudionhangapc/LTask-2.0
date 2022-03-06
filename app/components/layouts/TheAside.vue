@@ -43,6 +43,7 @@
           v-for="child in item.items"
           :key="child.title"
           link
+          :to="`/app/projetos/${child.id}/tarefas`"
         >
           <v-list-item-content>
             <v-list-item-title v-text="child.title" style="color:#222222"></v-list-item-title>
@@ -89,7 +90,7 @@
       projects: function(val){
         this.menuProjects[0].items=[]
         val.forEach(element => {
-          this.menuProjects[0].items.push({ title:element.name })
+          this.menuProjects[0].items.push({ title:element.name, id:element.id})
         });
        
       }
