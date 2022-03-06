@@ -5,7 +5,6 @@
      :key="task.id"
      outlined
      class="mb-5 px-3"
-
      >
             <v-list >
                <template >
@@ -13,7 +12,7 @@
                      :key="task.id"
                      >
                       <v-row >
-                        <v-col cols="12" md="11" class="ma-0 px-0">
+                        <v-col cols="12" md="6" class="ma-0 px-0">
                           <v-list-item-content>
                             <v-list-item-title class="font-weight-medium">{{task.name}}</v-list-item-title>
                             <div class="d-flex justify-start mt-1">
@@ -41,15 +40,13 @@
                             </div>
                           </v-list-item-content>
                         </v-col>
-                        <v-col cols="12" md="1" class="ma-0 px-0">
-                         <v-checkbox
-                          disabled
-                            class="ml-13"
-                            hide-details
-                            :on-icon="'mdi-star'"
-                            :off-icon="'mdi-folder-outline'"
-                          >
-                          </v-checkbox>
+                        <v-col cols="12" md="6" class="ma-0 px-0 d-flex align-content-center flex-wrap flex-row-reverse" color="">
+                          <v-btn class="ml-5"  elevation="0">
+                            Tarefas
+                          </v-btn>
+                          <v-btn class="ml-5"  elevation="0">
+                            Editar
+                          </v-btn>
                         </v-col>
                       </v-row>
                      
