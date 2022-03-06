@@ -1,8 +1,8 @@
 <template>
   <v-container>
-    <v-row>
-      <h1 >Tasks {{this.$auth.user}}</h1>
-    </v-row>
+    <!--<v-row>
+      <h1 >Perfil</h1>
+    </v-row> -->
     <v-row >
       <v-col 
          cols="4"
@@ -129,9 +129,9 @@ export default {
     return{
       userItems:[
         {key:'Primeiro nome', value:'claudio' },
-        {key:'ultimo nome', value:'claudio' },
-        {key:'username', value:'claudionhangapc' },
-        {key:'email', value:'claudionhangapc@gmail.com' },
+        {key:'Ultimo nome', value:'claudio' },
+        {key:'Username', value:'claudionhangapc' },
+        {key:'Email', value:'claudionhangapc@gmail.com' },
       ],
       projetosResumo:[
         {key:'Total', value:3 },
@@ -140,8 +140,9 @@ export default {
       ],
       tarefasResumo:[
         {key:'Total', value:6 },
-        {key:'Concluidas', value:5 },
-        {key:'Não concluido', value:1 }
+        {key:'A fazer', value:5 },
+        {key:'Em progresso', value:1 },
+        {key:'Feito', value:0 }
       ]
     }
   },
