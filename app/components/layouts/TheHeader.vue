@@ -108,6 +108,14 @@
       dialogProject:false,
       dialogTask:false
     }),
+    created(){
+      this.fetchColors();
+    },
+    computed:{
+      colors(){
+        return this.$store.state.color.colors
+      },   
+    },
     methods:{
       setMenu(){
         this.$emit('displayAsideMenu', !this.drawer)
@@ -135,7 +143,11 @@
       },
       gotoProject(){
         this.$router.replace('/app/projetos');
+      },
+      fetchColors(){
+        this.$store.dispatch('color/fetch')
       }
+
     }
   }
 </script>
