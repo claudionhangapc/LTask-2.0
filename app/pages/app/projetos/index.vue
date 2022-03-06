@@ -1,20 +1,20 @@
 <template>
   <div>
     <v-card 
-     v-for="task in tasks" 
-     :key="task.id"
+     v-for="project in projects" 
+     :key="project.id"
      outlined
      class="mb-5 px-3"
      >
             <v-list >
                <template >
                   <v-list-item
-                     :key="task.id"
+                     :key="project.id"
                      >
                       <v-row >
                         <v-col cols="12" md="6" class="ma-0 px-0">
                           <v-list-item-content>
-                            <v-list-item-title class="font-weight-medium">{{task.name}}</v-list-item-title>
+                            <v-list-item-title class="font-weight-medium">{{project.name}}</v-list-item-title>
                             <div class="d-flex justify-start mt-1">
                               <div class="mr-2">
                                  <v-list-item-subtitle>
@@ -49,7 +49,6 @@
                           </v-btn>
                         </v-col>
                       </v-row>
-                     
                   </v-list-item>      
                </template>
             </v-list>
@@ -65,8 +64,8 @@ export default {
     }
   },
   computed:{
-    tasks(){
-      return this.$store.state.task.tasks
+    projects(){
+      return this.$store.state.project.projects
     }
   },
  
