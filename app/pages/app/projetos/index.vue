@@ -8,6 +8,7 @@
      >
             <v-list >
                <template >
+                 <v-hover v-slot="{ hover }">
                   <v-list-item
                      :key="project.id"
                      >
@@ -41,15 +42,30 @@
                           </v-list-item-content>
                         </v-col>
                         <v-col cols="12" md="6" class="ma-0 px-0 d-flex align-content-center flex-wrap flex-row-reverse" color="">
-                          <v-btn class="ml-5"  elevation="0">
+                          <v-btn class="ml-5"  
+                          elevation="0" 
+                          v-if="hover"
+                          small>
                             Tarefas
                           </v-btn>
-                          <v-btn class="ml-5"  elevation="0">
+                          <v-btn 
+                          v-if="hover"
+                          class="ml-5"  
+                          elevation="0" 
+                          small>
                             Editar
                           </v-btn>
+                          <v-icon
+                            large
+                            small
+                            v-if="!hover"
+                          >
+                            mdi-folder-outline
+                          </v-icon>
                         </v-col>
                       </v-row>
-                  </v-list-item>      
+                  </v-list-item>
+                  </v-hover>     
                </template>
             </v-list>
          </v-card>
@@ -71,3 +87,7 @@ export default {
  
 }
 </script>
+
+<style scoped>
+
+</style>
