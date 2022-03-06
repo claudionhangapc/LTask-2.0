@@ -42,17 +42,22 @@
                           </v-list-item-content>
                         </v-col>
                         <v-col cols="12" md="6" class="ma-0 px-0 d-flex align-content-center flex-wrap flex-row-reverse" color="">
-                          <v-btn class="ml-5"  
-                          elevation="0" 
-                          v-if="hover"
-                          small>
+                          <v-btn class="ml-5"
+                            :to="`/app/projetos/editar/${project.id}`"  
+                            elevation="0" 
+                            v-if="hover"
+                            small
+                            link>
                             Tarefas
                           </v-btn>
                           <v-btn 
+                          :to="`/app/projetos/editar/${project.id}`"
+                          project
                           v-if="hover"
                           class="ml-5"  
                           elevation="0" 
-                          small>
+                          small
+                          link>
                             Editar
                           </v-btn>
                           <v-icon

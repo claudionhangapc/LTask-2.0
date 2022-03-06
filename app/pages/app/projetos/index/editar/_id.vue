@@ -1,6 +1,6 @@
 <template>
   <div>
-    Editar projeto
+    <ModalProject :dialog="dialogProject" @closeModalProject="updatedialogProject($event)"/>
   </div>
 </template>
 
@@ -8,9 +8,14 @@
 export default {
   data(){
     return{
-      
+      dialogProject:true,
     }
   },
- 
+  methods:{
+    updatedialogProject(value){
+        this.dialogProject = value
+        this.$router.replace('/app/projetos');
+    },
+  }
 }
 </script>
