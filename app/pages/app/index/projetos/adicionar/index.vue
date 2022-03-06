@@ -1,6 +1,6 @@
 <template>
   <div>
-   Adicionar Projeto
+   <ModalProject :dialog="true" />
   </div>
 </template>
 
