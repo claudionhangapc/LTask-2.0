@@ -19,7 +19,7 @@
             label="Nome do projeto"
             required
             :rules="rules.name"
-            v-model="color.name"
+            v-model="project.name"
           ></v-text-field>
 
           <v-select
@@ -29,7 +29,7 @@
            label="Cor do projeto"
           dense
           :rules="rules.color_id"
-          v-model="color.color_id"
+          v-model="project.color_id"
          >
           <template v-slot:append>
               <v-icon :color="defaultColor">mdi-chevron-down</v-icon>
@@ -74,8 +74,9 @@ export default {
   },
   data(){
     return{
+      error:false,
       defaultColor:'#000',
-      color:{
+      project:{
         name:'',
         color_id:''
       },
@@ -101,13 +102,26 @@ export default {
     updateColor(value){
       this.defaultColor = value
     },
-    createProject(){
+    async createProject(){
+      
+      try{
+        const {name} = this.project
+        const {color_id} = this.project
 
+        await this.$store.dispatch('project/create', {
+          name,
+          color_id,
+          tasks:[]
+        })
+        this.closeModal()
+      }catch(err){
+        this.error = true
+        //console.log(err)
+      }
     },
     validationForm(){
       if(this.$refs.form.validate()){
-          //this.createProject()
-          alert("teste feito")
+        this.createProject()
       }
     }
   },
