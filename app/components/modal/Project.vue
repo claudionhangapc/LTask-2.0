@@ -18,15 +18,18 @@
             class="mb-2"
             label="Nome do projeto"
             required
+            :rules="rules.name"
+            v-model="color.name"
           ></v-text-field>
 
           <v-select
-          item-value="value"
+          item-value="id"
           item-text="name"
           :items="colors"
            label="Cor do projeto"
           dense
-          @change="updateColor($event)"
+          :rules="rules.color_id"
+          v-model="color.color_id"
          >
           <template v-slot:append>
               <v-icon :color="defaultColor">mdi-chevron-down</v-icon>
@@ -49,6 +52,7 @@
           <v-btn
             color="#FF8700"
             outlined
+            @click="validationForm"
           >
             Adicionar
           </v-btn>
@@ -71,6 +75,18 @@ export default {
   data(){
     return{
       defaultColor:'#000',
+      color:{
+        name:'',
+        color_id:''
+      },
+      rules:{
+        name:[
+            v => !!v || 'Nome é obrigatório',
+          ],
+        color_id:[
+            v => !!v || 'Cor é obrigatório',
+          ],
+      }
     }
   },
   computed:{
@@ -84,6 +100,15 @@ export default {
     },
     updateColor(value){
       this.defaultColor = value
+    },
+    createProject(){
+
+    },
+    validationForm(){
+      if(this.$refs.form.validate()){
+          //this.createProject()
+          alert("teste feito")
+      }
     }
   },
 
