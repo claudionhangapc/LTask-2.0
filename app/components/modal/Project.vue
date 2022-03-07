@@ -23,7 +23,7 @@
           <v-select
           item-value="value"
           item-text="name"
-          :items="items"
+          :items="colors"
            label="Cor do projeto"
           dense
           @change="updateColor($event)"
@@ -71,29 +71,12 @@ export default {
   data(){
     return{
       defaultColor:'#000',
-      items:[
-        {
-        name:'Verde escuro',
-        value:'#006400'
-        },
-        {
-        name:'Vermelho escuro',
-        value:'#8B0000'
-        },
-        {
-        name:'Dourado',
-        value:'#FFD700'
-        },
-        {
-        name:'HotPink3',
-        value:'#8B3A62'
-        },
-        {
-        name:'Ivory4',
-        value:'#8B8B83'
-        }
-      ]
     }
+  },
+  computed:{
+      colors(){
+        return this.$store.state.color.colors
+      },   
   },
   methods:{
     closeModal(){
@@ -102,7 +85,9 @@ export default {
     updateColor(value){
       this.defaultColor = value
     }
-  }
+  },
+
+  
 }
 </script>
 
