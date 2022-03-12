@@ -18,12 +18,13 @@ class Project {
    * get single project
    */
   async show (user_id, project_id) {
-    let singleProject = await this.model
+
+    let singleProject =  await this.fastify.knex.select('*').from('project')
       .where({
         'user_id': user_id,
         'id': project_id
       })
-    
+
     if(singleProject.length > 0 ){
       let tasks = await  this.fastify.knex('task').where({
         ' project_id': singleProject[0].id,

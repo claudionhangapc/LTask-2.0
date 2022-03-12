@@ -6,7 +6,7 @@
     max-width="700" >
       <v-card>
         <v-card-title class="text-h5 header-background">
-          Editar Projeto - {{projectComputed}}
+          Editar Projeto
         </v-card-title>
 
         <v-card-text class="pt-2">
@@ -52,7 +52,7 @@
           <v-btn
             color="#FF8700"
             outlined
-            @click="validationForm"
+            @click="fetchSingleProject"
           >
             Atualizar
           </v-btn>
@@ -90,6 +90,9 @@ export default {
       }
     }
   },
+  created(){   
+    this.fetchSingleProject()
+  },
   computed:{
       colors(){
         return this.$store.state.color.colors
@@ -97,9 +100,9 @@ export default {
       id() {
       return this.$route.params.id;
       },
-      projectComputed() {
+      /*project() {
         return this.$store.getters["project/find"](this.id);
-      },   
+      },*/   
   },
   methods:{
     closeModal(){
@@ -107,6 +110,13 @@ export default {
     },
     updateColor(value){
       this.defaultColor = value
+    },
+    async fetchSingleProject(){
+      try{
+        this.project = await this.$store.dispatch('project/fetchSingle',this.id)
+      }catch(err){
+        this.closeModal()
+      }
     },
     async createProject(){
       
