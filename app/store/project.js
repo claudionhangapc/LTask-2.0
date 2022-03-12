@@ -2,6 +2,10 @@ export const state = ()=>({
   projects:[]
 })
 
+export const getters = {
+  find: (state) => (id) => state.itemsWorkflow.find(item => item.id == id),
+}
+
 export const actions = {
 
   async create({commit},payload){
