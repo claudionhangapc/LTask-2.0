@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="fetched">
    <v-dialog :value="dialog"
     overlay-opacity="0.8"
     persistent  
@@ -74,6 +74,7 @@ export default {
   },
   data(){
     return{
+      fetched:false,
       error:false,
       defaultColor:'#000',
       project:{
@@ -113,7 +114,16 @@ export default {
     },
     async fetchSingleProject(){
       try{
-        this.project = await this.$store.dispatch('project/fetchSingle',this.id)
+        const projectSingle = this.$store.getters["project/find"](this.id);
+        if(!projectSingle){
+          this.project = await this.$store.dispatch('project/fetchSingle',this.id)
+          if(!this.project || this.project.length == 0 ){
+            this.$router.replace('/app/projetos');
+          }
+        }else{
+          this.project = projectSingle
+        }
+        this.fetched = true
       }catch(err){
         this.closeModal()
       }
