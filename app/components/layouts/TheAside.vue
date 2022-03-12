@@ -88,11 +88,12 @@
     },
      watch:{
       projects: function(val){
-        this.menuProjects[0].items=[]
-        val.forEach(element => {
-          this.menuProjects[0].items.push({ title:element.name, id:element.id})
-        });
-       
+        if(val){
+          this.menuProjects[0].items=[]
+          val.forEach(element => {
+            this.menuProjects[0].items.push({ title:element.name, id:element.id})
+          });
+        }
       }
     },
     methods:{
