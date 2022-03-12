@@ -10,7 +10,9 @@ class Project {
    * get all projects
    */
   async fetch (id) {
-    const result = await this.model.where('user_id',id)
+    const result = await this.fastify.knex.select('*')
+    .from('project')
+    .where('user_id',id)
     return result
   }
 
