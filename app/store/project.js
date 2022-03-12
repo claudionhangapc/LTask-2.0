@@ -3,7 +3,7 @@ export const state = ()=>({
 })
 
 export const getters = {
-  find: (state) => (id) => state.itemsWorkflow.find(item => item.id == id),
+  find: (state) => (id) => state.projects.find(item => item.id == id),
 }
 
 export const actions = {

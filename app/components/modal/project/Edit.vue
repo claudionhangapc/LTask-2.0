@@ -6,7 +6,7 @@
     max-width="700" >
       <v-card>
         <v-card-title class="text-h5 header-background">
-          Editar Projeto
+          Editar Projeto - {{projectComputed}}
         </v-card-title>
 
         <v-card-text class="pt-2">
@@ -93,6 +93,12 @@ export default {
   computed:{
       colors(){
         return this.$store.state.color.colors
+      },
+      id() {
+      return this.$route.params.id;
+      },
+      projectComputed() {
+        return this.$store.getters["project/find"](this.id);
       },   
   },
   methods:{
