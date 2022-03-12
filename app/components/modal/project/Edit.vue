@@ -45,14 +45,14 @@
           <v-spacer></v-spacer>
           <v-btn
             text
-            @click="closeModal"
+            @click="closeModal()"
           >
            fechar
           </v-btn>
           <v-btn
             color="#FF8700"
             outlined
-            @click="fetchSingleProject"
+            @click="validationForm()"
           >
             Atualizar
           </v-btn>
@@ -101,9 +101,6 @@ export default {
       id() {
       return this.$route.params.id;
       },
-      /*project() {
-        return this.$store.getters["project/find"](this.id);
-      },*/   
   },
   methods:{
     closeModal(){
@@ -114,44 +111,47 @@ export default {
     },
     async fetchSingleProject(){
       try{
-        const projectSingle = this.$store.getters["project/find"](this.id);
+        let projectSingle = this.$store.getters["project/find"](this.id);
         if(!projectSingle){
-          this.project = await this.$store.dispatch('project/fetchSingle',this.id)
-          if(!this.project || this.project.length == 0 ){
+          projectSingle = await this.$store.dispatch('project/fetchSingle',this.id)
+
+          if(!projectSingle || projectSingle.length == 0 ){
             this.$router.replace('/app/projetos');
           }
-        }else{
-          this.project = projectSingle
         }
+        this.project.name = projectSingle.name
+        this.project.color_id = projectSingle.color_id
         this.fetched = true
+
       }catch(err){
         this.closeModal()
       }
     },
-    async createProject(){
+    async updateProject(){
       
       try{
         const {name} = this.project
         const {color_id} = this.project
 
-        await this.$store.dispatch('project/create', {
-          name,
-          color_id,
-          tasks:[]
+        await this.$store.dispatch('project/update', {
+          payload:{
+            name,
+            color_id,
+            tasks:[]
+          },
+          id:this.id
         })
         this.closeModal()
       }catch(err){
         this.error = true
-        //console.log(err)
       }
     },
     validationForm(){
       if(this.$refs.form.validate()){
-        this.createProject()
+        this.updateProject()
       }
     }
   },
-
   
 }
 </script>

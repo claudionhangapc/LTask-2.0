@@ -115,14 +115,14 @@ class Project {
             }).update(itemTask)
             tasksProjectResults.push(singleTasksProjectResult[0])
           }
-        project[0].tasks = tasksProjectResults 
+        //project[0].tasks = tasksProjectResults 
 
       } else {
 
         throw new Error('tasks não encontrada')
       }
     } else {
-      project = await this.model.returning('*')
+      project = await this.fastify.knex('project').returning('*')
       .where({
         'user_id': user_id,
         'id':project_id
@@ -133,7 +133,11 @@ class Project {
         'date_updated':new Date()
       })
 
-      project[0].tasks = []
+      //project[0].tasks = []
+    }
+    
+    if(project.length>0){
+      return project[0]
     }
 
     return project
