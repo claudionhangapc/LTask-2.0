@@ -1,6 +1,6 @@
 <template>
   <div>
-   Adicionar tarefa
+    <ModalTask :dialog="dialogTask" @closeModalTask="updatedialogTask($event)"/>
   </div>
 </template>
 
@@ -8,9 +8,18 @@
 export default {
   data(){
     return{
-      
+      dialogTask:true
     }
   },
+  methods:{
+      openModalTask(){
+        this.dialogTask = true
+      },
+      updatedialogTask(value){
+        this.dialogTask = value
+         this.$router.replace('/app/tarefas');
+      },  
+    }
  
 }
 </script>

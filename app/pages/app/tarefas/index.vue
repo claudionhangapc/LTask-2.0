@@ -1,6 +1,7 @@
 <template>
   <div>
     ola bom dia
+    <NuxtChild/>
   </div>
 </template>
 
