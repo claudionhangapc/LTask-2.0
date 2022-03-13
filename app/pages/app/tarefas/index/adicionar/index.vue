@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ModalTask :dialog="dialogTask" @closeModalTask="updatedialogTask($event)"/>
+    <ModalTaskAdd :dialog="dialogTask" @closeModalTask="updatedialogTask($event)"/>
   </div>
 </template>
 
