@@ -6,7 +6,7 @@
     max-width="700" >
       <v-card>
         <v-card-title class="text-h5 header-background">
-          Adicionar Novo Projeto
+          Adicionar Projeto
         </v-card-title>
 
         <v-card-text class="pt-2">

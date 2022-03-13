@@ -82,8 +82,6 @@
               </v-list-item>
             </v-list>
         </v-menu>
-        <ModalProject :dialog="dialogProject" @closeModalProject="updatedialogProject($event)"/>
-        <ModalTask :dialog="dialogTask" @closeModalTask="updatedialogTask($event)"/>
       </v-app-bar>
 </template>
 <script>
