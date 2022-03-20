@@ -59,7 +59,7 @@
           <v-combobox
             item-value="value"
             item-text="name"
-            :items="items"
+            :items="projects"
             label="Projeto"
             dense
           ></v-combobox>
@@ -120,6 +120,17 @@ export default {
     return{
       menuDate:false,
       dateToStart:null,
+      rules:{
+        name:[
+            v => !!v || 'Nome é obrigatório',
+          ],
+        category:[
+            v => !!v || 'Cor é obrigatório',
+          ],
+        projeto:[
+          v => !!v || 'Cor é obrigatório',
+        ]
+      },
       items:[
         {
         name:'Verde escuro',
@@ -151,7 +162,10 @@ export default {
       minDate(){
       return   new Date().toISOString().slice(0,10)
       },
-    },
+      projects(){
+        return this.$store.state.project.projects
+      }
+  },
   methods:{
     closeModal(){
      this.$emit('closeModalTask', false)
