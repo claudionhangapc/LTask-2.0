@@ -96,6 +96,7 @@
           <v-btn
             color="#FF8700"
             outlined
+            @click="validationForm()"
           >
             Adicionar
           </v-btn>
@@ -160,6 +161,12 @@ export default {
         const [year, month, day] = date.split('-')
         return `${day}/${month}/${year}`
     },
+
+    validationForm(){
+      if(this.$refs.form.validate()){
+        //this.createProject()
+      }
+    }
   }
 }
 </script>
