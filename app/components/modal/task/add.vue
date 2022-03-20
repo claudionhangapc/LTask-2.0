@@ -18,7 +18,8 @@
             hide-details
             label="Nome da tarefa"
             required
-            class="mb-2" 
+            class="mb-2"
+            v-model="task.name" 
           ></v-text-field>
            <v-menu
               class="my-0 py-0"
@@ -49,19 +50,21 @@
 
           <v-combobox
             class="mb-2"
-            item-value="value"
+            item-value="id"
             item-text="name"
             :items="categories"
             label="Categoria"
             dense
+            v-model="task.category_id" 
           ></v-combobox>
 
           <v-combobox
-            item-value="value"
+            item-value="id"
             item-text="name"
             :items="projects"
             label="Projeto"
             dense
+            v-model="task.project_id"
           ></v-combobox>
           
           <v-row>
@@ -70,6 +73,7 @@
                 label="Importante"
                 :on-icon="'mdi-star'"
                 :off-icon="'mdi-star-outline'"
+                v-model="task.important"
               ></v-checkbox>
             </v-col>
             <v-col cols="12" md="4" class="ma-0 py-0">
@@ -77,6 +81,7 @@
                 label="Receber notificação"
                 :on-icon="'mdi-bell'"
                 :off-icon="'mdi-bell-outline'"
+                v-model="task.remember_me"
               ></v-checkbox>
             </v-col>
           </v-row>
@@ -120,6 +125,14 @@ export default {
     return{
       menuDate:false,
       dateToStart:null,
+      task:{
+        name:'',
+        date_to_start:null,
+        important:null,
+        remember_me:null,
+        category_id:null,
+        project_id:null
+      },
       rules:{
         name:[
             v => !!v || 'Nome é obrigatório',
@@ -131,28 +144,7 @@ export default {
           v => !!v || 'Cor é obrigatório',
         ]
       },
-      items:[
-        {
-        name:'Verde escuro',
-        value:'#006400'
-        },
-        {
-        name:'Vermelho escuro',
-        value:'#8B0000'
-        },
-        {
-        name:'Dourado',
-        value:'#FFD700'
-        },
-        {
-        name:'HotPink3',
-        value:'#8B3A62'
-        },
-        {
-        name:'Ivory4',
-        value:'#8B8B83'
-        }
-      ]
+      
     }
   },
   computed:{
