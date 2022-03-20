@@ -80,6 +80,7 @@
     }),
     created(){
       this.fetchProjects();
+      this.fetchCategories()
     },
     computed:{
       projects(){
@@ -102,6 +103,9 @@
       },
       fetchProjects(){
           this.$store.dispatch('project/fetch')
+      },
+      fetchCategories(){
+        this.$store.dispatch('category/fetch')
       }
     }
     
