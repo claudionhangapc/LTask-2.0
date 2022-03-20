@@ -51,7 +51,7 @@
             class="mb-2"
             item-value="value"
             item-text="name"
-            :items="items"
+            :items="categories"
             label="Categoria"
             dense
           ></v-combobox>
@@ -164,6 +164,9 @@ export default {
       },
       projects(){
         return this.$store.state.project.projects
+      },
+      categories(){
+        return this.$store.state.category.categories
       }
   },
   methods:{
