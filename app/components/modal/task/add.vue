@@ -8,7 +8,6 @@
         <v-card-title class="text-h5 header-background">
           Adicionar Nova Tarefa
         </v-card-title>
-        {{task}}
         <v-card-text class="pt-2">
            <v-form
           ref="form"
@@ -182,7 +181,7 @@ export default {
           category_id,
         } = this.task
 
-        const date_to_start  = this.dateToStartBrasil
+        const date_to_start = this.task.date_to_start
         const  remember_me  = this.task.remember_me ? 1 : 0 
         const  important  = this.task.important ? 1 : 0 
 
