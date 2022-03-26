@@ -3,7 +3,7 @@
       <v-col 
          cols="12"
          >
-         <h1 >Tasks {{this.$auth.user}}</h1>
+         <h1 >Tasks </h1>
       </v-col>
       <v-col
          v-for="card in cards"
@@ -26,7 +26,7 @@
                           <v-list-item-content>
                             <v-list-item-title>{{task.name}}</v-list-item-title>
                             <div class="d-flex justify-start ">
-                              <div class="mr-2">
+                              <div class="mr-2" v-show="task.project_name">
                                  <v-list-item-subtitle>
                                   <v-icon
                                     small
@@ -36,7 +36,7 @@
                                   <span>{{task.project_name}}</span>
                                   </v-list-item-subtitle>
                               </div>
-                              <div class="mr-2">
+                              <div class="mr-2" v-show="task.category_name">
                                   <v-list-item-subtitle>
                                   <v-icon
                                     small
@@ -75,6 +75,7 @@
                             hide-details
                             :on-icon="'mdi-star'"
                             :off-icon="'mdi-star-outline'"
+                            v-model="task.important"
                           ></v-checkbox>
                         </v-col>
                       </v-row>
