@@ -75,10 +75,10 @@ module.exports = function (fastify, option, done) {
       const { id } = request.whoiam
       const {name, date_to_start, 
         project_id, category_id,
-        important,remember_me} = request.body
+        important,remember_me,status_id} = request.body
 
       const singleTask = await taskInstance.create(id, 
-        name, date_to_start, 
+        name, status_id, date_to_start, 
         project_id, category_id,
         important,remember_me)
 

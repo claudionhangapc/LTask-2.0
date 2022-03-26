@@ -54,7 +54,7 @@ class Task {
    /*
    * create single project
    */
-   async create (user_id,name, date_to_start = null, project_id = null, category_id = null, important = null,remember_me =null) {
+   async create (user_id,name, status_id = 1, date_to_start = null, project_id = null, category_id = null, important = null,remember_me =null) {
     let task
     
     if (project_id) {
@@ -70,7 +70,8 @@ class Task {
           project_id, 
           category_id, 
           important,
-          remember_me
+          remember_me,
+          status_id
         })
   
         task[0].project = projectResults[0]
@@ -86,7 +87,8 @@ class Task {
         project_id, 
         category_id, 
         important,
-        remember_me
+        remember_me,
+        status_id
       })
 
       task[0].project = []

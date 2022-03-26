@@ -59,8 +59,8 @@
           ></v-combobox>
           <v-combobox
             item-text="name"
-            item-value="value"
-            :items="projectsItems"
+            item-value="id"
+            :items="projects"
             label="Projeto"
             @change="setTaskProjectID($event)"
             dense
@@ -123,8 +123,6 @@ export default {
   data(){
     return{
       menuDate:false,
-      dateToStart:null,
-      projectsItems:[],
       task:{
         name:'',
         date_to_start:null,
@@ -146,9 +144,6 @@ export default {
       },
       
     }
-  },
-  created(){
-    this.setProjectsItems()
   },
   computed:{
       dateToStartBrasil(){
@@ -179,22 +174,38 @@ export default {
         this.createTask()
       }
     },
+    async createTask(){
+      try{
 
-    setProjectsItems(){
-      this.projectsItems = this.projects.map(item=>{
-        const name = item.name
-        const value = item.id
-       return {name,value}
-     })
-    },
-    createTask(){
-      alert("ola teste")
+        const {
+          name,
+          category_id,
+        } = this.task
+
+        const date_to_start  = this.dateToStartBrasil
+        const  remember_me  = this.task.remember_me ? 1 : 0 
+        const  important  = this.task.important ? 1 : 0 
+
+        await this.$store.dispatch('task/create', {
+          name,
+          important,
+          remember_me,
+          category_id,
+          date_to_start,
+          status_id:1     
+        })
+
+        this.closeModal()
+      }catch(err){
+        this.error = true
+        //console.log(err)
+      }
     },
     setTaskCategoryID(event){
       this.task.category_id = event.id
     },
     setTaskProjectID(event){
-      this.task.project_id = event.value
+      this.task.project_id = event.id
     },  
 
   }
