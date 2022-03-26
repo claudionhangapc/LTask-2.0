@@ -8,7 +8,6 @@
         <v-card-title class="text-h5 header-background">
           Adicionar Nova Tarefa
         </v-card-title>
-
         <v-card-text class="pt-2">
            <v-form
           ref="form"
@@ -19,6 +18,7 @@
             label="Nome da tarefa"
             required
             class="mb-2"
+            :rules="rules.name"
             v-model="task.name" 
           ></v-text-field>
            <v-menu
@@ -50,21 +50,20 @@
 
           <v-combobox
             class="mb-2"
-            item-value="id"
+            item-id="id"
             item-text="name"
             :items="categories"
             label="Categoria"
             dense
             v-model="task.category_id" 
           ></v-combobox>
-
           <v-combobox
-            item-value="id"
+            v-model="task.project_id"
             item-text="name"
-            :items="projects"
+            item-value="value"
+            :items="projectsItems"
             label="Projeto"
             dense
-            v-model="task.project_id"
           ></v-combobox>
           
           <v-row>
@@ -125,6 +124,7 @@ export default {
     return{
       menuDate:false,
       dateToStart:null,
+      projectsItems:[],
       task:{
         name:'',
         date_to_start:null,
@@ -146,6 +146,9 @@ export default {
       },
       
     }
+  },
+  created(){
+    this.setProjectsItems()
   },
   computed:{
       dateToStartBrasil(){
@@ -173,8 +176,19 @@ export default {
 
     validationForm(){
       if(this.$refs.form.validate()){
-        //this.createProject()
+        this.createTask()
       }
+    },
+
+    setProjectsItems(){
+      this.projectsItems = this.projects.map(item=>{
+        const name = item.name
+        const value = item.id
+       return {name,value}
+     })
+    },
+    createTask(){
+      alert("ola teste")
     }
   }
 }
