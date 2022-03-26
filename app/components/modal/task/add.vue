@@ -8,6 +8,7 @@
         <v-card-title class="text-h5 header-background">
           Adicionar Nova Tarefa
         </v-card-title>
+        {{task}}
         <v-card-text class="pt-2">
            <v-form
           ref="form"
@@ -41,7 +42,7 @@
               <v-date-picker
                 :min="minDate"
                 overlay-opacity="0.3"
-                v-model="dateToStart"
+                v-model="task.date_to_start"
                 @change="menuDate = false"
                 locale="pt-BR"
               ></v-date-picker>
@@ -151,7 +152,7 @@ export default {
   },
   computed:{
       dateToStartBrasil(){
-        return this.formatDate(this.dateToStart)
+        return this.formatDate(this.task.date_to_start)
       },
       minDate(){
       return   new Date().toISOString().slice(0,10)
