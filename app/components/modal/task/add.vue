@@ -18,7 +18,6 @@
             label="Nome da tarefa"
             required
             class="mb-2"
-            :rules="rules.name"
             v-model="task.name" 
           ></v-text-field>
            <v-menu
@@ -55,14 +54,14 @@
             :items="categories"
             label="Categoria"
             dense
-            v-model="task.category_id" 
+            @change="setTaskCategoryID($event)"
           ></v-combobox>
           <v-combobox
-            v-model="task.project_id"
             item-text="name"
             item-value="value"
             :items="projectsItems"
             label="Projeto"
+            @change="setTaskProjectID($event)"
             dense
           ></v-combobox>
           
@@ -189,7 +188,14 @@ export default {
     },
     createTask(){
       alert("ola teste")
-    }
+    },
+    setTaskCategoryID(event){
+      this.task.category_id = event.id
+    },
+    setTaskProjectID(event){
+      this.task.project_id = event.value
+    },  
+
   }
 }
 </script>
