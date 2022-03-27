@@ -1,8 +1,8 @@
 <template>
   <div>
     <v-card 
-     v-for="project in projects" 
-     :key="project.id"
+     v-for="category in categories" 
+     :key="category.id"
      outlined
      class="mb-5 px-3"
      >
@@ -10,12 +10,12 @@
                <template >
                  <v-hover v-slot="{ hover }">
                   <v-list-item
-                     :key="project.id"
+                     :key="category.id"
                      >
                       <v-row >
                         <v-col cols="12" md="6" class="ma-0 px-0">
                           <v-list-item-content>
-                            <v-list-item-title class="font-weight-medium">{{project.name}}</v-list-item-title>
+                            <v-list-item-title class="font-weight-medium">{{category.name}}</v-list-item-title>
                             <div class="d-flex justify-start mt-1">
                               <div class="mr-2">
                                  <v-list-item-subtitle>
@@ -32,7 +32,7 @@
                         </v-col>
                         <v-col cols="12" md="6" class="ma-0 px-0 d-flex align-content-center flex-wrap flex-row-reverse" color="">
                           <v-btn class="ml-5"
-                            :to="`/app/projetos/${project.id}/tarefas`"  
+                            :to="`/app/projetos/${category.id}/tarefas`"  
                             elevation="0" 
                             v-if="hover"
                             small
@@ -40,8 +40,7 @@
                             Tarefas
                           </v-btn>
                           <v-btn 
-                          :to="`/app/projetos/editar/${project.id}`"
-                          project
+                          :to="`/app/projetos/editar/${category.id}`"
                           v-if="hover"
                           class="ml-5"  
                           elevation="0" 
@@ -75,9 +74,9 @@ export default {
     }
   },
   computed:{
-    projects(){
-      return this.$store.state.project.projects
-    }
+    categories(){
+        return this.$store.state.category.categories
+      }
   },
  
 }
