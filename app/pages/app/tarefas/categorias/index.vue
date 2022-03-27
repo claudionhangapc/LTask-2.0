@@ -22,22 +22,11 @@
                                   <v-icon
                                     small
                                   >
-                                    mdi-calendar
-                                  </v-icon> 
-                                  <span>seg, 10 de jan</span>
-                                  </v-list-item-subtitle>
-                              </div>
-                              <div class="mr-2">
-                                 <v-list-item-subtitle>
-                                  <v-icon
-                                    small
-                                  >
                                     mdi-clipboard-edit-outline
                                   </v-icon> 
                                   <span>3</span>
                                   </v-list-item-subtitle>
                               </div>
-                              
                             </div>
                           </v-list-item-content>
                         </v-col>
@@ -60,13 +49,13 @@
                           link>
                             Editar
                           </v-btn>
-                          <v-icon
+                         <!-- <v-icon
                             large
                             small
                             v-if="!hover"
                           >
                             mdi-folder-outline
-                          </v-icon>
+                          </v-icon> -->
                         </v-col>
                       </v-row>
                   </v-list-item>
