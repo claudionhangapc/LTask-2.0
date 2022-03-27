@@ -79,14 +79,12 @@ export default {
     updateColor(value){
       this.defaultColor = value
     },
-    async createProject(){
+    async createCategory(){
       
       try{
         const {name} = this.category
-        await this.$store.dispatch('project/create', {
+        await this.$store.dispatch('category/create', {
           name,
-          color_id,
-          tasks:[]
         })
         this.closeModal()
       }catch(err){
@@ -96,7 +94,7 @@ export default {
     },
     validationForm(){
       if(this.$refs.form.validate()){
-        this.createProject()
+        this.createCategory()
       }
     }
   },
