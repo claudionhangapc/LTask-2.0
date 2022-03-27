@@ -96,6 +96,7 @@
       itemsTask: [
         { title: 'Nova Tarefa', method:'gotoAddNewTask' },
         { title: 'Novo Projeto', method:'gotoAddNewProject'},
+         { title: 'Nova Categoria', method:'gotoAddNewCategory'},
       ],
       itemsPerfil: [
         { title: 'Meu Perfil',method:'goToPerfil' },
@@ -147,6 +148,9 @@
       },
       gotoAddNewTask(){
         this.$router.push('/app/tarefas/adicionar');
+      },
+      gotoAddNewCategory(){
+        this.$router.push('/app/tarefas/categorias/adicionar');
       },
       fetchColors(){
         this.$store.dispatch('color/fetch')
