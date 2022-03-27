@@ -82,7 +82,8 @@ export default {
   },
   methods:{
     closeModal(){
-     this.$emit('closeModalProject', false)
+     this.$emit('closeModalCategory', false)
+     this.$router.push('/app/tarefas/categorias');
     },
     updateColor(value){
       this.defaultColor = value

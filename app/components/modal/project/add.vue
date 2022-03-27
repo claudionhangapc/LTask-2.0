@@ -98,6 +98,7 @@ export default {
   methods:{
     closeModal(){
      this.$emit('closeModalProject', false)
+      this.$router.push('/app/projetos');
     },
     updateColor(value){
       this.defaultColor = value

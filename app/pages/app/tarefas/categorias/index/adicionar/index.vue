@@ -1,6 +1,6 @@
 <template>
   <div>
-   <ModalCategoryAdd :dialog="dialogProject" @closeModalProject="updatedialogProject($event)"/>
+   <ModalCategoryAdd :dialog="dialogCategory" @closeModalCategory="updatedialogCategory($event)"/>
   </div>
 </template>
 
@@ -8,12 +8,12 @@
 export default {
   data(){
     return{
-      dialogProject:true,
+      dialogCategory:true,
     }
   },
   methods:{
-    updatedialogProject(value){
-        this.dialogProject = value
+    updatedialogCategory(value){
+        this.dialogCategory = value
     },
   }
  
