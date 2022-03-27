@@ -6,7 +6,7 @@
     max-width="700" >
       <v-card>
         <v-card-title class="text-h5 header-background">
-          Adicionar Projeto
+          Adicionar Categoria
         </v-card-title>
 
         <v-card-text class="pt-2">
@@ -16,26 +16,11 @@
         >
           <v-text-field
             class="mb-2"
-            label="Nome do projeto"
+            label="Nome da categoria"
             required
             :rules="rules.name"
             v-model="project.name"
           ></v-text-field>
-
-          <v-select
-          item-value="id"
-          item-text="name"
-          :items="colors"
-           label="Cor do projeto"
-          dense
-          :rules="rules.color_id"
-          v-model="project.color_id"
-         >
-          <template v-slot:append>
-              <v-icon :color="defaultColor">mdi-chevron-down</v-icon>
-          </template>
-         
-         </v-select>
         </v-form>
         </v-card-text>
 

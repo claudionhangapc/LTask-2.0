@@ -1,6 +1,6 @@
 <template>
   <div>
-   <ModalProjectAdd :dialog="dialogProject" @closeModalProject="updatedialogProject($event)"/>
+   <ModalCategoryAdd :dialog="dialogProject" @closeModalProject="updatedialogProject($event)"/>
   </div>
 </template>
 
