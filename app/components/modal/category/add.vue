@@ -19,7 +19,7 @@
             label="Nome da categoria"
             required
             :rules="rules.name"
-            v-model="project.name"
+            v-model="category.name"
           ></v-text-field>
         </v-form>
         </v-card-text>
@@ -61,24 +61,15 @@ export default {
     return{
       error:false,
       defaultColor:'#000',
-      project:{
+      category:{
         name:'',
-        color_id:''
       },
       rules:{
         name:[
             v => !!v || 'Nome é obrigatório',
           ],
-        color_id:[
-            v => !!v || 'Cor é obrigatório',
-          ],
       }
     }
-  },
-  computed:{
-      colors(){
-        return this.$store.state.color.colors
-      },   
   },
   methods:{
     closeModal(){
@@ -91,9 +82,7 @@ export default {
     async createProject(){
       
       try{
-        const {name} = this.project
-        const {color_id} = this.project
-
+        const {name} = this.category
         await this.$store.dispatch('project/create', {
           name,
           color_id,

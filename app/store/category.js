@@ -4,6 +4,13 @@ export const state = ()=>({
 
 export const actions = {
 
+  async create({commit},payload){
+    const response = await this.$axios.post('/categories', payload)
+    const category = response.data
+    commit('ADD',category)
+    return category
+  },
+
   async fetch({commit}, payload){
     const response = await this.$axios.get('/categories')
     const categories = response.data
@@ -19,6 +26,10 @@ export const actions = {
 }
 
 export const mutations = {
+  
+  ADD(state,payload){
+    state.categories.push(payload)
+  },
 
   SET(state, payload){
     state.categories = payload
