@@ -16,7 +16,7 @@
          cols="12"
          class="py-0"
          >
-         
+          <tasks :tasks="tasks"/>
       </v-col>
    </v-row>
    </v-container>
@@ -27,7 +27,6 @@
 export default {
   data(){
     return{
-      tasks:[]
     }
   },
   mounted() {
@@ -37,7 +36,10 @@ export default {
   computed:{
     id(){
       return this.$route.params.id
-      },   
+      },
+    tasks(){
+        return this.$store.state.task.tasks
+      } 
   },
   methods:{
     async fetchTaskByProject(){
