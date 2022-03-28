@@ -44,7 +44,8 @@ export default {
   methods:{
     async fetchProject(){
       this.project = await this.$store.dispatch('project/fetchSingle', this.id)
-    }
+    },
+
   }
  
 }
