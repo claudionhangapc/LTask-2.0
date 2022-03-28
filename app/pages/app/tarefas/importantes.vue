@@ -4,13 +4,10 @@
          cols="12"
          class="my-0 d-flex align-center"
          >
-         <v-checkbox
-              class="mt-0 pt-0"
-              hide-details
-              :on-icon="'mdi-star'"
-              :off-icon="'mdi-star-outline'"
-          ></v-checkbox>
-         <h3 >  
+         <v-icon >
+          mdi-star
+        </v-icon>
+        <h3 class="ml-2">  
           Importantes             
         </h3>
       </v-col>
