@@ -17,6 +17,7 @@
          >
          <project :project="this.project" />
       </v-col>
+      <NuxtChild/>
    </v-row>
 </template>
 
