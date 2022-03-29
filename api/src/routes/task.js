@@ -123,5 +123,27 @@ module.exports = function (fastify, option, done) {
   })
 
 
+
+  //
+  
+  /*
+   * find task by project id
+  */
+
+  fastify.get('/project/:project_id', {
+    preValidation: [fastify.authenticate]
+  },
+  async (request, reply) => {
+    try {
+      const { id } = request.whoiam
+      const { project_id } = request.params
+      const tasks = await taskInstance.fetchByProjectID(id, project_id)
+      reply.send(tasks)
+    } catch (error) {
+      reply.send(error)
+    }
+  })
+
+
   done()
 }
