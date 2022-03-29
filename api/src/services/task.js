@@ -166,6 +166,28 @@ class Task {
       return singleTask
   }
 
+
+  /*
+  * find task by project_id
+  */
+
+  async fetchByProjectID (id, project_id){
+    
+    const tasks = await this.fastify
+    .knex.select(['task.id',
+    'task.date_created','task.date_updated','task.date_to_start',
+    'task.important','task.remember_me',
+    'task.name','project.name as project_name', 'category.name as category_name'])
+    .table('task')
+    .leftJoin('category','category.id','task.category_id')
+    .leftJoin('project','project.id','task.project_id')
+    .where({
+      'task.user_id':id,
+      'task.project_id':project_id
+      })
+
+    return tasks
+  }
 }
 
 module.exports = Task
