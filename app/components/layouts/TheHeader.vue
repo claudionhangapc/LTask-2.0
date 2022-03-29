@@ -150,7 +150,7 @@
         this.$router.push('/app/tarefas/adicionar');
       },
       gotoAddNewCategory(){
-        this.$router.push('/app/tarefas/categorias/adicionar');
+        this.$router.push('/app/categorias/adicionar');
       },
       fetchColors(){
         this.$store.dispatch('color/fetch')
