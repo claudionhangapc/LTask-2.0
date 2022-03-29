@@ -27,7 +27,11 @@
 export default {
   data(){
     return{
+      tasks:[]
     }
+  },
+  created(){
+     this.fetchTaskByProject()
   },
   mounted() {
     //this.$router.replace('/app/projetos');
@@ -37,13 +41,13 @@ export default {
     id(){
       return this.$route.params.id
       },
-    tasks(){
+    /*tasks(){
         return this.$store.state.task.tasks
-      } 
+      } */
   },
   methods:{
     async fetchTaskByProject(){
-
+      this.tasks =  await this.$store.dispatch('task/fetchByProjectID', this.id)
     }
   }
  

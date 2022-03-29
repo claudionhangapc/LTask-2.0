@@ -36,8 +36,15 @@ export const actions = {
     const task = response.data
     commit('DELETE', id)
     return task
-  }
+  },
 
+  async fetchByProjectID({commit}, project_id){
+    const response = await this.$axios.get(`/tasks/project_id/${project_id}`)
+    const tasks = response.data
+
+    console.log(tasks)
+    return tasks
+  }
 
 }
 

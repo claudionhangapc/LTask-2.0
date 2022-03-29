@@ -130,7 +130,7 @@ module.exports = function (fastify, option, done) {
    * find task by project id
   */
 
-  fastify.get('/project/:project_id', {
+  fastify.get('/project_id/:project_id', {
     preValidation: [fastify.authenticate]
   },
   async (request, reply) => {
