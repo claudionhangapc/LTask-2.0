@@ -1,6 +1,6 @@
 <template>
   <div>
-   <ModalCategoryAdd :dialog="dialogCategory" @closeModalCategory="updatedialogCategory($event)"/>
+   
   </div>
 </template>
 
@@ -8,14 +8,12 @@
 export default {
   data(){
     return{
-      dialogCategory:true,
+      
     }
   },
-  methods:{
-    updatedialogCategory(value){
-        this.dialogCategory = value
-    },
-  }
+  mounted() {
+    this.$router.replace('/app/categorias');
+  },
  
 }
 </script>
