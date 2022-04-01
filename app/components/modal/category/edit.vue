@@ -6,7 +6,7 @@
     max-width="700" >
       <v-card>
         <v-card-title class="text-h5 header-background">
-          Adicionar Categoria
+          Editar Categoria
         </v-card-title>
 
         <v-card-text class="pt-2">
