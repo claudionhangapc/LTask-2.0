@@ -101,6 +101,7 @@
       itemsPerfil: [
         { title: 'Meu Perfil',method:'goToPerfil' },
         { title: 'Meus Projetos',method:'gotoProject' },
+        { title: 'Minhas Categorias',method:'gotoCategory' },
         { title: 'Sair', method:'logout'},
       ],
       cards: ['Today', 'Yesterday'],
@@ -142,6 +143,9 @@
       },
       gotoProject(){
         this.$router.replace('/app/projetos');
+      },
+      gotoCategory(){
+        this.$router.replace('/app/categorias');
       },
       gotoAddNewProject(){
         this.$router.push('/app/projetos/adicionar');
