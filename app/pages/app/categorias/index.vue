@@ -40,7 +40,7 @@
                             Tarefas
                           </v-btn>
                           <v-btn 
-                          :to="`/app/projetos/editar/${category.id}`"
+                          :to="`/app/categorias/editar/${category.id}`"
                           v-if="hover"
                           class="ml-5"  
                           elevation="0" 

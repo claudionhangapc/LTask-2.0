@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ModalProjectEdit :dialog="dialogProject" @closeModalProject="updatedialogProject($event)"/>
+    <ModalCategoryEdit :dialog="dialogCategory" @closeModalCategory="updatedialogCategory($event)"/>
   </div>
 </template>
 
@@ -8,13 +8,13 @@
 export default {
   data(){
     return{
-      dialogProject:true,
+      dialogCategory:true,
     }
   },
   methods:{
-    updatedialogProject(value){
-        this.dialogProject = value
-        this.$router.replace('/app/projetos');
+    updatedialogCategory(value){
+        this.dialogCategory = value
+        this.$router.replace('/app/categorias');
     },
   }
 }
