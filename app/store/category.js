@@ -22,10 +22,9 @@ export const actions = {
   },
 
   async fetchSingle({commit}, id){
-    alert(id)
-    /*const response = await this.$axios.get(`/categories/${id}`)
+    const response = await this.$axios.get(`/categories/${id}`)
     const category = response.data
-    return category*/
+    return category
   }
 
 }

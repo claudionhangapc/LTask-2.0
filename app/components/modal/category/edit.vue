@@ -93,13 +93,13 @@ export default {
         let categorySingle = this.$store.getters["category/find"](this.id);
         if(!categorySingle){
           categorySingle = await this.$store.dispatch('category/fetchSingle',this.id)
-
-         /* if(!categorySingle || categorySingle.length == 0 ){
+         
+         if(!categorySingle || categorySingle.length == 0 ){
             this.$router.replace('/app/categorias');
-          }*/
+          }
         }
-        /*this.categorySingle.name = categorySingle.name
-        this.fetched = true*/
+        this.category.name = categorySingle.name
+        this.fetched = true
 
       }catch(err){
         this.closeModal()
