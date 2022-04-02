@@ -2,6 +2,10 @@ export const state = ()=>({
   categories:[]
 })
 
+export const getters = {
+  find: (state) => (id) => state.categories.find(item => item.id == id),
+}
+
 export const actions = {
 
   async create({commit},payload){
@@ -18,9 +22,10 @@ export const actions = {
   },
 
   async fetchSingle({commit}, id){
-    const response = await this.$axios.get(`/categories/${id}`)
+    alert(id)
+    /*const response = await this.$axios.get(`/categories/${id}`)
     const category = response.data
-    return category
+    return category*/
   }
 
 }

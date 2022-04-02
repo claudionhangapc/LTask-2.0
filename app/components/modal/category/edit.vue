@@ -72,6 +72,14 @@ export default {
       }
     }
   },
+  created(){   
+    this.fetchSingleCategory()
+  },
+  computed:{
+    id() {
+      return this.$route.params.id;
+    }
+  },
   methods:{
     closeModal(){
      this.$emit('closeModalCategory', false)
@@ -80,18 +88,18 @@ export default {
     updateColor(value){
       this.defaultColor = value
     },
-  async fetchSingleCategory(){
+    async fetchSingleCategory(){
       try{
-        let categorySingle = this.$store.getters["project/find"](this.id);
+        let categorySingle = this.$store.getters["category/find"](this.id);
         if(!categorySingle){
-          categorySingle = await this.$store.dispatch('project/fetchSingle',this.id)
+          categorySingle = await this.$store.dispatch('category/fetchSingle',this.id)
 
-          if(!categorySingle || categorySingle.length == 0 ){
-            this.$router.replace('/app/projetos');
-          }
+         /* if(!categorySingle || categorySingle.length == 0 ){
+            this.$router.replace('/app/categorias');
+          }*/
         }
-        this.categorySingle.name = categorySingle.name
-        this.fetched = true
+        /*this.categorySingle.name = categorySingle.name
+        this.fetched = true*/
 
       }catch(err){
         this.closeModal()
