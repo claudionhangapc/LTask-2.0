@@ -59,6 +59,7 @@ export default {
   },
   data(){
     return{
+      fetched:false,
       error:false,
       defaultColor:'#000',
       category:{
@@ -79,17 +80,21 @@ export default {
     updateColor(value){
       this.defaultColor = value
     },
-    async createCategory(){
-      
+  async fetchSingleCategory(){
       try{
-        const {name} = this.category
-        await this.$store.dispatch('category/create', {
-          name,
-        })
-        this.closeModal()
+        let categorySingle = this.$store.getters["project/find"](this.id);
+        if(!categorySingle){
+          categorySingle = await this.$store.dispatch('project/fetchSingle',this.id)
+
+          if(!categorySingle || categorySingle.length == 0 ){
+            this.$router.replace('/app/projetos');
+          }
+        }
+        this.categorySingle.name = categorySingle.name
+        this.fetched = true
+
       }catch(err){
-        this.error = true
-        //console.log(err)
+        this.closeModal()
       }
     },
     validationForm(){
