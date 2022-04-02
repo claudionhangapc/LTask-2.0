@@ -10,7 +10,7 @@ class Category {
    * get all categories
    */
   async fetch (id) {
-    const result = await this.model.where('user_id',id)
+    const result = await this.fastify.knex('category').where('user_id',id)
     return result
   }
 
@@ -18,7 +18,7 @@ class Category {
    * get single category
    */
   async show (user_id, category_id) {
-    let singleCategory = await this.model
+    let singleCategory = await this.fastify.knex('category')
       .where({
         'user_id': user_id,
         'id': category_id
