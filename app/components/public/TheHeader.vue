@@ -20,7 +20,7 @@
           <span class="mr-2">Sobre</span>
         </v-btn>
         <v-btn text >
-          <span class="mr-2">Download</span>
+          <span class="mr-2">Tarefas</span>
         </v-btn>
         <v-btn text>
           <span class="mr-2">Preços</span>

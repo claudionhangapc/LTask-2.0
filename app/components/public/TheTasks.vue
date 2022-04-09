@@ -1,6 +1,6 @@
 
 <template>
-  <section>
+  <section style="background-color: #1c87c9;">
    <v-container fluid class="py-10">
       <!--<v-row>
         <v-col>
@@ -10,6 +10,14 @@
         </v-col>
       </v-row>  -->
       <v-row>
+        <v-col cols="12" md="6">
+           <!--<img src="~/assets/app-init.png" />-->
+           <v-img
+          src="app-task.png"
+          aspect-ratio="2"
+          contain
+        ></v-img>
+        </v-col>
         <v-col cols="12" md="6">
           <h4>
             Criar as suas tarefas 
@@ -28,14 +36,7 @@
             </v-btn>
           </div>
         </v-col>
-        <v-col cols="12" md="6">
-           <!--<img src="~/assets/app-init.png" />-->
-           <v-img
-          src="app-init.png"
-          aspect-ratio="2"
-          contain
-        ></v-img>
-        </v-col>
+        
       </v-row>
    </v-container>
   </section>

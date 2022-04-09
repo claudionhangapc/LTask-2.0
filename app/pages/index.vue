@@ -2,6 +2,7 @@
   <div>
     <PublicTheHome />
     <PublicTheAbout />
+    <PublicTheTasks />
   </div>
 </template>
 
