@@ -33,10 +33,10 @@
         <v-spacer></v-spacer>
 
         <div >
-          <v-btn text  outlined >
+          <v-btn text  >
             <span class="mr-2">Entrar</span>
           </v-btn>
-          <v-btn text >
+          <v-btn text outlined >
             <span class="mr-2">Criar conta</span>
           </v-btn>
         </div>

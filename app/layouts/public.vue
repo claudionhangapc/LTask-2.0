@@ -6,10 +6,7 @@
   <!--<PublicNavigation /> -->
   <PublicTheHeader :drawer="drawer" @displayAsideMenu="displayAsideMenu($event)"/>
   <v-main>
-     <v-container
-      >
-        <Nuxt />
-      </v-container>
+    <Nuxt />   
   </v-main>
 </v-app>
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-   ola bom dia
+    <PublicTheHome />
   </div>
 </template>
 
