@@ -25,69 +25,22 @@
         <v-btn text>
           <span class="mr-2">Preços</span>
         </v-btn>
-        <v-btn  outlined text >
+        <v-btn  text >
           <span class="mr-2">Contate-nos</span>
         </v-btn>
       </div>
         
         <v-spacer></v-spacer>
 
-        <!-- notificação -->
-        <v-btn icon>
-          <v-icon>mdi-bell-outline </v-icon>
-        </v-btn>
+        <div >
+          <v-btn text  outlined >
+            <span class="mr-2">Entrar</span>
+          </v-btn>
+          <v-btn text >
+            <span class="mr-2">Criar conta</span>
+          </v-btn>
+        </div>
 
-        <!-- task -->
-        <v-menu offset-y>
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn 
-              v-bind="attrs"
-              v-on="on"
-              icon>
-                <v-icon>mdi-plus</v-icon>
-                <span class="dropdown-caret"></span>
-            </v-btn>
-            </template>
-            <v-list light>
-              <v-list-item
-                v-for="(item, index) in itemsTask"
-                :key="index"
-                 link
-                @click="handle_function_call(item.method)"
-              >
-                <v-list-item-title>{{ item.title }}</v-list-item-title>
-              </v-list-item>
-            </v-list>
-        </v-menu>
-
-        <!-- perfil -->
-        <v-menu offset-y>
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn
-                fab large plain
-                v-bind="attrs"
-                v-on="on"
-                class="pa-0"
-              >
-                <v-avatar color="#FF8700" size="36" class="mr-1">
-                  <v-icon dark>
-                    mdi-account-circle
-                  </v-icon>
-                </v-avatar>
-                <span class="dropdown-caret"></span>
-              </v-btn>
-            </template>
-            <v-list light>
-              <v-list-item
-                v-for="(item, index) in itemsPerfil"
-                :key="index"
-                link
-                @click="handle_function_call(item.method)"
-              >
-                <v-list-item-title>{{ item.title }}</v-list-item-title>
-              </v-list-item>
-            </v-list>
-        </v-menu>
       </v-app-bar>
 </template>
 <script>
