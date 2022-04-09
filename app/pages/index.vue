@@ -1,6 +1,7 @@
 <template>
   <div>
     <PublicTheHome />
+    <PublicTheAbout />
   </div>
 </template>
 
