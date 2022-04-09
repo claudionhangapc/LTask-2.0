@@ -8,21 +8,27 @@
         app
         elevation="0"
       >
-        <v-app-bar-nav-icon @click.stop="setMenu"></v-app-bar-nav-icon>
+        <v-app-bar-nav-icon @click.stop="setMenu" v-if="false"></v-app-bar-nav-icon>
 
         <v-toolbar-title>L<span style="color:#FF8700">Task</span></v-toolbar-title>
-        <v-spacer></v-spacer>
-
-          <v-text-field
-            :autofocus="false"
-            full-width
-            dense
-            hide-details
-            append-icon="mdi-magnify"
-            filled
-            outlined
-            dark
-          ></v-text-field>
+      
+        <div  class="ml-5">
+        <v-btn text >
+          <span class="mr-2">Home</span>
+        </v-btn>
+        <v-btn text >
+          <span class="mr-2">Sobre</span>
+        </v-btn>
+        <v-btn text >
+          <span class="mr-2">Download</span>
+        </v-btn>
+        <v-btn text>
+          <span class="mr-2">Preços</span>
+        </v-btn>
+        <v-btn  outlined text >
+          <span class="mr-2">Contate-nos</span>
+        </v-btn>
+      </div>
         
         <v-spacer></v-spacer>
 
