@@ -1,6 +1,6 @@
 
 <template>
-  <section style="background-color: #1c87c9;">
+  <section style="background-color: #DEDEDE;">
    <v-container fluid class="py-10">
       <!--<v-row>
         <v-col>
