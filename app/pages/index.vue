@@ -5,6 +5,7 @@
     <LandingpageTheTasks />
     <LandingpageTheTestimony />
     <LandingpageTheNews />  
+    <LandingpageTheFooter/>  
   </div>
 </template>
 
