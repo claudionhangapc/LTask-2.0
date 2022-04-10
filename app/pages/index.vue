@@ -3,6 +3,8 @@
     <LandingpageTheHome />
     <LandingpageTheAbout />
     <LandingpageTheTasks />
+    <LandingpageTheTestimony />
+    
   </div>
 </template>
 
