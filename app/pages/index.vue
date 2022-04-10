@@ -4,7 +4,7 @@
     <LandingpageTheAbout />
     <LandingpageTheTasks />
     <LandingpageTheTestimony />
-    
+    <LandingpageTheNews />  
   </div>
 </template>
 
