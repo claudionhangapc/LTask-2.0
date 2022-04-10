@@ -2,7 +2,7 @@
 <template>
   <section>
    <v-container fluid class="pt-10">
-      <v-row align="center" justify="center">
+      <v-row >
         <v-col cols="12" md="5">
           <h4>
             <v-toolbar-title>L<span style="color:#FF8700">Task</span></v-toolbar-title>
@@ -28,21 +28,73 @@
           </v-card>
           </div>
         </v-col>
-        <v-col cols="12" md="7">
-            <v-row>
-             <v-col cols="12" md="6">
+        <v-col cols="12" md="2">
+        </v-col>
+        <v-col cols="12" md="5">
+            <v-row >
+             <v-col cols="12" md="4">
+               <h4 class="mb-3">
+                 Feature
+               </h4>
+               <p class="mb-2">
+                 teste 1
+               </p>
+               <p class="mb-2">
+                 teste 1
+               </p>
+               <p class="mb-2">
+                 teste 1
+               </p>
+
+             </v-col>
+             <v-col cols="12" md="4">
+               <h4 class="mb-3">
+                 Resources
+               </h4>
+               <p class="mb-2">
+                 teste 1
+               </p>
+               <p class="mb-2">
+                 teste 1
+               </p>
+               <p class="mb-2">
+                 teste 1
+               </p>
+               <p class="mb-2">
+                 teste 1
+               </p>
                
              </v-col>
-             <v-col cols="12" md="6">
-                
+             <v-col cols="12" md="4">
+                <h4 class="mb-3">
+                 Company
+               </h4>
+               <p class="mb-2">
+                 teste 1
+               </p>
+               <p class="mb-2">
+                 teste 1
+               </p>
+               <p class="mb-2">
+                 teste 1
+               </p>
+               <p class="mb-2">
+                 teste 1
+               </p>
+               <p class="mb-2">
+                 teste 1
+               </p>
+               <p class="mb-2">
+                 teste 1
+               </p>
              </v-col>
            </v-row>
         </v-col>
       </v-row>
-       <v-row style="background-color: #1c87c9;">
+       <v-row style="background-color:#101010">
         <v-col>
-         <h5>
-           Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident similique non laborum numquam quibusdam rerum a ex sequi, nisi est aperiam 
+         <h5 style="color:#fff; text-align:center">
+           © Copyright 2022. Todos os direitos reservados.
          </h5>
         </v-col>
       </v-row> 
