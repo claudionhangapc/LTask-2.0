@@ -1,14 +1,14 @@
 <template>
   <div>
-    <PublicTheHome />
-    <PublicTheAbout />
-    <PublicTheTasks />
+    <LandingpageTheHome />
+    <LandingpageTheAbout />
+    <LandingpageTheTasks />
   </div>
 </template>
 
 <script>
 export default {
-  layout: 'public',
+  layout: 'landingpage',
   auth: false,
   data(){
     return{
