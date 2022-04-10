@@ -23,7 +23,7 @@
           <span class="mr-2">Tarefas</span>
         </v-btn>
         <v-btn text>
-          <span class="mr-2">Preços</span>
+          <span class="mr-2">Testemunhas</span>
         </v-btn>
         <v-btn  text >
           <span class="mr-2">Contate-nos</span>
