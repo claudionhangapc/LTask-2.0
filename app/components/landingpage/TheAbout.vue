@@ -1,7 +1,7 @@
 
 <template>
-  <section>
-   <v-container fluid class="py-10">
+  <section class="section-container">
+   <v-container fluid>
       <!--<v-row>
         <v-col>
           <h1>
@@ -9,11 +9,8 @@
           </h1>
         </v-col>
       </v-row>  -->
-      <v-row>
+      <v-row align="center" justify="center">
         <v-col cols="12" md="6">
-          <h4>
-            Criar as suas tarefas 
-          </h4>
           <h2 class="py-3">
             Lorem ipsum dolor sit amet, consectetur 
           </h2>
@@ -82,6 +79,10 @@
   }
 </script>
 <style scoped>
-
+  .section-container{
+    
+    padding-top:60px;
+    padding-bottom:60px;
+  }
 
 </style>

@@ -1,7 +1,7 @@
 
 <template>
-  <section style="background-color: #DEDEDE;">
-   <v-container fluid class="py-10">
+  <section class="section-container">
+   <v-container fluid>
       <v-row align="center" justify="center">
         <v-col cols="12" md="6">
            <!--<img src="~/assets/app-init.png" />-->
@@ -85,6 +85,10 @@
   }
 </script>
 <style scoped>
-
+.section-container{
+    background-color: #FEFAEF;
+    padding-top:60px;
+    padding-bottom:60px;
+  }
 
 </style>
