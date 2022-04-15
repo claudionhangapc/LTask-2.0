@@ -10,7 +10,7 @@
         </v-col>
       </v-row>  -->
       <v-row align="center" justify="center">
-        <v-col cols="12" md="6">
+        <v-col cols="12" md="6" style="color:#101010">
           <h2 class="py-3">
             Lorem ipsum dolor sit amet, consectetur 
           </h2>

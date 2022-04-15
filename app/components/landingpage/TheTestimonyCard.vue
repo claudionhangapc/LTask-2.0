@@ -2,7 +2,7 @@
 <template>
   <v-card
                   class="mx-auto"
-                  color="#FEFAEF"
+                  color="#101010"
                   dark
                   elevation="0"
                 >
@@ -16,7 +16,7 @@
                     <span class="text-h6 font-weight-light">Twitter</span>
                   </v-card-title>
               
-                  <v-card-text class="text-h7 font-weight-bold">
+                  <v-card-text class="text-h7 font-weight-light" style="color:#fff">
                     "Turns out semicolon-less style is easier and safer in TS because most gotcha edge cases are type invalid as well."
                   </v-card-text>
               

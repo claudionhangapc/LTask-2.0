@@ -65,6 +65,7 @@
 <style scoped>
 .section-container{
     padding:60px 40px;
+    color:#101010
   }
 
 </style>

@@ -83,6 +83,7 @@
 .section-container{
     background-color: #FEFAEF; 
     padding:60px 40px;
+    color:#101010
   }
 
 </style>
