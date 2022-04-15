@@ -2,7 +2,7 @@
 <template>
   <section >
     <!--  https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg-->
-    <v-parallax  src="hand-draw.jpg"  >
+    <v-parallax  src="hand-draw.jpg"  class="section-container">
       <v-row align="center" justify="center">
         <v-col cols="12" md="7">
           <h1 class="display-2" style="color:#333">
@@ -38,6 +38,7 @@
   }
 </script>
 <style scoped>
-
-
+  .section-container{
+    padding:60px 30px !important;
+  }
 </style>

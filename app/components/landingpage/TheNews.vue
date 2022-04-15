@@ -87,8 +87,7 @@
 <style scoped>
 .section-container{
     background-color: #FEFAEF;
-    padding-top:60px;
-    padding-bottom:60px;
+    padding:60px 40px;
   }
 
 </style>

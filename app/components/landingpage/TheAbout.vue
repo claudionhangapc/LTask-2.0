@@ -1,7 +1,7 @@
 
 <template>
-  <section class="section-container">
-   <v-container fluid>
+  <section >
+   <v-container fluid class="section-container">
       <!--<v-row>
         <v-col>
           <h1>
@@ -81,8 +81,7 @@
 <style scoped>
   .section-container{
     
-    padding-top:60px;
-    padding-bottom:60px;
+     padding:60px 40px;
   }
 
 </style>

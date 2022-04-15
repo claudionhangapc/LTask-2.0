@@ -1,7 +1,7 @@
 
 <template>
-  <section class="section-container">
-   <v-container fluid>
+  <section >
+   <v-container fluid class="section-container">
       <!--<v-row>
         <v-col>
           <h1>
@@ -81,9 +81,8 @@
 </script>
 <style scoped>
 .section-container{
-    background-color: #FFE7D6; 
-    padding-top:60px;
-    padding-bottom:60px;
+    background-color: #FEFAEF; 
+    padding:60px 40px;
   }
 
 </style>

@@ -2,7 +2,7 @@
 <template>
   <v-card
                   class="mx-auto"
-                  color="#000"
+                  color="#FEFAEF"
                   dark
                   elevation="0"
                 >

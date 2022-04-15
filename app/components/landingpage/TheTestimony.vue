@@ -1,7 +1,7 @@
 
 <template>
-  <section>
-   <v-container fluid class="py-10">
+  <section class="section-container">
+   <v-container fluid >
       <!--<v-row>
         <v-col>
           <h1>
@@ -63,6 +63,8 @@
   }
 </script>
 <style scoped>
-
+.section-container{
+    padding:60px 40px;
+  }
 
 </style>

@@ -1,7 +1,7 @@
 
 <template>
   <section>
-   <v-container fluid class="pt-10">
+   <v-container fluid class="section-container">
       <v-row >
         <v-col cols="12" md="5">
           <h4>
@@ -91,7 +91,9 @@
            </v-row>
         </v-col>
       </v-row>
-       <v-row style="background-color:#101010">
+   </v-container>
+   <v-container fluid>
+     <v-row style="background-color:#101010">
         <v-col>
          <h5 style="color:#fff; text-align:center">
            © Copyright 2022. Todos os direitos reservados.
@@ -129,6 +131,8 @@
   }
 </script>
 <style scoped>
-
+  .section-container{
+    padding:60px 40px;
+  }
 
 </style>
