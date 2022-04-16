@@ -30,7 +30,10 @@
                 ></v-text-field>
               </v-col>
               <v-col cols="4">
-                <v-btn  color="primary" >
+                <v-btn  
+                color ="#101010" 
+                class="white--text"
+                >
                   <span >Receber novidades</span>
                 </v-btn>
               </v-col>

@@ -20,8 +20,11 @@
             </p>
           </div>
           <div class="py-2">
-            <v-btn  outlined text>
-              <span >Inicia agora mesmo</span>
+            <v-btn  
+            outlined
+            color="#FF8700" 
+            >
+              <span style="color:#101010">Inicia agora mesmo</span>
             </v-btn>
           </div>
         </v-col>

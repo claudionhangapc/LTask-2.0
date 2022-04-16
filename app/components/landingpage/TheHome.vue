@@ -15,8 +15,11 @@
           </p>
           </div>
           <div>
-            <v-btn  color="#000">
-              <span style="color:#fff">Criar uma conta</span>
+            <v-btn  
+            color="#101010"
+             class="white--text"
+            >
+              <span>Criar uma conta</span>
             </v-btn>
           </div>
         </v-col>

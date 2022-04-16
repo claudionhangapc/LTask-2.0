@@ -2,13 +2,6 @@
 <template>
   <section >
    <v-container fluid class="section-container">
-      <!--<v-row>
-        <v-col>
-          <h1>
-            Sobre
-          </h1>
-        </v-col>
-      </v-row>  -->
       <v-row align="center" justify="center">
         <v-col cols="12" md="6">
            <!--<img src="~/assets/app-init.png" />-->
@@ -28,8 +21,10 @@
             </p>
           </div>
           <div class="py-2">
-            <v-btn  outlined text>
-              <span >Inicia agora mesmo</span>
+            <v-btn  
+            color="#FF8700" 
+            outlined>
+              <span style="color:#101010">Inicia agora mesmo</span>
             </v-btn>
           </div>
         </v-col>
