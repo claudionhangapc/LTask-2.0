@@ -135,5 +135,12 @@
     padding:60px 40px;
     color:#101010
   }
+  
+  @media (max-width:600px) {
+  .section-container{
+    padding:40px 30px;
+
+  }
+}
 
 </style>

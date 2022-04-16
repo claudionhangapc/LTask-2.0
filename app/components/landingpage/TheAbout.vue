@@ -87,4 +87,11 @@
      padding:60px 40px;
   }
 
+  @media (max-width:600px) {
+  .section-container{
+    padding:40px 20px;
+
+  }
+}
+
 </style>

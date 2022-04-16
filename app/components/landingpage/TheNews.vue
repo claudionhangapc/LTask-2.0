@@ -22,19 +22,20 @@
           </div>
           <div class="py-2">
             <v-row>
-              <v-col cols="8">
+              <v-col cols="12"  sm="8" md="8">
                <v-text-field
                   label="Digita o teu email "
                   outlined
                   dense
+                  hide-details
                 ></v-text-field>
               </v-col>
-              <v-col cols="4">
+              <v-col cols="12"  sm="4" md="4">
                 <v-btn  
                 color ="#101010" 
                 class="white--text"
                 >
-                  <span >Receber novidades</span>
+                  <span >Enviar</span>
                 </v-btn>
               </v-col>
             </v-row>
@@ -93,5 +94,6 @@
     padding:60px 40px;
     color:#101010
   }
+
 
 </style>
