@@ -4,12 +4,8 @@
     ref="form"
      v-model="valid"
     lazy-validation
+    class="section-container"
     >
-      <v-row  >
-          <v-col class="text-center text-h4 mb-3">
-                L<span style="color:#FF8700">Task</span>
-          </v-col>
-      </v-row>
       <div v-if="!processed">
         <v-container class="class-container-progress " >
            <v-row align="center"
@@ -80,7 +76,7 @@
 
 <script>
 export default {
-  layout: 'public',
+  layout: 'landingpage',
   auth: false,
   data(){
     return{
@@ -139,6 +135,9 @@ export default {
 }
 </script>
 <style scoped>
+  .section-container{
+    padding:30px 30px !important;
+  }
   .class-container{
      max-width: 410px !important;
      padding: 40px;

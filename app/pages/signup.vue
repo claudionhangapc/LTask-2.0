@@ -1,15 +1,10 @@
 <template>
-  <div>
+  <div class="section-container">
     <v-form
     ref="form"
      v-model="valid"
     lazy-validation
     >
-      <v-row  >
-          <v-col class="text-center text-h4 mb-3">
-                L<span style="color:#FF8700">Task</span>
-          </v-col>
-      </v-row>
       <transition mode="out-in">  
       <v-container class="class-container elevation-1 " v-if="!sucessCreate">
         
@@ -211,6 +206,10 @@ export default {
 }
 </script>
 <style scoped>
+ .section-container{
+    padding:30px 30px !important;
+  }
+
   .class-container{
      max-width: 410px !important;
      padding: 40px;
