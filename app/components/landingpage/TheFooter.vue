@@ -92,15 +92,6 @@
         </v-col>
       </v-row>
    </v-container>
-   <v-container fluid>
-     <v-row style="background-color:#101010">
-        <v-col>
-         <h5 style="color:#fff; text-align:center">
-           © Copyright 2022. Todos os direitos reservados.
-         </h5>
-        </v-col>
-      </v-row> 
-   </v-container>
   </section>
 </template>
 <script>

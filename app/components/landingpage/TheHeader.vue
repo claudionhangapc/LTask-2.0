@@ -10,7 +10,11 @@
       >
         <v-app-bar-nav-icon @click.stop="setMenu" v-if="false"></v-app-bar-nav-icon>
 
-        <v-toolbar-title>L<span style="color:#FF8700">Task</span></v-toolbar-title>
+        <v-toolbar-title>
+          <NuxtLink to="/">
+            L<span style="color:#FF8700">Task</span>
+          </NuxtLink>
+        </v-toolbar-title>
       
         <div  class="ml-5">
         <v-btn text >
@@ -33,10 +37,10 @@
         <v-spacer></v-spacer>
 
         <div >
-          <v-btn text  >
+          <v-btn text to="/login" >
             <span class="mr-2">Entrar</span>
           </v-btn>
-          <v-btn text outlined >
+          <v-btn text outlined to="/signup">
             <span class="mr-2">Criar conta</span>
           </v-btn>
         </div>
@@ -123,6 +127,10 @@
   }
 </script>
 <style scoped>
+a{
+  text-decoration: none;
+  color:#fff;
+}
 .dropdown-caret {
     display: inline-block;
     width: 0;
