@@ -4,7 +4,7 @@
   <!-- Must have the app property -->
   <!--<v-app-bar app> teste</v-app-bar>-->
   <!--<PublicNavigation /> -->
-  <LandingpageTheHeader :drawer="drawer" @displayAsideMenu="displayAsideMenu($event)"/>
+  <LandingpageTheHeader />
   <v-main>
     <Nuxt />   
   </v-main>
