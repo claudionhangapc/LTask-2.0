@@ -155,7 +155,7 @@
 
 <script>
 export default {
-  layout: 'public',
+  layout: 'landingpage',
   auth: false,
   data(){
     return{

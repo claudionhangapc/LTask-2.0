@@ -123,7 +123,7 @@
 
 <script>
 export default {
-  layout: 'public',
+  layout: 'landingpage',
   data(){
     return{
       valid: true,
