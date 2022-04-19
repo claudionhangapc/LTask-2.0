@@ -12,7 +12,38 @@
         app
          temporary
          v-model="drawer"
+         color="#101010"
         >
+          <v-list>
+            <v-list-item>
+              <v-list-item-content>
+                <v-toolbar-title>
+                  <NuxtLink to="/">
+                    L<span style="color:#FF8700">Task</span>
+                  </NuxtLink>
+                </v-toolbar-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
+
+          <v-divider />
+          <v-list dense>
+            <v-list-item
+              v-for="([icon, text, link], i) in items"
+              :key="i"
+              link
+              @click="$vuetify.goTo(link)"
+            >
+              <v-list-item-icon class="justify-center">
+                <v-icon>{{ icon }}</v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title class="subtitile-1">{{
+                  text
+                }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
         </v-navigation-drawer>
         <v-toolbar-title>
           <NuxtLink to="/">
@@ -56,6 +87,13 @@
     data: () => ({
       drawer: true,
       isXs: true,
+      items: [
+        ["mdi-home-outline", "Home", "#hero"],
+        ["mdi-information-outline", "Sobre", "#features"],
+        ["mdi-download-box-outline", "Tarefas", "#tarefas"],
+        ["mdi-currency-usd", "Testemunhas", "#testemunhas"],
+        ["mdi-email-outline", "Contate-nos", "#contate-nos"],
+      ]
     }),
     methods:{
       setMenu(){
