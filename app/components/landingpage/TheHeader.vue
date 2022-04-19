@@ -11,7 +11,7 @@
             <v-list-item>
               <v-list-item-content>
                 <v-toolbar-title>
-                  <NuxtLink to="/">
+                  <NuxtLink to="/" style="color:#101010">
                     L<span style="color:#FF8700">Task</span>
                   </NuxtLink>
                 </v-toolbar-title>
@@ -109,11 +109,6 @@
       
       onResize() {
         this.isXs = window.innerWidth < 980;  
-      },
-
-      voltar(){
-        alert("olaaaaaa") 
-         //this.$vuetify.goTo("#about")
       }
 
     },
@@ -135,7 +130,7 @@
 <style scoped>
 a{
   text-decoration: none;
-  color:#101010;
+  color:#fff;
   
 }
 .dropdown-caret {
