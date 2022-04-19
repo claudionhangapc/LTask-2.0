@@ -1,18 +1,11 @@
 
 <template>
-  <v-app-bar
-        color="#101010"
-        dark
-        fixed 
-        clipped-left
-        app
-        elevation="0"
-      >
-        <v-navigation-drawer
+  <div>
+    <v-navigation-drawer
          app
          temporary
          v-model="drawer"
-         color="#101010"
+         
         >
           <v-list>
             <v-list-item>
@@ -32,7 +25,7 @@
               v-for="([icon, text, link], i) in items"
               :key="i"
               link
-              @click="$vuetify.goTo(link)"
+              @click = "$vuetify.goTo(link)"
             >
               <v-list-item-icon class="justify-center">
                 <v-icon>{{ icon }}</v-icon>
@@ -45,6 +38,16 @@
             </v-list-item>
           </v-list>
         </v-navigation-drawer>
+  
+    <v-app-bar
+        color="#101010"
+        dark
+        fixed 
+        clipped-left
+        app
+        elevation="0"
+      >
+        
         <v-toolbar-title>
           <NuxtLink to="/">
             L<span style="color:#FF8700">Task</span>
@@ -83,6 +86,7 @@
           </v-btn>
         </div>
       </v-app-bar>
+    </div>
 </template>
 <script>
   
@@ -107,6 +111,11 @@
         this.isXs = window.innerWidth < 980;  
       },
 
+      voltar(){
+        alert("olaaaaaa") 
+         //this.$vuetify.goTo("#about")
+      }
+
     },
     watch: {
       isXs(value) {
@@ -126,7 +135,8 @@
 <style scoped>
 a{
   text-decoration: none;
-  color:#fff;
+  color:#101010;
+  
 }
 .dropdown-caret {
     display: inline-block;
