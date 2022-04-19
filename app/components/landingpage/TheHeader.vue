@@ -8,7 +8,12 @@
         app
         elevation="0"
       >
-
+        <v-navigation-drawer
+        app
+         temporary
+         v-model="drawer"
+        >
+        </v-navigation-drawer>
         <v-toolbar-title>
           <NuxtLink to="/">
             L<span style="color:#FF8700">Task</span>
@@ -49,7 +54,7 @@
   
   export default {
     data: () => ({
-      drawer: null,
+      drawer: true,
       isXs: true,
     }),
     methods:{
