@@ -9,7 +9,7 @@
         elevation="0"
       >
         <v-navigation-drawer
-        app
+         app
          temporary
          v-model="drawer"
          color="#101010"
@@ -70,7 +70,10 @@
         </div>
         
         <v-spacer></v-spacer>
-        <v-app-bar-nav-icon   v-if="isXs" ></v-app-bar-nav-icon>
+        <v-app-bar-nav-icon   
+        @click.stop="drawer = !drawer"
+        v-if="isXs" >
+        </v-app-bar-nav-icon>
         <div v-else>
           <v-btn text to="/login" >
             <span class="mr-2">Entrar</span>
@@ -85,14 +88,14 @@
   
   export default {
     data: () => ({
-      drawer: true,
+      drawer: null,
       isXs: true,
       items: [
-        ["mdi-home-outline", "Home", "#hero"],
-        ["mdi-information-outline", "Sobre", "#features"],
-        ["mdi-download-box-outline", "Tarefas", "#tarefas"],
-        ["mdi-currency-usd", "Testemunhas", "#testemunhas"],
-        ["mdi-email-outline", "Contate-nos", "#contate-nos"],
+        ["mdi-home-outline", "Home", "#home"],
+        ["mdi-information-outline", "Sobre", "#about"],
+        ["mdi-clipboard-edit-outline", "Tarefas", "#task"],
+        ["mdi-star-check-outline", "Testemunhas", "#testimony"],
+        ["mdi-email-outline", "Contate-nos", "#news"],
       ]
     }),
     methods:{

@@ -1,6 +1,6 @@
 
 <template>
-  <section >
+  <section id="home">
     <!--  https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg-->
     <v-parallax  src="hand-draw.jpg"  class="section-container">
       <v-row align="center" justify="center">
