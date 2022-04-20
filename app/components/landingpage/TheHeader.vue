@@ -55,19 +55,29 @@
         </v-toolbar-title>
       
         <div  class="ml-5" v-if="!isXs">
-          <v-btn text >
+          <v-btn text 
+            @click = "$vuetify.goTo('#home')"
+          >
             <span class="mr-2">Home</span>
           </v-btn>
-          <v-btn text >
+          <v-btn text 
+            @click = "$vuetify.goTo('#about')"
+          >
             <span class="mr-2">Sobre</span>
           </v-btn>
-          <v-btn text >
+          <v-btn text 
+            @click = "$vuetify.goTo('#task')"
+          >
             <span class="mr-2">Tarefas</span>
           </v-btn>
-          <v-btn text>
+          <v-btn text
+            @click = "$vuetify.goTo('#testimony')"
+          >
             <span class="mr-2">Testemunhas</span>
           </v-btn>
-          <v-btn  text >
+          <v-btn  text 
+            @click = "$vuetify.goTo('#news')"
+          >
             <span class="mr-2">Contate-nos</span>
           </v-btn>
         </div>
