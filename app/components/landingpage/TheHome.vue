@@ -2,7 +2,7 @@
 <template>
   <section id="home">
     <!--  https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg-->
-    <v-parallax  src="hand-draw.jpg"  class="section-container">
+    <v-parallax  src="hand-draw.jpg"  class="section-container"  height="600">
       <v-row align="center" justify="center">
         <v-col cols="12" md="7">
           <h1 class="display-2 " style="color:#333">
@@ -45,6 +45,21 @@
     padding:60px 30px !important;
     color:#101010
   }
+
+  
+ @media (max-width:600px) {
+  .section-container{
+    padding:60px 20px;
+  }
+
+  .section-container h1{
+    font-size: 2rem !important;
+    font-weight: 400;
+    line-height: 2.525rem;
+  }
+}
+
+  
 
 
 </style>
