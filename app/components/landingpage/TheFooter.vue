@@ -129,8 +129,7 @@
   
   @media (max-width:600px) {
   .section-container{
-    padding:40px 30px;
-
+    padding:60px 20px;
   }
 }
 

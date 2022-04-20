@@ -70,5 +70,10 @@
     color:#101010
   }
 
+ @media (max-width:600px) {
+  .section-container{
+    padding:60px 20px;
+  }
+}
 
 </style>
