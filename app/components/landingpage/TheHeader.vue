@@ -53,8 +53,7 @@
             L<span style="color:#FF8700">Task</span>
           </NuxtLink>
         </v-toolbar-title>
-      
-        <div  class="ml-5" v-if="!isXs">
+        <div  class="ml-5" v-if="isIndexPage && !isXs">
           <v-btn text 
             @click = "$vuetify.goTo('#home')"
           >
@@ -104,6 +103,7 @@
     data: () => ({
       drawer: null,
       isXs: true,
+      isIndexPage:true,
       items: [
         ["mdi-home-outline", "Home", "#home"],
         ["mdi-information-outline", "Sobre", "#about"],
@@ -130,6 +130,18 @@
           }
         }
       },
+      indexRoute(value){
+        if (value =="/"){
+          this.isIndexPage = true
+        }else{
+          this.isIndexPage = false
+        }
+      }
+    },
+    computed:{
+      indexRoute(){
+        return this.$route.path
+      }
     },
     mounted() {
       this.onResize();
