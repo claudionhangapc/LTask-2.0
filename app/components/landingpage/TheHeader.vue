@@ -37,6 +37,26 @@
               </v-list-item-content>
             </v-list-item>
           </v-list>
+
+          <div  class="pa-3">
+            <div class="text-center mb-4">
+              <v-btn 
+              style="width:100%"
+              text outlined  to="/login" class="">
+              <span >Entrar</span>
+            </v-btn>
+            </div>
+            <div class="text-center">
+              <v-btn 
+              color="#FF8700" 
+              style="width:100%"
+              outlined to="/signup">
+              <span >Criar conta</span>
+              </v-btn>
+            </div>
+            
+          </div>
+
         </v-navigation-drawer>
   
     <v-app-bar
@@ -110,6 +130,8 @@
         ["mdi-clipboard-edit-outline", "Tarefas", "#task"],
         ["mdi-star-check-outline", "Testemunhas", "#testimony"],
         ["mdi-email-outline", "Contate-nos", "#news"],
+        ["mdi-arrow-right-bold-circle-outline", "Entrar", "#testimony"],
+        ["mdi-email-outline", "Criar Conta", "#news"],
       ]
     }),
     methods:{
