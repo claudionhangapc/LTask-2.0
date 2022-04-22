@@ -130,8 +130,6 @@
         ["mdi-clipboard-edit-outline", "Tarefas", "#task"],
         ["mdi-star-check-outline", "Testemunhas", "#testimony"],
         ["mdi-email-outline", "Contate-nos", "#news"],
-        ["mdi-arrow-right-bold-circle-outline", "Entrar", "#testimony"],
-        ["mdi-email-outline", "Criar Conta", "#news"],
       ]
     }),
     methods:{
