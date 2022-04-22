@@ -14,18 +14,27 @@
             <cropper
               :src="img"
              class="cropper"
+             @change="changeFromCropper"
             />
           </div>
           <div class="pa-4 d-flex justify-center ">
             <v-btn
             text 
             outlined
+            @click="onPickFile"
             >
               <v-icon left>
                mdi-camera-plus-outline
               </v-icon>
               Adicionar foto do perfil
             </v-btn>
+            <input 
+              type="file" 
+              style="display:none" 
+              ref="fileInput" 
+              accept="image/*"
+              @change="onFileSelected"
+              >
           </div>
 
         <v-divider></v-divider>
@@ -66,92 +75,33 @@ export default {
   },
   data(){
     return{
-      img: 'https://images.pexels.com/photos/4323307/pexels-photo-4323307.jpeg',
-      menuDate:true,
-      task:{
-        name:'',
-        date_to_start:null,
-        important:null,
-        remember_me:null,
-        category_id:null,
-        project_id:null
-      },
-      rules:{
-        name:[
-            v => !!v || 'Nome é obrigatório',
-          ],
-        category:[
-            v => !!v || 'Cor é obrigatório',
-          ],
-        projeto:[
-          v => !!v || 'Cor é obrigatório',
-        ]
-      },
-      
+      img: null,
+      coordinates:null,
     }
   },
   computed:{
-      dateToStartBrasil(){
-        return this.formatDate(this.task.date_to_start)
-      },
-      minDate(){
-      return   new Date().toISOString().slice(0,10)
-      },
-      projects(){
-        return this.$store.state.project.projects
-      },
-      categories(){
-        return this.$store.state.category.categories
-      }
+
   },
   methods:{
     closeModal(){
      this.$emit('closeModal', false)
     },
-    formatDate(date) {
-        if (!date) return null
-        const [year, month, day] = date.split('-')
-        return `${day}/${month}/${year}`
+    changeFromCropper({ coordinates, canvas }) {
+			console.log(coordinates, canvas);
+      this.coordinates = coordinates
+		},
+    onPickFile(){
+      this.$refs.fileInput.click()
     },
-
-    validationForm(){
-      if(this.$refs.form.validate()){
-        this.createTask()
-      }
-    },
-    async createTask(){
+    onFileSelected(event){
       try{
-
-        const {
-          name,
-          category_id,
-        } = this.task
-
-        const date_to_start = this.task.date_to_start
-        const  remember_me  = this.task.remember_me ? 1 : 0 
-        const  important  = this.task.important ? 1 : 0 
-
-        await this.$store.dispatch('task/create', {
-          name,
-          important,
-          remember_me,
-          category_id,
-          date_to_start,
-          status_id:1     
-        })
-
-        this.closeModal()
-      }catch(err){
-        this.error = true
-        //console.log(err)
+        const selectedFile = event.target.files[0]
+        this.img = URL.createObjectURL(selectedFile)
+      } catch {
+        this.img = null
       }
-    },
-    setTaskCategoryID(event){
-      this.task.category_id = event.id
-    },
-    setTaskProjectID(event){
-      this.task.project_id = event.id
-    },  
+    }
+    
 
   }
 }
