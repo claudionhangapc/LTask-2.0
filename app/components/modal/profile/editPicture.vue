@@ -3,19 +3,29 @@
    <v-dialog :value="dialog"
     overlay-opacity="0.8"
     persistent  
-    max-width="700" 
+    max-width="500" 
     >
       <v-card>
         <v-card-title class="text-h5 header-background">
           Editar foto do Perfil
         </v-card-title>
-        
-         
-          <div class="pa-6">
+
+          <div class="pa-6 d-flex justify-center ">
             <cropper
               :src="img"
-             class="upload-example-cropper"
+             class="cropper"
             />
+          </div>
+          <div class="pa-4 d-flex justify-center ">
+            <v-btn
+            text 
+            outlined
+            >
+              <v-icon left>
+               mdi-camera-plus-outline
+              </v-icon>
+              Adicionar foto do perfil
+            </v-btn>
           </div>
 
         <v-divider></v-divider>
@@ -44,7 +54,7 @@
 </template>
 
 <script>
-import { Cropper } from 'vue-advanced-cropper';
+import { Cropper, CircleStencil } from 'vue-advanced-cropper';
 import 'vue-advanced-cropper/dist/style.css';
 
 export default {
@@ -57,7 +67,7 @@ export default {
   data(){
     return{
       img: 'https://images.pexels.com/photos/4323307/pexels-photo-4323307.jpeg',
-      menuDate:false,
+      menuDate:true,
       task:{
         name:'',
         date_to_start:null,
@@ -148,11 +158,11 @@ export default {
 </script>
 
 <style scoped>
- 
- .upload-example-cropper {
-    border: solid 1px #eee;
+  
+  .cropper {
     height: 300px;
-    width: 100%;
+    max-width: 400px;
+    background: #DDD;
   }
 
   .header-background{
