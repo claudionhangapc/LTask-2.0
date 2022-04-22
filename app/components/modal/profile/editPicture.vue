@@ -6,7 +6,7 @@
     max-width="700" >
       <v-card>
         <v-card-title class="text-h5 header-background">
-          Foto do Perfil
+          Editar foto do Perfil
         </v-card-title>
         <v-card-text class="pt-2">
            <v-form
@@ -101,7 +101,7 @@
             outlined
             @click="validationForm()"
           >
-            Adicionar
+            Salvar
           </v-btn>
         </v-card-actions>
       </v-card>

@@ -24,7 +24,8 @@
                     dark
                     small
                     absolute
-                    style = "bottom:10px; right:0px"                 
+                    style = "bottom:10px; right:0px" 
+                    @click="openModal"                
                   >
                   <v-icon dark>
                     mdi-camera-outline
@@ -131,7 +132,7 @@
          </v-card>
       </v-col>
    </v-row>
-   <ModalProfileEditPicture :dialog="true" @closeModal="updatedialogTask($event)"/>
+   <ModalProfileEditPicture :dialog="dialogEditProfilePicture" @closeModal="updatedialog($event)"/>
   </v-container>
   
 </template>
@@ -140,6 +141,7 @@
 export default {
   data(){
     return{
+      dialogEditProfilePicture:false,
       userItems:[
         {key:'Primeiro nome', value:'claudio' },
         {key:'Ultimo nome', value:'claudio' },
@@ -164,6 +166,14 @@ export default {
         return this.$store.state.task.tasks
       }
   },
+  methods:{
+      openModal(){
+        this.dialogEditProfilePicture = true
+      },
+      updatedialog(value){
+        this.dialogEditProfilePicture = value
+      },  
+    }
  
 }
 </script>
