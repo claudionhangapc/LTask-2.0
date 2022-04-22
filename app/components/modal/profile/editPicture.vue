@@ -50,9 +50,9 @@
           <v-btn
             color="#FF8700"
             outlined
-            @click="validationForm()"
+            @click="savePicture()"
           >
-            Salvar
+            Salvar como foto do perfil
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -76,6 +76,7 @@ export default {
   data(){
     return{
       img: null,
+      selectedImg:null,
       coordinates:null,
     }
   },
@@ -87,7 +88,7 @@ export default {
      this.$emit('closeModal', false)
     },
     changeFromCropper({ coordinates, canvas }) {
-			console.log(coordinates, canvas);
+			//console.log(coordinates, canvas);
       this.coordinates = coordinates
 		},
     onPickFile(){
@@ -95,11 +96,29 @@ export default {
     },
     onFileSelected(event){
       try{
-        const selectedFile = event.target.files[0]
-        this.img = URL.createObjectURL(selectedFile)
+        this.selectedImg = event.target.files[0]
+        this.img = URL.createObjectURL(this.selectedImg)
       } catch {
         this.img = null
       }
+    },
+
+    savePicture(){
+      
+      const fd = new FormData()
+
+      fd.append('image', this.selectedImg, this.selectedImg.name)
+      fd.append('height', this.coordinates.height)
+      fd.append('width', this.coordinates.width)
+      fd.append('left', this.coordinates.left)
+      fd.append('top', this.coordinates.top)
+      
+      /*
+      * Chamada da api
+      */
+
+     console.log(fd)
+
     }
     
 
