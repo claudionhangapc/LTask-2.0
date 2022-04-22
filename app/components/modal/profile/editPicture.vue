@@ -3,88 +3,20 @@
    <v-dialog :value="dialog"
     overlay-opacity="0.8"
     persistent  
-    max-width="700" >
+    max-width="700" 
+    >
       <v-card>
         <v-card-title class="text-h5 header-background">
           Editar foto do Perfil
         </v-card-title>
-        <v-card-text class="pt-2">
-           <v-form
-          ref="form"
-          lazy-validation
-        >
-          <v-text-field
-            hide-details
-            label="Nome da tarefa"
-            required
-            class="mb-2"
-            v-model="task.name" 
-          ></v-text-field>
-           <v-menu
-              class="my-0 py-0"
-              content-class="elevation-0"
-              v-model="menuDate"
-              :close-on-content-click="false"
-            >
-              <template v-slot:activator="{ on, attrs }" class="my-0 py-0">
-                  <v-text-field 
-                    append-icon="mdi-calendar"
-                    class="mb-2" 
-                    label="Data de inicio da atividade"
-                    v-bind="attrs"
-                    v-on="on"
-                    @click:clear="date = null"
-                    :value="dateToStartBrasil"
-                    slot="activator">
-                </v-text-field>
-              </template>
-              <v-date-picker
-                :min="minDate"
-                overlay-opacity="0.3"
-                v-model="task.date_to_start"
-                @change="menuDate = false"
-                locale="pt-BR"
-              ></v-date-picker>
-            </v-menu>
-
-          <v-combobox
-            class="mb-2"
-            item-id="id"
-            item-text="name"
-            :items="categories"
-            label="Categoria"
-            dense
-            @change="setTaskCategoryID($event)"
-          ></v-combobox>
-          <v-combobox
-            item-text="name"
-            item-value="id"
-            :items="projects"
-            label="Projeto"
-            @change="setTaskProjectID($event)"
-            dense
-          ></v-combobox>
-          
-          <v-row>
-            <v-col cols="12" md="3" class="ma-0 py-0" >
-              <v-checkbox
-                label="Importante"
-                :on-icon="'mdi-star'"
-                :off-icon="'mdi-star-outline'"
-                v-model="task.important"
-              ></v-checkbox>
-            </v-col>
-            <v-col cols="12" md="4" class="ma-0 py-0">
-              <v-checkbox
-                label="Receber notificação"
-                :on-icon="'mdi-bell'"
-                :off-icon="'mdi-bell-outline'"
-                v-model="task.remember_me"
-              ></v-checkbox>
-            </v-col>
-          </v-row>
-        </v-form>
-        </v-card-text>
+        
+         
+          <div class="pa-6">
+            <cropper
+              :src="img"
+             class="upload-example-cropper"
+            />
+          </div>
 
         <v-divider></v-divider>
 
@@ -94,7 +26,7 @@
             text
             @click="closeModal"
           >
-           fechar
+           Cancelar
           </v-btn>
           <v-btn
             color="#FF8700"
@@ -112,6 +44,9 @@
 </template>
 
 <script>
+import { Cropper } from 'vue-advanced-cropper';
+import 'vue-advanced-cropper/dist/style.css';
+
 export default {
   props:{
     dialog:{
@@ -121,6 +56,7 @@ export default {
   },
   data(){
     return{
+      img: 'https://images.pexels.com/photos/4323307/pexels-photo-4323307.jpeg',
       menuDate:false,
       task:{
         name:'',
@@ -212,6 +148,12 @@ export default {
 </script>
 
 <style scoped>
+ 
+ .upload-example-cropper {
+    border: solid 1px #eee;
+    height: 300px;
+    width: 100%;
+  }
 
   .header-background{
     background-color: #DEDEDE;
