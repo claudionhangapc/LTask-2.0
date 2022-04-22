@@ -1,8 +1,5 @@
 <template>
   <v-container>
-    <!--<v-row>
-      <h1 >Perfil</h1>
-    </v-row> -->
     <v-row >
       <v-col 
          cols="4"
@@ -134,6 +131,7 @@
          </v-card>
       </v-col>
    </v-row>
+   <ModalProfileEditPicture :dialog="true" @closeModal="updatedialogTask($event)"/>
   </v-container>
   
 </template>
