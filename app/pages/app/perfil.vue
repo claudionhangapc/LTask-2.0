@@ -8,17 +8,32 @@
          cols="4"
          >
          <v-card  class="pb-3" outlined>
-           <div class=" d-flex justify-center  pt-3">
-             <v-avatar
-                height="150"
-                width="150"
-             >
-                <img
-                  
-                  src="https://cdn.vuetifyjs.com/images/john.jpg"
-                  alt="John"
-                >
-              </v-avatar>
+           <div 
+            class=" d-flex justify-center  pt-3" 
+           >
+           <div style="position:relative;">
+              <v-avatar
+                  height="150"
+                  width="150"
+              >
+                  <img
+                    
+                    src="https://cdn.vuetifyjs.com/images/john.jpg"
+                    alt="John"
+                  >
+                </v-avatar>
+                <v-btn
+                    fab
+                    dark
+                    small
+                    absolute
+                    style = "bottom:10px; right:0px"                 
+                  >
+                  <v-icon dark>
+                    mdi-camera-outline
+                  </v-icon>
+                </v-btn>
+              </div>
            </div>
            <v-card-title class="justify-center">
              Claudio Nhanga
