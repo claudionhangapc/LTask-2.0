@@ -10,7 +10,8 @@ const storage = multer.diskStorage({
     cb(null, path.resolve(__dirname,'..', '..', '..','uploads'))
   },
   filename: function (req, file, cb) {
-    cb(null, file.fieldname + '-' + Date.now()+'.png')
+    const ext = file.mimetype.split('/').reverse()[0]
+    cb(null, file.fieldname + '-' + Date.now() + '.' + ext)
   }
 })
 
@@ -57,7 +58,7 @@ async function uploadFile (fastify, options) {
     root: path.resolve(__dirname,'..', '..', '..','uploads'),
     prefix: '/uploads/', // optional: default '/'
   })
-  
+
   /*
   * decorando o objeto
   * upload 
