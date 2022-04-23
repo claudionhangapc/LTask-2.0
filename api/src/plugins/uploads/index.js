@@ -1,7 +1,7 @@
 const fastifyPlugin = require('fastify-plugin')
 const multer = require('fastify-multer') 
-
-const upload = multer({ dest: 'uploads/' })
+const path = require('path')
+const upload = multer({ dest: path.resolve(__dirname,'..', '..', '..','uploads') })
 
 async function uploadFile (fastify, options) {
   /*
