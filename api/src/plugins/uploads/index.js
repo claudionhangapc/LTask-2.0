@@ -1,10 +1,9 @@
 const fastifyPlugin = require('fastify-plugin')
 const multer = require('fastify-multer') 
 
-const { readFileSync } = require('fs')
-const path = require('path')
+const upload = multer({ dest: 'uploads/' })
 
-async function auth (fastify, options) {
+async function uploadFile (fastify, options) {
   /*
   * registra as chaves
   * do certificado
@@ -15,11 +14,11 @@ async function auth (fastify, options) {
 
   /*
   * decorando o objeto
-  * multer
+  * upload 
   */
 
-  fastify.decorate('multer', multer)
+  fastify.decorate('upload', upload)
 
 }
 
-module.exports = fastifyPlugin(auth)
+module.exports = fastifyPlugin(uploadFile)

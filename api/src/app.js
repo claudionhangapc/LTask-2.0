@@ -6,7 +6,7 @@ const app = require('fastify')({
 * register plugins
 */
 app.register(require('./plugins/jwt/auth_middleware'))
-app.register(require('fastify-multipart'))
+app.register(require('./plugins/uploads/index'))
 app.register(require('fastify-formbody'))
 
 require('./plugins/conection')(app)

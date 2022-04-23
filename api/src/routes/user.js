@@ -123,7 +123,9 @@ module.exports = function (fastify, option, done) {
 
   fastify.post('/profile',  {
     //schema: schema.userLogin
+    preHandler: fastify.upload.single('avatar')
   }, async (request, reply) => {
+    console.log(request.file)
     reply.send({"ola":""})
     
   })
