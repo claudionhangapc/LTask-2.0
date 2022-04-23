@@ -2,6 +2,9 @@ const fastifyPlugin = require('fastify-plugin')
 const multer = require('fastify-multer') 
 const path = require('path')
 
+/*
+*
+*/
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, path.resolve(__dirname,'..', '..', '..','uploads'))
@@ -11,6 +14,9 @@ const storage = multer.diskStorage({
   }
 })
 
+/*
+*
+*/
 const fileFilter = function (req, file, cb) {
   
   const allowedMines = [
@@ -26,21 +32,32 @@ const fileFilter = function (req, file, cb) {
   }
 } 
 
+/*
+*
+*/
 const upload = multer({ 
   dest: path.resolve(__dirname,'..', '..', '..','uploads'), 
   storage,
   fileFilter,
 })
 
+
+/*
+*
+*
+*/
 async function uploadFile (fastify, options) {
   /*
-  * registra as chaves
-  * do certificado
+  * registra os plugins
   */
 
   fastify.register(multer.contentParser)
 
-
+  fastify.register(require('fastify-static'), {
+    root: path.resolve(__dirname,'..', '..', '..','uploads'),
+    prefix: '/uploads/', // optional: default '/'
+  })
+  
   /*
   * decorando o objeto
   * upload 
