@@ -115,5 +115,18 @@ module.exports = function (fastify, option, done) {
     }
   })
 
+
+  /*
+  * upload profile 
+  * picture
+  */
+
+  fastify.post('/profile',  {
+    //schema: schema.userLogin
+  }, async (request, reply) => {
+    reply.send({"ola":""})
+    
+  })
+
   done()
 }
