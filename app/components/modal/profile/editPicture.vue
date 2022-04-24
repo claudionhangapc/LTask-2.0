@@ -107,7 +107,7 @@ export default {
       
       const fd = new FormData()
 
-      fd.append('image', this.selectedImg, this.selectedImg.name)
+      fd.append('avatar', this.selectedImg, this.selectedImg.name)
       fd.append('height', this.coordinates.height)
       fd.append('width', this.coordinates.width)
       fd.append('left', this.coordinates.left)
