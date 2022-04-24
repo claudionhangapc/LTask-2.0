@@ -22,6 +22,7 @@ services: ## Define um serviço
       - "3000:3000" ## redirecionamento de porta quando chegar alguma requisição na porta 3000 chama o container na porta 3000
     volumes:
       - ./api:/usr/app ## monitoro a pasta atual . e envio as alterações para /usr/app
+      - /usr/app/node_modules/
   postgres:
     image: postgres
     environment:
