@@ -140,14 +140,15 @@ module.exports = function (fastify, option, done) {
       /* 
       * remove original image 
       * after crop
-      * /
+      */
       fs.rmSync(path, {
         force: true,
         });
       
       
       
-      console.log(croppedPath)
+      console.log(request.file)
+      console.log(cropped)
       console.log(fastify.uploadpath)
       //console.log(request.file)
       reply.send(request.body)
