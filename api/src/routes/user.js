@@ -1,4 +1,5 @@
 const sharp = require("sharp");
+const fs = require("fs");
 
 const user = require('../services/user')
 const schema = require('../schemas/user')
@@ -129,12 +130,25 @@ module.exports = function (fastify, option, done) {
   }, async (request, reply) => {
     try {
       
-      const {fieldname, originalname, mimetype, filename, path} = request.file
+      const {fieldname, originalname, mimetype, filename, path, destination} = request.file
       const { height, width, left, top} = request.body
-      const cropped = await sharp(path)
-      .extract({ width:parseInt(width), height:parseInt(height), left:parseInt(left), top:parseInt(top) }).toFile(path)
       
-      console.log(cropped)
+      const croppedPath = destination + "/cropped-" + filename;
+      const cropped = await sharp(path)
+      .extract({ width:parseInt(width), height:parseInt(height), left:parseInt(left), top:parseInt(top) }).toFile(croppedPath)
+
+      /* 
+      * remove original image 
+      * after crop
+      * /
+      fs.rmSync(path, {
+        force: true,
+        });
+      
+      
+      
+      console.log(croppedPath)
+      console.log(fastify.uploadpath)
       //console.log(request.file)
       reply.send(request.body)
 

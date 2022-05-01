@@ -66,6 +66,7 @@ async function uploadFile (fastify, options) {
 
   fastify.decorate('upload', upload)
 
+  fastify.decorate('uploadpath', path.resolve(__dirname,'..', '..', '..','uploads'))
 }
 
 module.exports = fastifyPlugin(uploadFile)
