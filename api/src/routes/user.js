@@ -2,12 +2,15 @@ const sharp = require("sharp");
 const fs = require("fs");
 
 const user = require('../services/user')
+const profile_picture = require('../services/profile_picture')
 const schema = require('../schemas/user')
 const google = require('../services/google.js')
 
 module.exports = function (fastify, option, done) {
   const userInstance = new user(fastify)
   const googleInstance = new google(fastify)
+  const profilePictureInstance = new profile_picture(fastify)
+
   /*
    * create user
    */
@@ -125,12 +128,15 @@ module.exports = function (fastify, option, done) {
   */
 
   fastify.post('/profile',  {
-    //schema: schema.userLogin
+    //schema: schema.userLogin,
+    preValidation: [fastify.authenticate],
     preHandler: fastify.upload.single('avatar')
   }, async (request, reply) => {
     try {
       
-      const {fieldname, originalname, mimetype, filename, path, destination} = request.file
+      const user_id = request.whoiam.id
+
+      let {fieldname, originalname, mimetype, filename, path, destination} = request.file
       const { height, width, left, top} = request.body
       
       const croppedPath = destination + "/cropped-" + filename;
@@ -145,11 +151,20 @@ module.exports = function (fastify, option, done) {
         force: true,
         });
       
-      
+      // create profile picture
+
+      filename = "cropped-" + filename
+      destination = "/" + destination.split('/usr/app/').reverse()[0]
+      path = destination + "/"+ filename 
+
+      const createProfilePicture = await profilePictureInstance.create(
+        originalname,	filename,	mimetype,	destination, path,	user_id
+      )
       
       console.log(request.file)
       console.log(cropped)
-      console.log(fastify.uploadpath)
+
+      console.log(createProfilePicture)
       //console.log(request.file)
       reply.send(request.body)
 

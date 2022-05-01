@@ -10,22 +10,19 @@ class ProfilePicture {
    * create profile picture
    */
 
-  async create (originalname,	filename,	mimetype,	destination,	user_id) {
-    try {
+  async create (originalname,	filename,	mimetype,	destination, path,	user_id) {
 
       const profile_picture = await this.model.returning('*').insert({
         originalname,	
         filename,	
         mimetype,	
-        destination,	
+        destination,
+        path,	
         user_id
       })
 
-      return profile_picture
-      
-    } catch (error) {
-      return error
-    }
+      return profile_picture[0]
+   
   }
 
 
