@@ -154,20 +154,18 @@ class User {
     return true
   }
 
-  async setProfilePicture(user_id, profile_picture_id){
-
-    try {
+  async setProfilePicture(user_id, profile_picture_id, path){
 
       const singleUser = await this.model.returning('*')
       .where({'id':user_id})
       .update({
         'profile_picture_id': profile_picture_id
       })
-      return singleUser[0]
+
+      const { id, email, name} = singleUser[0]
       
-    } catch (error) {
-      return error
-    }
+      return { id, email, name, profile_picture_id, path}
+
     
   }
 }

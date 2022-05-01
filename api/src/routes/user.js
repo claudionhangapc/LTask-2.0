@@ -161,12 +161,9 @@ module.exports = function (fastify, option, done) {
         originalname,	filename,	mimetype,	destination, path,	user_id
       )
       
-      console.log(request.file)
-      console.log(cropped)
+      const updateProfilePicture = await userInstance.setProfilePicture(user_id, createProfilePicture.id, createProfilePicture.path)
 
-      console.log(createProfilePicture)
-      //console.log(request.file)
-      reply.send(request.body)
+      reply.send(updateProfilePicture)
 
     } catch (error) {
       reply.send(error)
