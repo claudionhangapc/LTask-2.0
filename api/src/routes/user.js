@@ -1,3 +1,5 @@
+const sharp = require("sharp");
+
 const user = require('../services/user')
 const schema = require('../schemas/user')
 const google = require('../services/google.js')
@@ -125,8 +127,20 @@ module.exports = function (fastify, option, done) {
     //schema: schema.userLogin
     preHandler: fastify.upload.single('avatar')
   }, async (request, reply) => {
-    console.log(request.file)
-    reply.send({"ola":""})
+    try {
+      
+      const {fieldname, originalname, mimetype, filename, path} = request.file
+      const { height, width, left, top} = request.body
+      const cropped = await sharp(path)
+      .extract({ width:parseInt(width), height:parseInt(height), left:parseInt(left), top:parseInt(top) }).toFile(path)
+      
+      console.log(cropped)
+      //console.log(request.file)
+      reply.send(request.body)
+
+    } catch (error) {
+      reply.send(error)
+    }
     
   })
 

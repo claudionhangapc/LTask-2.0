@@ -103,7 +103,9 @@ export default {
       }
     },
 
-    savePicture(){
+    async savePicture(){
+      
+      try {
       
       const fd = new FormData()
 
@@ -116,8 +118,17 @@ export default {
       /*
       * Chamada da api
       */
+     
+      const profile = await this.$store.dispatch('user/addProfilePicture',fd)
 
-     console.log(fd)
+      console.log(profile)
+
+      } catch (error) {
+        console.log(error) 
+      }
+     
+      
+      
 
     }
     
