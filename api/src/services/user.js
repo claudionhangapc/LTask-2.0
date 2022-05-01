@@ -71,11 +71,11 @@ class User {
 
       if ((user.length > 0) && (bcrypt.compareSync(password, user[0].password))) {
         
-        const { id, email, name, image_url, } = user[0]
+        const { id, email, name, profile_picture_id, } = user[0]
         const payload = { id, email }
         const token = this.jwt.sign(payload)
 
-        return { id, email, name, image_url, token }
+        return { id, email, name, profile_picture_id, token }
       }
       
      return 0
@@ -92,11 +92,11 @@ class User {
     
       if (user.length > 0) {
         
-        const { id, email, name, image_url, } = user[0]
+        const { id, email, name, profile_picture_id, } = user[0]
         const payload = { id, email }
         const token = this.jwt.sign(payload)
 
-        return { id, email, name, image_url, token }
+        return { id, email, name, profile_picture_id, token }
       }
       
      return 0
@@ -104,7 +104,7 @@ class User {
   }
 
   async getUser(id){
-    let singleUser = await this.fastify.knex.select('id','name','email','image_url').from('user')
+    let singleUser = await this.fastify.knex.select('id','name','email','profile_picture_id').from('user')
       .where({
         id
       })
@@ -115,7 +115,7 @@ class User {
   }
 
   async fetchUserByEmail(email){
-    let singleUser = await this.fastify.knex.select('id','name','email','image_url').from('user')
+    let singleUser = await this.fastify.knex.select('id','name','email','profile_picture_id').from('user')
       .where({
         email
       })
