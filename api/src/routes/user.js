@@ -171,5 +171,24 @@ module.exports = function (fastify, option, done) {
     
   })
 
+   /*
+   * show all picture
+   */
+
+   fastify.get('/profile', {
+    preValidation: [fastify.authenticate]
+  },
+  async (request, reply) => {
+    try {
+      
+      const { id } = request.whoiam
+      const pictures = await profilePictureInstance.getAllProfilePicture(id)
+      reply.send(pictures)
+
+    } catch (error) {
+      reply.send(error)
+    }
+  })
+
   done()
 }

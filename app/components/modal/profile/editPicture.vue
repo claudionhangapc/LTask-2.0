@@ -9,10 +9,10 @@
         <v-card-title class="text-h5 header-background">
           Editar foto do Perfil
         </v-card-title>
-          <div class="pa-5 d-flex justify-center ">
+          <div class="pa-5 d-flex justify-center " v-if="!img">
             <ModalProfileSlidePicture/>
           </div>
-          <div class="pa-5 d-flex justify-center ">
+          <div class="pa-5 d-flex justify-center " v-else>
             <cropper
               :src="img"
              class="cropper"

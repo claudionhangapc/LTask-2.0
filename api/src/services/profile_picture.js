@@ -7,7 +7,7 @@ class ProfilePicture {
   }
 
    /*
-   * get profile picture
+   * get current profile picture
    * from user id
    */
 
@@ -15,6 +15,22 @@ class ProfilePicture {
     let singlePicture = await this.fastify.knex.select('id','originalname','filename','mimetype','destination','path').from('profile_picture')
       .where({
         id
+      })
+    if(singlePicture.length>0) return singlePicture[0]
+    
+    return singlePicture 
+   
+  }
+
+  /*
+   * get profile pictures
+   * from user id
+   */
+
+  async getAllProfilePicture (user_id){
+    let singlePicture = await this.fastify.knex.select('id','originalname','filename','mimetype','destination','path').from('profile_picture')
+      .where({
+        user_id
       })
     if(singlePicture.length>0) return singlePicture[0]
     
