@@ -26,7 +26,7 @@ module.exports = function (fastify, option, done) {
    */
 
   fastify.post('/login',  {
-    schema: schema.userLogin
+    //schema: schema.userLogin
   }, async (request, reply) => {
     try {
       const { email,password } = request.body

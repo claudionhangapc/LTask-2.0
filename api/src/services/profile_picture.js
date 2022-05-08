@@ -6,6 +6,22 @@ class ProfilePicture {
     this.model = fastify.knex('profile_picture')
   }
 
+   /*
+   * get profile picture
+   * from user id
+   */
+
+  async getProfilePicture (id){
+    let singlePicture = await this.fastify.knex.select('id','originalname','filename','mimetype','destination','path').from('profile_picture')
+      .where({
+        id
+      })
+    if(singlePicture.length>0) return singlePicture[0]
+    
+    return singlePicture 
+   
+  }
+
   /*
    * create profile picture
    */

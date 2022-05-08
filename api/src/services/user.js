@@ -1,5 +1,7 @@
 const utils = require('../utils/user')
 const email = require('./email')
+const profile_picture = require('./profile_picture')
+
 const PASSWORD_SALT = 10
 
 class User {
@@ -8,6 +10,7 @@ class User {
     this.jwt = fastify.jwt
     this.model = fastify.knex('user')
     this.emailService =  new email(fastify)
+    this.profile_picture = new profile_picture(fastify)
   }
 
   /*
@@ -75,7 +78,17 @@ class User {
         const payload = { id, email }
         const token = this.jwt.sign(payload)
 
-        return { id, email, name, profile_picture_id, token }
+        let url_profile_picture = ""
+
+        if(profile_picture_id){
+          const singlePicture = await this.profile_picture.getProfilePicture(profile_picture_id)
+          if( !Array.isArray(singlePicture) ){
+            const  {path} = singlePicture
+            url_profile_picture = "http://localhost:8000/"+path
+          }
+        }
+
+        return { id, email, name, url_profile_picture, token }
       }
       
      return 0
