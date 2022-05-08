@@ -9,14 +9,15 @@
         <v-card-title class="text-h5 header-background">
           Editar foto do Perfil
         </v-card-title>
-
-          <div class="pa-6 d-flex justify-center ">
+          <div class="pa-5 d-flex justify-center ">ola</div>
+          <div class="pa-5 d-flex justify-center ">
             <cropper
               :src="img"
              class="cropper"
              @change="changeFromCropper"
             />
           </div>
+          
           <div class="pa-4 d-flex justify-center ">
             <v-btn
             text 
@@ -120,8 +121,10 @@ export default {
       */
      
       const profile = await this.$store.dispatch('user/addProfilePicture',fd)
-
-      console.log(profile)
+      
+      const user = await this.$store.dispatch('user/getUser')
+      
+      this.closeModal();
 
       } catch (error) {
         console.log(error) 

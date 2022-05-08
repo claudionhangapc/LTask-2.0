@@ -84,7 +84,7 @@ class User {
           const singlePicture = await this.profile_picture.getProfilePicture(profile_picture_id)
           if( !Array.isArray(singlePicture) ){
             const  {path} = singlePicture
-            url_profile_picture = "http://localhost:8000/"+path
+            url_profile_picture = "http://localhost:3000/"+path
           }
         }
 
@@ -129,7 +129,7 @@ class User {
           const singlePicture = await this.profile_picture.getProfilePicture(singleUser[0].profile_picture_id)
           if( !Array.isArray(singlePicture) ){
             const  {path} = singlePicture
-            url_profile_picture = "http://localhost:8000/"+path
+            url_profile_picture = "http://localhost:3000"+path
             singleUser[0].url_profile_picture =  url_profile_picture
           }
         }

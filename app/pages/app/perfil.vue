@@ -15,8 +15,8 @@
               >
                   <img
                     
-                    src="https://cdn.vuetifyjs.com/images/john.jpg"
-                    alt="John"
+                    :src="user.url_profile_picture"
+                    :alt="`foto do prefil do ${user.name}`"
                   >
                 </v-avatar>
                 <v-btn
