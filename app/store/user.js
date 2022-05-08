@@ -4,10 +4,17 @@ export const state = ()=>({
 
 export const actions = {
 
+  async getUser({commit}){
+    const response = await this.$axios.get('/users/user')
+    const user = response.data
+    commit('SET',user)
+    return user
+  }, 
+
   async create({commit},payload){
     const response = await this.$axios.post('/users/signup', payload)
     const user = response.data
-    commit('ADD',user)
+    commit('SET',user)
     return user
   },
 
@@ -28,10 +35,11 @@ export const actions = {
 }
 
 export const mutations = {
-
-  ADD(state,payload){
+  SET(state,payload){
     state.user = payload
   },
+
+  
  
 }
 

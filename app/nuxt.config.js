@@ -68,7 +68,7 @@ export default {
         },
         endpoints: {
           login: { url: '/users/login', method: 'post' },
-          user: {url:'/users/user', method: 'get'},
+          user: false,
           logout: false
           
         }

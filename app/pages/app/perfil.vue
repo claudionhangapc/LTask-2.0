@@ -34,14 +34,11 @@
               </div>
            </div>
            <v-card-title class="justify-center">
-             Claudio Nhanga
+             {{user.name}}
            </v-card-title>
            <v-card-subtitle style="text-align: center" class="pb-1">
-             claudionhangapc@gmail.com
-           </v-card-subtitle>
-           <v-card-text style="text-align: center">
-             Registrado em 22/01/1998
-           </v-card-text>    
+              {{user.email}}
+           </v-card-subtitle>    
          </v-card>   
       </v-col>
       <v-col
@@ -164,6 +161,9 @@ export default {
   computed:{
       tasks(){
         return this.$store.state.task.tasks
+      },
+      user(){
+        return this.$store.state.user.user
       }
   },
   methods:{

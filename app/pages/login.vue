@@ -144,6 +144,7 @@ export default {
         const response = await this.$auth.loginWith('local',{
           data:this.login
         })
+        const user = await this.$store.dispatch('user/getUser')
         this.$router.replace("/app")
       }catch(err){
         this.error = true
