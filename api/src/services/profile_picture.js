@@ -31,11 +31,8 @@ class ProfilePicture {
     let singlePicture = await this.fastify.knex.select('id','originalname','filename','mimetype','destination','path').from('profile_picture')
       .where({
         user_id
-      })
-    if(singlePicture.length>0) return singlePicture[0]
-    
+      })  
     return singlePicture 
-   
   }
 
   /*

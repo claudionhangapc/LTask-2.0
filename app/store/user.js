@@ -30,7 +30,14 @@ export const actions = {
     const userProfile = response.data
 
     return userProfile
+  },
+
+  async fetchProfilePictures ({commit}){
+    const response = await this.$axios.get('/users/profile')
+    const pictures = response.data
+    return pictures
   }
+  
 
 }
 

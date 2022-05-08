@@ -10,8 +10,8 @@
       show-arrows
     >
       <v-slide-item
-        v-for="n in 10"
-        :key="n"
+        v-for="picture in pictures"
+        :key="picture.id"
         v-slot="{ active}"
       >
         <v-card
@@ -21,20 +21,17 @@
           width="150"
           @click="mostrar"
         >
-          <v-row
-            class="fill-height"
-            align="center"
-            justify="center"
-          >
-            <v-scale-transition>
-              <v-icon
-                v-if="active"
-                color="white"
-                size="48"
-                v-text="'mdi-close-circle-outline'"
-              ></v-icon>
-            </v-scale-transition>
-          </v-row>
+          <v-avatar
+                  height="150"
+                  width="150"
+                  rounded
+              >
+                  <img
+                    
+                    :src="`http://localhost:3000${picture.path}`"
+                    :alt="`foto do prefil do ${picture.originalname}`"
+                  >
+                </v-avatar>
         </v-card>
       </v-slide-item>
     </v-slide-group>
@@ -51,13 +48,25 @@ export default {
   data(){
     return{
        model: null,
+       pictures:[]
     }
   },
   computed:{
     
   },
+  created(){
+    this.fetchPictures()
+  },
   methods:{
 
+    async fetchPictures(){
+      try {
+        this.pictures = await this.$store.dispatch('user/fetchProfilePictures')  
+        console.log (this.pictures)
+      } catch (error) {
+        
+      }
+    },
     mostrar(){
       alert("ola")
     }

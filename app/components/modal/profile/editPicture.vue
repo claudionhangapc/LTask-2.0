@@ -88,6 +88,7 @@ export default {
   },
   methods:{
     closeModal(){
+      this.img = null
      this.$emit('closeModal', false)
     },
     changeFromCropper({ coordinates, canvas }) {
