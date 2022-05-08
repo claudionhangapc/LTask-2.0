@@ -9,7 +9,9 @@
         <v-card-title class="text-h5 header-background">
           Editar foto do Perfil
         </v-card-title>
-          <div class="pa-5 d-flex justify-center ">ola</div>
+          <div class="pa-5 d-flex justify-center ">
+            <ModalProfileSlidePicture/>
+          </div>
           <div class="pa-5 d-flex justify-center ">
             <cropper
               :src="img"
