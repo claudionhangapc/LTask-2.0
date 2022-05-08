@@ -121,7 +121,20 @@ class User {
       .where({
         id
       })
-    if(singleUser.length>0) return singleUser[0]
+    
+    if(singleUser.length>0){
+        let url_profile_picture = ""
+
+        if(singleUser[0].profile_picture_id){
+          const singlePicture = await this.profile_picture.getProfilePicture(singleUser[0].profile_picture_id)
+          if( !Array.isArray(singlePicture) ){
+            const  {path} = singlePicture
+            url_profile_picture = "http://localhost:8000/"+path
+            singleUser[0].url_profile_picture =  url_profile_picture
+          }
+        }
+      return singleUser[0]
+    } 
     
     return singleUser 
    
