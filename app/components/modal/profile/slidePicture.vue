@@ -20,19 +20,38 @@
           height="150"
           width="150"
           @click="mostrar"
-        >
-          <v-avatar
-                  height="150"
-                  width="150"
-                  rounded
+        > 
+        <template >
+       
+         <v-hover v-slot="{ hover }">
+       <div style="position:relative;">
+         <v-avatar
+                height="150"
+                width="150"
+                rounded
               >
-                  <img
-                    
-                    :src="`http://localhost:3000${picture.path}`"
-                    :alt="`foto do prefil do ${picture.originalname}`"
+                <img
+                  :src="`http://localhost:3000${picture.path}`"
+                  :alt="`foto do prefil do ${picture.originalname}`"
+                >
+              </v-avatar>
+              <v-btn
+                    fab
+                    dark
+                    small
+                    absolute
+                    style = "bottom:3px; right:3px" 
+                    v-if="hover"           
                   >
-                </v-avatar>
-        </v-card>
+                  <v-icon dark>
+                    mdi-content-save-outline
+                  </v-icon>
+                </v-btn>
+       </div>
+       </v-hover> 
+        </template>
+
+        </v-card>      
       </v-slide-item>
     </v-slide-group>
   </v-sheet>
