@@ -2,7 +2,7 @@
   <v-sheet
     class="mx-auto"
     elevation="1"
-    max-width="400"
+    max-width="560"
   >
     <v-slide-group
       v-model="model"

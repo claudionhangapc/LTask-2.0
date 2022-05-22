@@ -3,7 +3,7 @@
    <v-dialog :value="dialog"
     overlay-opacity="0.8"
     persistent  
-    max-width="500" 
+    max-width="600" 
     >
       <v-card>
         <v-card-title class="text-h5 header-background">
@@ -147,7 +147,7 @@ export default {
   
   .cropper {
     height: 300px;
-    max-width: 400px;
+    max-width: 560px;
     background: #DDD;
   }
 
