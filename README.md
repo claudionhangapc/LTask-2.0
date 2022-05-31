@@ -7,12 +7,15 @@
 # Funcionalidades 
 
 - [x] Cadastro de usuário
+- [x] Validação do cadastro por meio de email de confirmação
 - [x] Login usuário
 - [x] Adicionar tarefas
 - [x] Adicionar projetos
 - [x] Adicionar categoria da tarefa
 - [x] Adicionar foto do perfil
 - [ ] Agendar data de inicio da tarefa
+- [ ] Enviar email de lemebrete de que a tarefa vai começar
+- [ ] Enviar notificação pelo aplicativo web usando firebase
 
 # Pré-requisito
 
