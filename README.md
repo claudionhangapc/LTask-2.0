@@ -4,6 +4,16 @@
     <img src="projeto-demo.gif"/>
 </p>
 
+# Funcionalidades 
+
+- [x] Cadastro de usuário
+- [x] Login usuário
+- [x] Adicionar tarefas
+- [x] Adicionar projetos
+- [x] Adicionar categoria da tarefa
+- [x] Adicionar foto do perfil
+- [ ] Agendar data de inicio da tarefa
+
 # Pré-requisito
 
 - [x] Docker - você pode saber mais <a href="https://www.docker.com/get-started/">aqui</a>
