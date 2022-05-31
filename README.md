@@ -4,6 +4,10 @@
     <img src="projeto-demo.gif"/>
 </p>
 
+# Stato do projeto 
+
+- [] Em desenvolvimento
+
 # Funcionalidades 
 
 - [x] Cadastro de usuário
