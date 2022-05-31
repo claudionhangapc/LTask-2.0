@@ -4,7 +4,7 @@
     <img src="projeto-demo.gif"/>
 </p>
 
-# Stato do projeto 
+# Status do projeto 
 
 - [ ] Em desenvolvimento
 
