@@ -51,7 +51,7 @@
 # Documentação 
 
 - Back-end do projeto
-    - [app](https://github.com/claudionhangapc/LTask-2.0/tree/main/api)
+    - [api](https://github.com/claudionhangapc/LTask-2.0/tree/main/api)
 
 - Front-end do projeto
-    - [api](https://github.com/claudionhangapc/LTask-2.0/tree/main/app)
+    - [app](https://github.com/claudionhangapc/LTask-2.0/tree/main/app)
