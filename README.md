@@ -8,6 +8,17 @@
 
 - [ ] Em desenvolvimento
 
+# Tecnologias 
+
+- [x] Node
+- [x] Vue
+- [x] Postgres
+- [x] Knexjs
+- [x] Fastify
+- [x] Docker
+- [x] Vuetify
+- [x] Nuxtjs
+
 # Funcionalidades 
 
 - [x] Cadastro de usuário
@@ -18,7 +29,7 @@
 - [x] Adicionar categoria da tarefa
 - [x] Adicionar foto do perfil
 - [ ] Agendar data de inicio da tarefa
-- [ ] Enviar email de lemebrete de que a tarefa vai começar
+- [ ] Enviar email de lembrete de que a tarefa vai começar
 - [ ] Enviar notificação pelo aplicativo web usando firebase
 
 # Pré-requisito
