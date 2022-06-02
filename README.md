@@ -8,17 +8,6 @@
 
 - [ ] Em desenvolvimento
 
-# Tecnologias 
-
-- [x] Node
-- [x] Vue
-- [x] Postgres
-- [x] Knexjs
-- [x] Fastify
-- [x] Docker
-- [x] Vuetify
-- [x] Nuxtjs
-
 # Funcionalidades 
 
 - [x] Cadastro de usuário
@@ -47,6 +36,17 @@
 7. Executa o seguinte comando `docker exec -i -t ltask-20-api-1 /bin/bash` ou no windows > git bash  `winpty docker exec -it ltask-20-api-1 sh` para abrir o shell do container da api em execução, onde 'ltask-20-api-1' é o nome do container.
 8. Com o shell do container da api aberto, rodamos os comandos `npx knex migrate:latest` e `npx knex seed:run` criar e preencher as tabelas do nosso banco de dados.
 8. Agora so digitar `http://localhost:8000/` no navegador para abir o projeto.
+
+# Tecnologias 
+
+- [x] Node
+- [x] Vue
+- [x] Postgres
+- [x] Knexjs
+- [x] Fastify
+- [x] Docker
+- [x] Vuetify
+- [x] Nuxtjs
 
 # Documentação 
 
