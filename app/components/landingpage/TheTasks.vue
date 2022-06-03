@@ -76,7 +76,7 @@
 </script>
 <style scoped>
 .section-container{
-    background-color: #FEFAEF; 
+    background-color: #DEDEDE; 
     padding:60px 40px;
     color:#101010
   }
