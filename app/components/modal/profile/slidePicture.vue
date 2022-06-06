@@ -86,8 +86,14 @@ export default {
         
       }
     },
-    setProfilePicture(id){
-      alert(id)
+    async setProfilePicture(id){
+      try{
+        await this.$store.dispatch('user/updateProfilePicture',{profile_picture_id:id}) 
+        await this.$store.dispatch('user/getUser')
+      }catch (error) {
+        
+      }
+      
     }
   }
 }
