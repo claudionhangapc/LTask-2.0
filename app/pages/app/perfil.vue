@@ -158,6 +158,11 @@ export default {
       ]
     }
   },
+  created(){
+    if(!this.user){
+      this.getUser()
+    }
+  },
   computed:{
       tasks(){
         return this.$store.state.task.tasks
@@ -172,7 +177,10 @@ export default {
       },
       updatedialog(value){
         this.dialogEditProfilePicture = value
-      },  
+      },
+      async getUser(){
+        await this.$store.dispatch('user/getUser')
+      }
     }
  
 }
