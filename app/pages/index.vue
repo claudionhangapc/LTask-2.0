@@ -4,6 +4,7 @@
     <LandingpageTheAbout />
     <LandingpageTheTasks />
     <LandingpageTheTestimony />
+    <LandingpageTheFAQ /> 
     <LandingpageTheNews />  
     <LandingpageTheFooter/>  
   </div>
