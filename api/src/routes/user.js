@@ -87,6 +87,28 @@ module.exports = function (fastify, option, done) {
   })
 
 
+  /*
+  * update user info
+  */
+
+  fastify.put('/user/profile/picture', {
+    preValidation: [fastify.authenticate]
+  },
+  async (request, reply) => {
+    try {
+      
+      const user_id = request.whoiam.id
+      const {profile_picture_id} = request.body
+      const profile_picture = await profilePictureInstance.getProfilePicture(profile_picture_id)
+      const updateProfilePicture = await userInstance.setProfilePicture(user_id,profile_picture_id, profile_picture.path)
+      //user_id, createProfilePicture.id, createProfilePicture.path
+      reply.send(updateProfilePicture)
+
+    } catch (error) {
+      reply.send(error)
+    }
+  })
+
 
   /*
   * confirmed user 
