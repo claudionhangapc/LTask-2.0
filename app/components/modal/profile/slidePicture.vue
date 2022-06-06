@@ -77,7 +77,9 @@ export default {
     this.fetchPictures()
   },
   methods:{
-
+    closeModal(){
+     this.$emit('closeModal', false)
+    },
     async fetchPictures(){
       try {
         this.pictures = await this.$store.dispatch('user/fetchProfilePictures')  
@@ -90,10 +92,11 @@ export default {
       try{
         await this.$store.dispatch('user/updateProfilePicture',{profile_picture_id:id}) 
         await this.$store.dispatch('user/getUser')
+        this.closeModal();
       }catch (error) {
         
       }
-      
+
     }
   }
 }

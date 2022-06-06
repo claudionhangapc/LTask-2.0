@@ -10,7 +10,7 @@
           Editar foto do Perfil
         </v-card-title>
           <div class="pa-5 d-flex justify-center " v-if="!img">
-            <ModalProfileSlidePicture/>
+            <ModalProfileSlidePicture @closeModal="closeModal($event)"/>
           </div>
           <div class="pa-5 d-flex justify-center " v-else>
             <cropper
@@ -87,6 +87,7 @@ export default {
 
   },
   methods:{
+    
     closeModal(){
       this.img = null
      this.$emit('closeModal', false)

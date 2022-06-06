@@ -64,7 +64,12 @@
                 class="pa-0"
               >
                 <v-avatar color="#FF8700" size="36" class="mr-1">
-                  <v-icon dark>
+                   <img 
+                    v-if="user.url_profile_picture"
+                    :src="user.url_profile_picture"
+                    :alt="`foto do prefil do ${user.name}`"
+                  >
+                  <v-icon dark v-else>
                     mdi-account-circle
                   </v-icon>
                 </v-avatar>
@@ -114,7 +119,10 @@
     computed:{
       colors(){
         return this.$store.state.color.colors
-      },   
+      },
+      user(){
+        return this.$store.state.user.user
+      }   
     },
     methods:{
       setMenu(){

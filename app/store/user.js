@@ -41,7 +41,6 @@ export const actions = {
   async updateProfilePicture({commit}, payload){
     const response = await this.$axios.put('/users/user/profile/picture', payload)
     const result = response.data
-    console.log (result)
     return result 
   }
   
