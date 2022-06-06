@@ -19,7 +19,7 @@
           class="ma-4"
           height="150"
           width="150"
-          @click="mostrar"
+          @click="setProfilePicture(picture.id) "
         > 
         <template >
        
@@ -86,8 +86,8 @@ export default {
         
       }
     },
-    mostrar(){
-      alert("ola")
+    setProfilePicture(id){
+      alert(id)
     }
   }
 }
