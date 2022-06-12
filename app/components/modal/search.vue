@@ -2,61 +2,66 @@
   <div>
    <v-dialog :value="dialog"
     overlay-opacity="0.8"
-    persistent  
-    max-width="700" >
-      <v-card>
-        <v-card-title class="text-h5 header-background">
-          Search
-        </v-card-title>
-
+    persistent
+    max-width="800"
+    >
+      <v-card height="80vh">
         <v-card-text class="pt-2">
            <v-form
           ref="form"
           lazy-validation
         >
-          <v-text-field
-            class="mb-2"
-            label="Nome do projeto"
-            required
-            :rules="rules.name"
-            v-model="project.name"
-          ></v-text-field>
-
-          <v-select
-          item-value="id"
-          item-text="name"
-          :items="colors"
-           label="Cor do projeto"
-          dense
-          :rules="rules.color_id"
-          v-model="project.color_id"
-         >
-          <template v-slot:append>
-              <v-icon :color="defaultColor">mdi-chevron-down</v-icon>
-          </template>
-         
-         </v-select>
+         <v-container >
+          <v-row>
+            <v-col cols="10">
+              <v-text-field
+              dense
+              prepend-inner-icon="mdi-magnify"
+              label = "Procurar"
+              >
+              </v-text-field>
+            </v-col>
+            <v-col cols="2">
+              <v-btn
+              elevation="0"
+              class="text-none"
+              >
+                Sair
+              </v-btn>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col class="py-0">
+              <v-btn
+              outlined
+              class="text-none mr-2"
+              >
+                Todos
+              </v-btn>
+              <v-btn
+              outlined
+              class="text-none mr-2"
+              >
+                Tarefas
+              </v-btn>
+              <v-btn
+              outlined
+              class="text-none mr-2"
+              >
+                Projetos
+              </v-btn>
+              <v-btn
+              outlined
+              class="text-none"
+              >
+                Categorias
+              </v-btn>
+            </v-col>
+          </v-row>
+         </v-container>
         </v-form>
         </v-card-text>
 
-        <v-divider></v-divider>
-
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn
-            text
-            @click="closeModal"
-          >
-           fechar
-          </v-btn>
-          <v-btn
-            color="#FF8700"
-            outlined
-            @click="validationForm"
-          >
-            Adicionar
-          </v-btn>
-        </v-card-actions>
       </v-card>
        
    </v-dialog>
