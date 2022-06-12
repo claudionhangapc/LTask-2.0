@@ -17,7 +17,7 @@
               <v-text-field
               dense
               prepend-inner-icon="mdi-magnify"
-              label = "Procurar"
+              label = "Buscar"
               :autofocus="false"
               >
               </v-text-field>
