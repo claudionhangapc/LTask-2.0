@@ -13,14 +13,19 @@
         >
          <v-container >
           <v-row>
-            <v-col cols="10">
+            <v-col cols="10" >
               <v-text-field
-              dense
-              prepend-inner-icon="mdi-magnify"
-              label = "Buscar"
-              :autofocus="false"
-              >
-              </v-text-field>
+                :autofocus="false"
+                full-width
+                dense
+                hide-details
+                prepend-inner-icon="mdi-magnify"
+                filled
+                outlined
+                label="Buscar"
+                clearable
+                color="#101010"
+                ></v-text-field>
             </v-col>
             <v-col cols="2">
               <v-btn
