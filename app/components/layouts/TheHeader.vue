@@ -90,7 +90,7 @@
             </v-list>
         </v-menu>
         <div>
-          <ModalSearch :dialog="dialogSearch" @closeModalProject="updatedialogProject($event)"/>
+          <ModalSearch :dialog="dialogSearch" @closeModalSearch="updateModalSearch($event)"/>
         </div>
       </v-app-bar>
 </template>
@@ -183,6 +183,11 @@
       openModalSearch(){
         this.activateSearchField = false
         this.dialogSearch = true
+      },
+
+      updateModalSearch(value){
+        this.activateSearchField = true
+        this.dialogSearch = value
       },
 
     }

@@ -18,6 +18,7 @@
               dense
               prepend-inner-icon="mdi-magnify"
               label = "Procurar"
+              :autofocus="false"
               >
               </v-text-field>
             </v-col>
@@ -25,6 +26,7 @@
               <v-btn
               elevation="0"
               class="text-none"
+              @click="closeModal()"
               >
                 Sair
               </v-btn>
@@ -102,28 +104,7 @@ export default {
   },
   methods:{
     closeModal(){
-     this.$emit('closeModalProject', false)
-      this.$router.push('/app/projetos');
-    },
-    updateColor(value){
-      this.defaultColor = value
-    },
-    async createProject(){
-      
-      try{
-        const {name} = this.project
-        const {color_id} = this.project
-
-        await this.$store.dispatch('project/create', {
-          name,
-          color_id,
-          tasks:[]
-        })
-        this.closeModal()
-      }catch(err){
-        this.error = true
-        //console.log(err)
-      }
+     this.$emit('closeModalSearch', false)
     },
     validationForm(){
       if(this.$refs.form.validate()){
