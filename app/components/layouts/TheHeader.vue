@@ -22,6 +22,8 @@
             filled
             outlined
             dark
+            @click="openModalSearch()"
+            label="Buscar"
           ></v-text-field>
         
         <v-spacer></v-spacer>
@@ -90,7 +92,7 @@
       </v-app-bar>
 </template>
 <script>
-  
+  import _, { map } from 'underscore';
   export default {
      props:{
       drawer:{
@@ -115,6 +117,9 @@
     }),
     created(){
       this.fetchColors();
+      if(_.isEmpty(this.user)){
+        this.getUser()
+      }
     },
     computed:{
       colors(){
@@ -166,7 +171,14 @@
       },
       fetchColors(){
         this.$store.dispatch('color/fetch')
-      }
+      },
+      async getUser(){
+        await this.$store.dispatch('user/getUser')
+      },
+      openModalSearch(){
+        //this.dialogProject = true
+        alert("ola, meus filhos")
+      },
 
     }
   }

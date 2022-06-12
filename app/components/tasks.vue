@@ -40,11 +40,10 @@
                                  <v-list-item-subtitle>
                                   <v-icon
                                     small
-                                    color="#8B0000"
                                   >
                                     mdi-calendar
                                   </v-icon> 
-                                  <span style="color:#8B0000">seg, 10 de jan</span>
+                                  <span >seg, 10 de jan</span>
                                   </v-list-item-subtitle>
                               </div>
                               <div class="mr-2">

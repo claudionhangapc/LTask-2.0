@@ -135,6 +135,7 @@
 </template>
 
 <script>
+import _, { map } from 'underscore';
 export default {
   data(){
     return{
@@ -159,7 +160,7 @@ export default {
     }
   },
   created(){
-    if(!this.user){
+    if(_.isEmpty(this.user)){
       this.getUser()
     }
   },
