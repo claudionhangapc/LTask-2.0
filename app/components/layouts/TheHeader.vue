@@ -24,7 +24,7 @@
             dark
             @click="openModalSearch()"
             label="Buscar"
-          ></v-text-field>
+          v-if="activateSearchField"></v-text-field>
         
         <v-spacer></v-spacer>
 
@@ -117,7 +117,8 @@
       cards: ['Today', 'Yesterday'],
       dialogProject:false,
       dialogTask:false,
-      dialogSearch:true
+      dialogSearch:false,
+      activateSearchField:true,
     }),
     created(){
       this.fetchColors();
@@ -180,8 +181,8 @@
         await this.$store.dispatch('user/getUser')
       },
       openModalSearch(){
-        //this.dialogProject = true
-        alert("ola, meus filhos")
+        this.activateSearchField = false
+        this.dialogSearch = true
       },
 
     }
