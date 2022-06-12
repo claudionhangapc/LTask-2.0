@@ -89,6 +89,9 @@
               </v-list-item>
             </v-list>
         </v-menu>
+        <div>
+          <ModalSearch :dialog="dialogSearch" @closeModalProject="updatedialogProject($event)"/>
+        </div>
       </v-app-bar>
 </template>
 <script>
@@ -113,7 +116,8 @@
       ],
       cards: ['Today', 'Yesterday'],
       dialogProject:false,
-      dialogTask:false
+      dialogTask:false,
+      dialogSearch:true
     }),
     created(){
       this.fetchColors();
