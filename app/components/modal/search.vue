@@ -4,6 +4,7 @@
     overlay-opacity="0.8"
     persistent
     max-width="800"
+    @click:outside="closeModal()"
     >
       <v-card height="80vh">
         <v-card-text class="pt-2">
