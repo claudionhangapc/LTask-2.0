@@ -14,6 +14,7 @@
         <v-spacer></v-spacer>
 
           <v-text-field
+            readonly
             :autofocus="false"
             full-width
             dense
