@@ -6,7 +6,8 @@
 
 # Status do projeto 
 
-- [ ] Em desenvolvimento
+- [x] Em desenvolvimento
+- [ ] Parado
 
 # Funcionalidades 
 
