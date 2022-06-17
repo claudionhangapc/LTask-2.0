@@ -31,7 +31,7 @@
                                     small
                                     
                                   >
-                                    mdi-circle-outline
+                                    mdi-format-list-text
                                   </v-icon> 
                                   <span>{{task.category_name}}</span>
                                   </v-list-item-subtitle>
