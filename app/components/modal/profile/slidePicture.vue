@@ -8,6 +8,7 @@
       v-model="model"
       class="pa-3"
       show-arrows
+      v-if="pictures.length>0"
     >
       <v-slide-item
         v-for="picture in pictures"
