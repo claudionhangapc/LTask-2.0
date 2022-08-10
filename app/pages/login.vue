@@ -9,8 +9,8 @@
         
         <v-row class="">
           <v-col cols="12">
-            <p class="text-center">
-            Fazer Login no LTask
+            <p class="text-center"> 
+            Fazer Login no LTask {{this.$route.query}}
             </p>
           </v-col>
         </v-row>
@@ -117,6 +117,7 @@
 </template>
 
 <script>
+import _, { map } from 'underscore';
 export default {
   layout: 'landingpage',
   data(){
@@ -138,6 +139,12 @@ export default {
       }
     }
   },
+  computed: {
+    googleQuery(){ return this.$route.query },
+  },
+  created: function () {
+    
+  },
   methods:{
     async userLogin(){
       try{
@@ -152,7 +159,20 @@ export default {
       }
     },
     async UserLoginGoogle(){
-      this.$auth.loginWith('google')
+      //this.$auth.loginWith('google')
+      //this.$router.replace('https://accounts.google.com/o/oauth2/auth?protocol=oauth2&response_type=code&access_type&client_id&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Flogin&scope=openid%20profile%20email&state=tRRsqM7Sme&code_challenge_method=')
+      //console.log(this.$router)
+      //this.$redirect('https://www.google.com')
+      window.location.href = "https://accounts.google.com/o/oauth2/auth?protocol=oauth2&response_type=code&access_type&client_id=322340038052-ggato5uephq7cv0b2fjcfv43k5rje6tt.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Flogin&scope=openid%20profile%20email&state=F6qGJULo6s&code_challenge_method=";
+     
+    },
+    async UserLoginGoogleLocalApi(){
+      if( !_.has(this.googleQuery.state, 'state') || ! _.has(this.googleQuery.state, 'code')){
+        return ;
+      } 
+      const state = this.googleQuery.state
+      const code = this.googleQuery.code
+
     },
     validationForm(){
         if(this.$refs.form.validate()){
