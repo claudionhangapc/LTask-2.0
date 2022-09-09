@@ -42,7 +42,16 @@ export const actions = {
     const response = await this.$axios.put('/users/user/profile/picture', payload)
     const result = response.data
     return result 
+  },
+
+  async loginWithGoogleCode({commit}, payload){
+    const response = await this.$axios.post('/users/login/google', payload)
+    const result = response.data
+    return result
+ 
   }
+
+
   
 
 }
