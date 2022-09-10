@@ -47,7 +47,7 @@
             type="error"
             class="mb-0"
             >
-              E-mail ou senha incorreta
+              {{errorMessage}}
             </v-alert>
           </v-col>
         </v-row>
@@ -113,6 +113,7 @@
         </v-row>
       </v-container>
     </v-form>
+    <ModalLoginWithGoogle  :dialog="dialog"  @closeModalSearch="updateModalSearch($event)"/>
   </div>
 </template>
 
@@ -122,8 +123,10 @@ export default {
   layout: 'landingpage',
   data(){
     return{
+      dialog:false,
       valid: true,
       error:false,
+      errorMessage:'E-mail ou senha incorreta',
       login:{
         email:'emaildteste@gmail.com',
         password:'12#rer'
@@ -162,6 +165,7 @@ export default {
         const user = await this.$store.dispatch('user/getUser')
         this.$router.replace("/app")
       }catch(err){
+        this.errorMessage = 'E-mail ou senha incorreta',
         this.error = true
         //console.log(err)
       }
@@ -186,20 +190,29 @@ export default {
      
     },
     async UserLoginGoogleLocalApi(){
+     
+     this.updateModalSearch(true)
 
      if( !_.has(this.googleQuery, 'state') || ! _.has(this.googleQuery, 'code')){
+      this.updateModalSearch(false)
         return ;
       } 
- 
+      
       const {state} = this.googleQuery
       const {code} = this.googleQuery
-
+      
       let  app_pkce_state = localStorage.getItem('my_pkce_state');
-      my_pkce_state = JSON.parse(app_pkce_state)
+      if(!app_pkce_state){
+        this.updateModalSearch(false)
+        return ;
+      } 
+
+      app_pkce_state = JSON.parse(app_pkce_state)
       
       localStorage.removeItem('my_pkce_state')
-
+      
       if(state !== app_pkce_state){
+        this.updateModalSearch(false)
         return ;
       } 
 
@@ -210,10 +223,15 @@ export default {
          this.$auth.strategy.token.set(result.token) //console.log(result);
          this.$auth.setUser(true)
          window.location.replace('http://localhost:8000/app')
-    
+         this.updateModalSearch(false)
+
         }catch(err){
-         
+         this.errorMessage = 'Não foi possivel fazer login com o google',
+         this.error = true
+         this.updateModalSearch(false)
       }
+      
+      
 
     },
     validationForm(){
@@ -241,7 +259,11 @@ export default {
           result += characters.charAt(Math.floor(Math.random() * charactersLength))
         }
         return result
-    }
+    },
+
+    updateModalSearch(value){
+        this.dialog = value
+    },
 
     
   }
