@@ -10,7 +10,7 @@
         <v-row class="">
           <v-col cols="12">
             <p class="text-center"> 
-            Fazer Login no LTask {{this.$route.query}}
+            Fazer Login no LTask
             </p>
           </v-col>
         </v-row>
@@ -143,7 +143,15 @@ export default {
     googleQuery(){ return this.$route.query },
   },
   created: function () {
+     /*if(!_.isEmpty(this.googleQuery)){
+      this.UserLoginGoogleLocalApi()
+    }*/
     
+  },
+  mounted() {
+    if(!_.isEmpty(this.googleQuery)){
+      this.UserLoginGoogleLocalApi()
+    }
   },
   methods:{
     async userLogin(){
@@ -167,11 +175,29 @@ export default {
      
     },
     async UserLoginGoogleLocalApi(){
-      if( !_.has(this.googleQuery.state, 'state') || ! _.has(this.googleQuery.state, 'code')){
+      
+     if( !_.has(this.googleQuery, 'state') || ! _.has(this.googleQuery, 'code')){
         return ;
       } 
-      const state = this.googleQuery.state
-      const code = this.googleQuery.code
+ 
+      const {state} = this.googleQuery
+      const {code} = this.googleQuery
+
+      try{
+        
+        const result = await this.$store.dispatch('user/loginWithGoogleCode', {code})
+
+         this.$auth.strategy.token.set(result.token) //console.log(result);
+          this.$auth.setUser(true)
+          window.location.href = "http://localhost:8000/app"
+         //this.$router.replace("/signup")
+          //this.$router.push({ path: '/app/projetos' })
+          //console.log('logado',this.$auth.loggedIn); 
+          //this.$router.push({ path: '/signup' })
+          //this.$router.replace("/app")
+        }catch(err){
+         
+      }
 
     },
     validationForm(){

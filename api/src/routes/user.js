@@ -54,8 +54,8 @@ module.exports = function (fastify, option, done) {
   }, async (request, reply) => {
     try {
       const { code, client_id, redirect_uri } = request.body
-
-      const result = await googleInstance.login(code, client_id, redirect_uri)
+      //client_id, redirect_uri 
+      const result = await googleInstance.login(code)
 
 
       reply.send(result)

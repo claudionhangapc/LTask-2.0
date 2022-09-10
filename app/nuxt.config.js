@@ -49,7 +49,7 @@ export default {
     baseUrl:'http://localhost:3000'
   },
   router: {
-    middleware: ['auth']
+    middleware: ['auth'],
   },
 
   //Auth
@@ -73,7 +73,7 @@ export default {
           
         }
       },
-      google: {
+     /* google: {
         clientId:process.env.CLIENT_ID,
         codeChallengeMethod: "",
         responseType: 'code',
@@ -81,7 +81,7 @@ export default {
           token: 'http://localhost:3000/users/login/google', // somm backend url to resolve your auth with google and give you the token back
           userInfo: 'http://localhost:3000/users/user' // the endpoint to get the user info after you recived the token 
         },
-      },
+      }, */
     }
   },
 

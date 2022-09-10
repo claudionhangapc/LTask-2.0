@@ -107,3 +107,5 @@ dist
 # Upload files
 
 api/uploads/*
+
+.env

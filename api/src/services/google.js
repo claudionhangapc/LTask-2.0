@@ -10,11 +10,15 @@ class Google {
     this.user = new user(fastify)
   }
 
- async login( code, client_id, redirect_uri ){
+ async login( code){
+  
+  const  client_id =  process.env.GOOGLE_CLIENT_ID
+  const redirect_uri = process.env.GOOGLE_REDIRECT_URI
+  const GOOGLE_CLIENTE_SECRET = process.env.GOOGLE_CLIENTE_SECRET
 
   const oauth2Client  = new google.auth.OAuth2(
     client_id,
-    process.env.GOOGLE_CLIENTE_SECRET,
+    GOOGLE_CLIENTE_SECRET,
     redirect_uri)
 
   const {tokens} = await oauth2Client.getToken(code);
