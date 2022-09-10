@@ -167,15 +167,26 @@ export default {
       }
     },
     async UserLoginGoogle(){
-      //this.$auth.loginWith('google')
-      //this.$router.replace('https://accounts.google.com/o/oauth2/auth?protocol=oauth2&response_type=code&access_type&client_id&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Flogin&scope=openid%20profile%20email&state=tRRsqM7Sme&code_challenge_method=')
-      //console.log(this.$router)
-      //this.$redirect('https://www.google.com')
-      window.location.href = "https://accounts.google.com/o/oauth2/auth?protocol=oauth2&response_type=code&access_type&client_id=322340038052-ggato5uephq7cv0b2fjcfv43k5rje6tt.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Flogin&scope=openid%20profile%20email&state=F6qGJULo6s&code_challenge_method=";
+
+      const state = this.randomString(10);
+      localStorage.setItem('my_pkce_state', JSON.stringify(state))
+
+      const query = new URLSearchParams();
+      query.append('protocol', process.env.GOOGLE.protocol);
+      query.append('response_type', process.env.GOOGLE.response_type);
+      query.append('client_id', process.env.GOOGLE.client_id);
+      query.append('redirect_uri', process.env.GOOGLE.redirect_uri);
+      query.append('scope', process.env.GOOGLE.scope);
+      query.append('state', state);
+      query.append('code_challenge_method', process.env.GOOGLE.code_challenge_method);
+      const url = "https://accounts.google.com/o/oauth2/auth?" + query.toString();
+
+      window.location.replace(url)
+      //window.location.href =  url;
      
     },
     async UserLoginGoogleLocalApi(){
-      
+
      if( !_.has(this.googleQuery, 'state') || ! _.has(this.googleQuery, 'code')){
         return ;
       } 
@@ -183,18 +194,23 @@ export default {
       const {state} = this.googleQuery
       const {code} = this.googleQuery
 
+      let  app_pkce_state = localStorage.getItem('my_pkce_state');
+      my_pkce_state = JSON.parse(app_pkce_state)
+      
+      localStorage.removeItem('my_pkce_state')
+
+      if(state !== app_pkce_state){
+        return ;
+      } 
+
       try{
-        
+
         const result = await this.$store.dispatch('user/loginWithGoogleCode', {code})
 
          this.$auth.strategy.token.set(result.token) //console.log(result);
-          this.$auth.setUser(true)
-          window.location.href = "http://localhost:8000/app"
-         //this.$router.replace("/signup")
-          //this.$router.push({ path: '/app/projetos' })
-          //console.log('logado',this.$auth.loggedIn); 
-          //this.$router.push({ path: '/signup' })
-          //this.$router.replace("/app")
+         this.$auth.setUser(true)
+         window.location.replace('http://localhost:8000/app')
+    
         }catch(err){
          
       }
@@ -215,7 +231,19 @@ export default {
         message = "email incorreto";
     } 
     return  message;
+    },
+
+    randomString(length) {
+        const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+        let result = ''
+        const charactersLength = characters.length
+        for (let i = 0; i < length; i++) {
+          result += characters.charAt(Math.floor(Math.random() * charactersLength))
+        }
+        return result
     }
+
+    
   }
  
 }

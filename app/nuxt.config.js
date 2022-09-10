@@ -4,6 +4,19 @@ export default {
   server: {
     port: 8000 // default: 3000
   },
+
+  // Env variable
+  env: {
+    GOOGLE: {
+          protocol: 'oauth2',
+          response_type:'code',
+          client_id: '322340038052-ggato5uephq7cv0b2fjcfv43k5rje6tt.apps.googleusercontent.com',
+          redirect_uri: 'http://localhost:8000/login',
+          scope: 'openid profile email',
+          state:'',
+          code_challenge_method: ''
+         }
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s - app',
