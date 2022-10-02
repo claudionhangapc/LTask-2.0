@@ -38,7 +38,7 @@
             </v-list-item>
           </v-list>
 
-          <div  class="pa-3">
+          <div  class="pa-3" v-if="!this.$auth.loggedIn">
             <div class="text-center mb-4">
               <v-btn 
               style="width:100%"
@@ -55,6 +55,15 @@
               </v-btn>
             </div>
             
+          </div>
+          <div  class="pa-3" v-else>
+            <div class="text-center mb-4">
+              <v-btn 
+              style="width:100%"
+              text outlined  to="/app" class="">
+              <span >Entrar</span>
+            </v-btn>
+            </div>
           </div>
 
         </v-navigation-drawer>
@@ -107,11 +116,14 @@
         v-if="isXs" >
         </v-app-bar-nav-icon>
         <div v-else>
-          <v-btn text to="/login" >
+          <v-btn text to="/login" v-if="!this.$auth.loggedIn">
             <span class="mr-2">Entrar</span>
           </v-btn>
-          <v-btn text outlined to="/signup">
+          <v-btn text outlined to="/signup" v-if="!this.$auth.loggedIn">
             <span class="mr-2">Criar conta</span>
+          </v-btn>
+          <v-btn text outlined to="/app" v-if="this.$auth.loggedIn">
+            <span class="mr-2">Entrar</span>
           </v-btn>
         </div>
       </v-app-bar>
