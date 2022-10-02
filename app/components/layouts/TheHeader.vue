@@ -111,6 +111,7 @@
       ],
       itemsPerfil: [
         { title: 'Meu Perfil',method:'goToPerfil' },
+        { title: 'Minhas Tarefas',method:'goToTask' },
         { title: 'Meus Projetos',method:'gotoProject' },
         { title: 'Minhas Categorias',method:'gotoCategory' },
         { title: 'Sair', method:'logout'},
@@ -162,6 +163,9 @@
       },
       gotoProject(){
         this.$router.replace('/app/projetos');
+      },
+      goToTask(){
+        this.$router.push('/app/tarefas');
       },
       gotoCategory(){
         this.$router.replace('/app/categorias');
