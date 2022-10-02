@@ -7,14 +7,14 @@
                      link
                      >
                       <v-row >
-                        <v-col cols="12" md="1" class=" ma-0 px-0">
+                        <v-col cols="2" md="1" class=" ma-0 px-0">
                           <v-checkbox class="ml-1"
                           ></v-checkbox>
                         </v-col>
-                        <v-col cols="12" md="10" class="ma-0 px-0">
+                        <v-col cols="9" md="10" class="ma-0 px-0">
                           <v-list-item-content>
                             <v-list-item-title>{{task.name}}</v-list-item-title>
-                            <div class="d-flex justify-start ">
+                            <div class="d-flex justify-start flex-wrap">
                               <div class="mr-2" v-show="task.project_name">
                                  <v-list-item-subtitle>
                                   <v-icon
@@ -58,9 +58,8 @@
                             </div>
                           </v-list-item-content>
                         </v-col>
-                        <v-col cols="12" md="1" class="ma-0 px-0">
+                        <v-col cols="1" md="1" class="ma-0 px-0 d-flex justify-end">
                          <v-checkbox
-                            class="ml-13"
                             hide-details
                             :on-icon="'mdi-star'"
                             :off-icon="'mdi-star-outline'"
