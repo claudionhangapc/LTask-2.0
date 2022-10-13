@@ -2,7 +2,8 @@
   <v-container>
     <v-row >
       <v-col 
-         cols="4"
+         cols="12"
+         md = "4"
          >
          <v-card  class="pb-3" outlined>
            <div 
@@ -42,7 +43,8 @@
          </v-card>   
       </v-col>
       <v-col
-         cols="8"
+         cols="12"
+         md = "8"
          >
          <v-card outlined>
             
@@ -73,7 +75,8 @@
    </v-row>
    <v-row >
       <v-col 
-         cols="7"
+         cols="12"
+         sm = "7"
          >
           <v-card outlined>
             <v-card-title>Projetos</v-card-title>
@@ -83,12 +86,12 @@
                      :key="index"
                      >
                       <v-row >
-                        <v-col cols="12" md="11" class="ma-0 px-3">
+                        <v-col cols="11" md="11" class="ma-0 px-3">
                           <v-list-item-content>
                             <v-list-item-title class="font-weight-medium">{{items.key}}</v-list-item-title>
                           </v-list-item-content>
                         </v-col>
-                        <v-col cols="12" md="1" class="ma-0 px-0">
+                        <v-col cols="1" md="1" class="ma-0 px-0">
                           <v-list-item-content>
                             <v-list-item-title>{{items.value}}</v-list-item-title>
                           </v-list-item-content>
@@ -101,7 +104,8 @@
          </v-card> 
       </v-col>
       <v-col
-         cols="5"
+         cols="12"
+         sm = "5"
          >
          <v-card outlined>
             <v-card-title>Tarefas</v-card-title>
@@ -111,12 +115,12 @@
                      :key="index"
                      >
                       <v-row >
-                        <v-col cols="12" md="11" class="ma-0 px-3">
+                        <v-col cols="11" md="11" class="ma-0 px-3">
                           <v-list-item-content>
                             <v-list-item-title class="font-weight-medium">{{items.key}}</v-list-item-title>
                           </v-list-item-content>
                         </v-col>
-                        <v-col cols="12" md="1" class="ma-0 px-0">
+                        <v-col cols="1" md="1" class="ma-0 px-0">
                           <v-list-item-content>
                             <v-list-item-title>{{items.value}}</v-list-item-title>
                           </v-list-item-content>
