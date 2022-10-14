@@ -55,12 +55,12 @@
                      
                      >
                       <v-row >
-                        <v-col cols="12" md="4" class="ma-0 px-3">
+                        <v-col cols="5" md="4" sm = "4" class="ma-0 px-3">
                           <v-list-item-content>
                             <v-list-item-title class="font-weight-medium">{{items.key}}</v-list-item-title>
                           </v-list-item-content>
                         </v-col>
-                        <v-col cols="12" md="8" class="ma-0 px-0">
+                        <v-col cols="7" md="8" sm = "8" class="ma-0 px-3">
                           <v-list-item-content>
                             <v-list-item-title>{{items.value}}</v-list-item-title>
                           </v-list-item-content>
