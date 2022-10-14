@@ -13,19 +13,20 @@
         <v-toolbar-title>L<span style="color:#FF8700">Task</span></v-toolbar-title>
         <v-spacer></v-spacer>
           <div class="large-search">
-          <v-text-field
-            readonly
-            :autofocus="false"
-            full-width
-            dense
-            hide-details
-            append-icon="mdi-magnify"
-            filled
-            outlined
-            dark
-            @click="openModalSearch()"
-            label="Buscar"
-          v-if="activateSearchField"></v-text-field>
+            <v-text-field
+              readonly
+              :autofocus="false"
+              full-width
+              dense
+              hide-details
+              append-icon="mdi-magnify"
+              filled
+              outlined
+              dark
+              @click="openModalSearch()"
+              label="Buscar"
+            v-if="activateSearchField">
+            </v-text-field>
           </div>
 
           <div class="small-search">
@@ -230,6 +231,7 @@
 
 .large-search{
   display: block;
+  width: 350px;
 }
 .small-search{
   display:none;
